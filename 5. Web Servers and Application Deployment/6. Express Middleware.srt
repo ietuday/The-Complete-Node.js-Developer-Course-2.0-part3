@@ -1,0 +1,1044 @@
+﻿1
+00:00:00,480 --> 00:00:05,700
+In this video you're going to learn how to use Express middleware express middleware is a fantastic
+
+2
+00:00:05,700 --> 00:00:06,220
+tool.
+
+3
+00:00:06,270 --> 00:00:10,320
+It allows you to add on to the existing functionality that Express has.
+
+4
+00:00:10,350 --> 00:00:12,930
+So if Express doesn't do something you'd like it to do.
+
+5
+00:00:12,930 --> 00:00:16,260
+You can add some middleware and teach it how to do that thing.
+
+6
+00:00:16,260 --> 00:00:19,790
+Now we've already used a little bit of middleware right here on line 8.
+
+7
+00:00:19,800 --> 00:00:25,680
+We use a middleware and we teach express how to read from a static directory we call apt use which is
+
+8
+00:00:25,680 --> 00:00:31,020
+how you register middleware then and we provided the middleware function we want to use now middleware
+
+9
+00:00:31,020 --> 00:00:31,830
+can do anything.
+
+10
+00:00:31,890 --> 00:00:35,390
+You could just execute some code like logging something to the screen.
+
+11
+00:00:35,520 --> 00:00:40,710
+You could make a change to the request or the response object will be doing just that in later sections.
+
+12
+00:00:40,710 --> 00:00:45,780
+When we add API authentication we'll want to make sure the right header is sent that letter is going
+
+13
+00:00:45,780 --> 00:00:48,040
+to be expected to have an API token.
+
+14
+00:00:48,180 --> 00:00:51,130
+We can use middleware to determine whether or not someone's logged in.
+
+15
+00:00:51,240 --> 00:00:56,610
+Basically whether or not they should be able to access a specific route and we can also use middleware
+
+16
+00:00:56,610 --> 00:01:01,380
+to respond to a request we could send something back from the middle where just like we would anywhere
+
+17
+00:01:01,380 --> 00:01:05,150
+else using response to render or response send.
+
+18
+00:01:05,550 --> 00:01:10,440
+Now in order to explore middleware we're going to create some basic middleware right now just below
+
+19
+00:01:10,440 --> 00:01:14,220
+where we call apt use registering our express static middleware.
+
+20
+00:01:14,310 --> 00:01:17,350
+We're going to call app use again now.
+
+21
+00:01:17,380 --> 00:01:22,200
+Apt use is how you register middleware and it takes a function right here.
+
+22
+00:01:22,200 --> 00:01:26,330
+We're going to pass in an Aero function the use function.
+
+23
+00:01:26,330 --> 00:01:29,920
+It takes just one function there is no need to add any other arguments.
+
+24
+00:01:29,930 --> 00:01:36,010
+This function is going to get called with the request object and the response object and a third argument
+
+25
+00:01:37,180 --> 00:01:38,050
+next.
+
+26
+00:01:38,170 --> 00:01:39,250
+Now request Cressingham response.
+
+27
+00:01:39,270 --> 00:01:41,000
+Those should seem familiar by now.
+
+28
+00:01:41,080 --> 00:01:45,430
+It's the exact same arguments we get whenever we register a handler down below.
+
+29
+00:01:45,430 --> 00:01:47,650
+Next is where things get a little trickier.
+
+30
+00:01:47,740 --> 00:01:53,440
+Next exists so you can tell express that when your middleware function is done and this is useful because
+
+31
+00:01:53,440 --> 00:01:57,440
+you can have as much a middleware as you like register to a single express app.
+
+32
+00:01:57,490 --> 00:02:00,610
+For example I have some middleware that serves up a directory.
+
+33
+00:02:00,610 --> 00:02:05,170
+We're going to write some more that logs some request data to the screen and we could have a third piece
+
+34
+00:02:05,170 --> 00:02:09,280
+down below that helps with application performance keeping track of response times.
+
+35
+00:02:09,370 --> 00:02:14,590
+All of that is possible now inside of this function we can do anything we like we might like something
+
+36
+00:02:14,590 --> 00:02:19,030
+to the screen we might make a database request to make sure a user is authenticated.
+
+37
+00:02:19,030 --> 00:02:23,340
+All of that is perfectly valid and we use next to tell express when we're done.
+
+38
+00:02:23,380 --> 00:02:29,380
+So if we do something asynchronous the middleware is not going to move on only when we call next like
+
+39
+00:02:29,380 --> 00:02:29,920
+this.
+
+40
+00:02:29,920 --> 00:02:32,000
+Will the application continue to run.
+
+41
+00:02:32,290 --> 00:02:37,390
+Now this means if your middleware doesn't come next your handlers for each request they're never going
+
+42
+00:02:37,390 --> 00:02:38,600
+to fire.
+
+43
+00:02:38,650 --> 00:02:40,230
+We can prove this right here.
+
+44
+00:02:40,270 --> 00:02:43,220
+I'm going to call apt use passing in an empty function.
+
+45
+00:02:43,300 --> 00:02:49,060
+I'm going to save the file and over in the terminal I'm going to run our app using gnomon with server.
+
+46
+00:02:49,120 --> 00:02:51,480
+Yes I'm going to do this.
+
+47
+00:02:51,580 --> 00:02:55,440
+I'm going to move into the browser and I'll make a request for the home page.
+
+48
+00:02:55,570 --> 00:02:59,920
+I'm going to refresh the page and you can see that up top it is trying to load but it's never going
+
+49
+00:02:59,920 --> 00:03:00,850
+to finish.
+
+50
+00:03:00,850 --> 00:03:04,750
+No it's not that it can't connect to the server it's connecting to the server just fine.
+
+51
+00:03:04,750 --> 00:03:10,150
+The real problem is that inside of our app we have middleware that doesn't call next to fix this.
+
+52
+00:03:10,150 --> 00:03:13,170
+All we're going to do is call next like this.
+
+53
+00:03:13,390 --> 00:03:19,180
+Now when things refresh over inside of the browser we get our home page exactly as we expected.
+
+54
+00:03:19,180 --> 00:03:24,050
+The only difference is now we have a place where we can add on some functionality right inside of here.
+
+55
+00:03:24,070 --> 00:03:28,390
+We're going to get started by creating a logger that's going to log out all of the requests that come
+
+56
+00:03:28,390 --> 00:03:29,400
+into the server.
+
+57
+00:03:29,440 --> 00:03:34,520
+We're also going to story time stamp so we can see exactly when someone made a request for a specific
+
+58
+00:03:34,570 --> 00:03:37,300
+you are able to get started inside of the middleware.
+
+59
+00:03:37,390 --> 00:03:39,360
+Let's go ahead and get the current time.
+
+60
+00:03:39,670 --> 00:03:41,840
+I'm going to make a variable called now.
+
+61
+00:03:42,100 --> 00:03:49,190
+Setting it equal to new date creating a new instance of our Date object.
+
+62
+00:03:49,330 --> 00:03:56,350
+And I'm going to call its two string method two string creates a nice formatted date a human readable
+
+63
+00:03:56,380 --> 00:03:57,700
+time stamp.
+
+64
+00:03:57,700 --> 00:04:03,370
+Now that we have are now variable in place we can go ahead and start creating the actual logger by calling
+
+65
+00:04:03,370 --> 00:04:04,960
+console lock.
+
+66
+00:04:05,320 --> 00:04:08,950
+I can call console log passing in whatever I like.
+
+67
+00:04:08,950 --> 00:04:15,100
+I'm going to pass in inside of Tick's the now a variable with a call and after we'll tack on some more
+
+68
+00:04:15,100 --> 00:04:16,750
+data in just a moment.
+
+69
+00:04:16,750 --> 00:04:21,150
+Now if I saved my file things are going to restart over in the terminal because nobody is running.
+
+70
+00:04:21,250 --> 00:04:26,590
+And when I make a request for the site again and I go into the terminal I should see my log and right
+
+71
+00:04:26,590 --> 00:04:28,190
+here I have my log.
+
+72
+00:04:28,300 --> 00:04:32,490
+Currently it's just a time stamp but we are on the right track now.
+
+73
+00:04:32,530 --> 00:04:34,710
+Everything is working because we called next.
+
+74
+00:04:34,720 --> 00:04:39,670
+So after this consulate that log call prints to the screen our application continues and it serves up
+
+75
+00:04:39,670 --> 00:04:46,330
+the page inside of here we can add on more functionality by exploring that request object on the request
+
+76
+00:04:46,330 --> 00:04:46,890
+object.
+
+77
+00:04:46,960 --> 00:04:49,220
+We have access to everything about the request.
+
+78
+00:04:49,330 --> 00:04:55,300
+The HTP method the path query parameters anything that comes from the client whether that clients an
+
+79
+00:04:55,300 --> 00:04:57,200
+app a browser or an iPhone.
+
+80
+00:04:57,270 --> 00:05:00,540
+It is all going to be available in that request object.
+
+81
+00:05:00,690 --> 00:05:06,640
+Two things we're going to pull off now is the HTP method and the path if you want to look at a full
+
+82
+00:05:06,640 --> 00:05:08,770
+list of the things you have access to.
+
+83
+00:05:08,800 --> 00:05:14,710
+You can go to express J.S. dot com go to API reference.
+
+84
+00:05:14,790 --> 00:05:20,730
+We happen to be using a four point X version of Express's I'm going to click that link then on the right
+
+85
+00:05:20,940 --> 00:05:23,210
+we have both request and response.
+
+86
+00:05:23,310 --> 00:05:29,070
+We're looking for the request object so a click that we're going to be using to request you R-AL and
+
+87
+00:05:29,070 --> 00:05:32,590
+request dot method back inside of Adam.
+
+88
+00:05:32,640 --> 00:05:34,010
+We can start implementing those.
+
+89
+00:05:34,010 --> 00:05:39,100
+Adding them into console that lock right after the time stamp we're going to print the HTP method.
+
+90
+00:05:39,240 --> 00:05:40,650
+We'll be using other methods later.
+
+91
+00:05:40,650 --> 00:05:44,480
+For now we've only used the get method right inside of here.
+
+92
+00:05:44,480 --> 00:05:49,350
+I'm going to inject the request dot method printing it to the console.
+
+93
+00:05:49,350 --> 00:05:54,410
+Next up we can go ahead and print the path so we know exactly what page the person requested.
+
+94
+00:05:54,510 --> 00:05:58,320
+I'm going to do that by injecting another variable request.
+
+95
+00:05:58,470 --> 00:06:02,890
+You are out with this in place we don't have a pretty useful piece of middleware.
+
+96
+00:06:02,940 --> 00:06:09,270
+It takes the request object it spits out some information and then it moves on letting the server process
+
+97
+00:06:09,270 --> 00:06:11,100
+the request down below.
+
+98
+00:06:11,100 --> 00:06:16,440
+If I saved the file and I rerun the app from the browser I should be able to move into the terminal
+
+99
+00:06:16,440 --> 00:06:21,650
+and see this new logger printing to the screen and right here we get just that we have our time stamp
+
+100
+00:06:21,660 --> 00:06:25,490
+we have the HTP method which is get and we have the path.
+
+101
+00:06:25,500 --> 00:06:30,510
+If we change the path to something more complicated like forward slash about and I move back into the
+
+102
+00:06:30,510 --> 00:06:36,150
+terminal we're going to see that forward slash about right here where we accessed request dot you are
+
+103
+00:06:36,140 --> 00:06:36,840
+out.
+
+104
+00:06:36,990 --> 00:06:41,020
+Now this is a pretty basic example of some middleware we can take it a step further.
+
+105
+00:06:41,070 --> 00:06:46,070
+Aside from just logging a message to the screen we're also going to print that message to a file.
+
+106
+00:06:46,260 --> 00:06:49,160
+Let's go ahead and load in f s up above.
+
+107
+00:06:49,290 --> 00:06:56,260
+I'm going to create a constant call that constant f s and set that equal to the return result from requiring
+
+108
+00:06:56,260 --> 00:07:00,000
+the module awesome.
+
+109
+00:07:00,010 --> 00:07:02,810
+Now we can go ahead and implement that down below.
+
+110
+00:07:02,860 --> 00:07:07,570
+I'm going to take our template string which is currently defined inside of console log.
+
+111
+00:07:07,600 --> 00:07:13,210
+I'm going to cut it out and instead store in a variable I'm going to make a variable called log setting
+
+112
+00:07:13,210 --> 00:07:15,100
+and equal to that template string.
+
+113
+00:07:15,100 --> 00:07:21,910
+Now we can pass that log variable into both console log and into an F as method to write to our file
+
+114
+00:07:21,910 --> 00:07:22,630
+system.
+
+115
+00:07:22,870 --> 00:07:29,780
+I'm going to call FS append file now as you remember append file lets you add onto a file.
+
+116
+00:07:29,830 --> 00:07:30,850
+It takes two arguments.
+
+117
+00:07:30,850 --> 00:07:37,750
+The file name and the thing you want to add the file name we're going to use is server dot Lague will
+
+118
+00:07:37,750 --> 00:07:43,550
+create a nice log file and the actual contents is just going to be the log message up above.
+
+119
+00:07:43,720 --> 00:07:46,290
+And we are going to need to add one more thing.
+
+120
+00:07:46,300 --> 00:07:50,170
+We also want to move on to the next line after every single request gets logged.
+
+121
+00:07:50,290 --> 00:07:56,950
+So I'm going to concatenate the new line character which is going to be backslash and perfect.
+
+122
+00:07:57,130 --> 00:08:02,130
+Hello this is Andrew a few months after the Noad course was originally released.
+
+123
+00:08:02,140 --> 00:08:08,170
+If you're using Knode these 7 or greater you're going to need to make a small tweak to this line as
+
+124
+00:08:08,170 --> 00:08:12,000
+you can see here we added a third argument to FS a pen file.
+
+125
+00:08:12,010 --> 00:08:13,670
+This is a callback function.
+
+126
+00:08:13,690 --> 00:08:16,690
+It's now required if you don't have a callback function.
+
+127
+00:08:16,780 --> 00:08:20,310
+You're going to get a deprecation warning over inside of the console.
+
+128
+00:08:20,320 --> 00:08:24,730
+Now as you can see our callback function here takes an error argument if there is an error we just print
+
+129
+00:08:24,760 --> 00:08:26,830
+a message to the screen that's it.
+
+130
+00:08:26,830 --> 00:08:31,530
+If you change your line to look like this regardless of your node version you'll be future proof.
+
+131
+00:08:31,570 --> 00:08:36,190
+If you're on Node 7 or greater the warning in the console will go away.
+
+132
+00:08:36,310 --> 00:08:40,660
+Now the warning is going to say something like deprecation warning calling an asynchronous function
+
+133
+00:08:40,840 --> 00:08:43,300
+without callback is deprecated.
+
+134
+00:08:43,300 --> 00:08:45,450
+If you see that warning make this change.
+
+135
+00:08:45,490 --> 00:08:46,840
+All right let's get back to it.
+
+136
+00:08:48,370 --> 00:08:51,790
+Now that we have this in place we can go ahead and test things out.
+
+137
+00:08:51,790 --> 00:08:57,250
+I saved the file which should be restarting things over inside of gnomon Nordman is restarted right
+
+138
+00:08:57,250 --> 00:09:03,090
+now and inside of Krome I can go ahead and give the page a refresh if I head back into the terminal.
+
+139
+00:09:03,100 --> 00:09:05,500
+I do still get my log which is great.
+
+140
+00:09:05,500 --> 00:09:08,220
+Notice I also have a request for a FOV icon.
+
+141
+00:09:08,230 --> 00:09:09,000
+Eico.
+
+142
+00:09:09,190 --> 00:09:12,460
+This is usually the icon that shown in the browser tab.
+
+143
+00:09:12,490 --> 00:09:14,990
+I have one cached from a previous project.
+
+144
+00:09:15,010 --> 00:09:18,250
+There actually is no icon file defined which is totally fine.
+
+145
+00:09:18,280 --> 00:09:23,180
+The browser still makes the request anyways which is why that shows up here inside of Adam.
+
+146
+00:09:23,290 --> 00:09:28,720
+We don't have our server log file and if I open it up right here we have a log of all the requests that
+
+147
+00:09:28,720 --> 00:09:29,290
+were made.
+
+148
+00:09:29,350 --> 00:09:35,040
+We have time stamps we have HTP methods and we have pads and this is pretty awesome.
+
+149
+00:09:35,110 --> 00:09:41,440
+Using app use we were able to create some middleware that helps us keep track of how our server is working.
+
+150
+00:09:41,440 --> 00:09:43,650
+Now there are times where you might not want to call.
+
+151
+00:09:43,660 --> 00:09:49,170
+Next we learned that we could call next after we do something asynchronous like a read from a database.
+
+152
+00:09:49,250 --> 00:09:51,350
+But imagine something goes wrong.
+
+153
+00:09:51,460 --> 00:09:56,770
+You can avoid calling next to never move on to the next piece of middleware and that's exactly what
+
+154
+00:09:56,860 --> 00:09:57,600
+you're going to do.
+
+155
+00:09:57,610 --> 00:09:59,520
+The challenge for this video.
+
+156
+00:09:59,620 --> 00:10:03,900
+What I would like you to do is create a new view inside the views folder.
+
+157
+00:10:03,970 --> 00:10:06,100
+Go ahead and call this one maintenance.
+
+158
+00:10:06,280 --> 00:10:07,580
+H B S.
+
+159
+00:10:07,600 --> 00:10:08,860
+This is going to be a handle bars.
+
+160
+00:10:08,860 --> 00:10:11,640
+Template will render when the site is in maintenance mode.
+
+161
+00:10:11,650 --> 00:10:13,610
+You can give it a really simple structure.
+
+162
+00:10:13,630 --> 00:10:19,840
+Copy it from home or about just some basic HTL Yamal there is no reason to use the Parshall's.
+
+163
+00:10:19,840 --> 00:10:22,670
+All I want you to do is render an H1 tag something like.
+
+164
+00:10:22,670 --> 00:10:27,310
+We'll be right back and a paragraph tag something like the site is currently being updated.
+
+165
+00:10:27,310 --> 00:10:29,040
+We'll be back soon.
+
+166
+00:10:29,050 --> 00:10:34,660
+Now once you make that maintenance H.B. as a template file I want you to render it inside of a new piece
+
+167
+00:10:34,660 --> 00:10:35,560
+of middleware.
+
+168
+00:10:35,590 --> 00:10:37,210
+We don't have that middleware defined yet.
+
+169
+00:10:37,210 --> 00:10:41,830
+You're going to have to call apt use again to defining the function but inside of there you'll be able
+
+170
+00:10:41,830 --> 00:10:45,200
+to call a response rendered just like you did down below.
+
+171
+00:10:45,280 --> 00:10:50,290
+There's no difference between the response object you get here in a request handler and their response
+
+172
+00:10:50,290 --> 00:10:51,520
+object you get in Middleware.
+
+173
+00:10:51,520 --> 00:10:54,500
+They are exactly the same object.
+
+174
+00:10:54,550 --> 00:10:59,670
+That means you only need to add one line inside of the middle where you just have to call response not
+
+175
+00:10:59,680 --> 00:11:00,250
+render.
+
+176
+00:11:00,310 --> 00:11:04,520
+No need to call next since we don't actually want to move on to the rest of the request.
+
+177
+00:11:04,570 --> 00:11:10,210
+We simply want to stop it rendering the maintenance abs file to the screen so take a moment to knock
+
+178
+00:11:10,210 --> 00:11:10,900
+all that out.
+
+179
+00:11:10,990 --> 00:11:16,350
+It's going to require you to call apt use define the function and add one call inside of the function.
+
+180
+00:11:16,420 --> 00:11:21,580
+Once you're done go ahead and test it out try to make a request to a page and see what happens when
+
+181
+00:11:21,580 --> 00:11:22,300
+you do that.
+
+182
+00:11:22,360 --> 00:11:24,900
+You should get your template from maintenance.
+
+183
+00:11:25,150 --> 00:11:26,800
+Yes printing instead.
+
+184
+00:11:26,800 --> 00:11:28,060
+Take a moment pause the video.
+
+185
+00:11:28,060 --> 00:11:30,580
+Knock that out and when you're done click play.
+
+186
+00:11:35,030 --> 00:11:37,300
+All right I know that one might have been a little tricky.
+
+187
+00:11:37,340 --> 00:11:40,550
+Hopefully you didn't have too much trouble getting that set up.
+
+188
+00:11:40,760 --> 00:11:42,940
+The first thing I'm going to do is make the maintenance.
+
+189
+00:11:43,060 --> 00:11:48,140
+HBL file by duplicating home Don H.B. us.
+
+190
+00:11:48,290 --> 00:11:51,550
+I'm going to call the file maintenance.
+
+191
+00:11:51,880 --> 00:11:55,200
+Yes and inside of maintenance.
+
+192
+00:11:55,230 --> 00:11:56,110
+HB Yes.
+
+193
+00:11:56,150 --> 00:12:00,380
+All I'm going to do is wipe the body and add a few tags right here.
+
+194
+00:12:00,500 --> 00:12:03,630
+I'll add an H1 tag to print a little message to the user.
+
+195
+00:12:04,680 --> 00:12:07,800
+I'm going to go ahead and use something like.
+
+196
+00:12:07,850 --> 00:12:11,070
+We'll be right back down below.
+
+197
+00:12:11,150 --> 00:12:14,060
+I can go ahead and add a paragraph tag notice there.
+
+198
+00:12:14,060 --> 00:12:16,590
+I was able to use P followed by the tab.
+
+199
+00:12:16,610 --> 00:12:21,660
+This is a shortcut inside of Adam for creating an HMO tag that works for all tags.
+
+200
+00:12:21,710 --> 00:12:27,740
+I could type body and hit enter or I could type P and hit enter inside the paragraph I'm going to leave
+
+201
+00:12:27,740 --> 00:12:28,660
+a little message.
+
+202
+00:12:28,790 --> 00:12:38,920
+The site is currently being updated perfect now that we have our template file in place we can go ahead
+
+203
+00:12:38,920 --> 00:12:43,930
+and define our maintenance middleware which is going to bypass all of our other handlers where we render
+
+204
+00:12:43,930 --> 00:12:48,290
+other files and print Jason and instead it'll just render this template to the screen.
+
+205
+00:12:48,610 --> 00:12:50,670
+I'm going to save the file move into server.
+
+206
+00:12:50,780 --> 00:12:51,060
+Yes.
+
+207
+00:12:51,070 --> 00:12:53,590
+And define that middleware right here.
+
+208
+00:12:53,650 --> 00:12:57,320
+I can call app use passing in our function.
+
+209
+00:12:59,230 --> 00:13:06,420
+The function is going to take those three arguments request response and next down below.
+
+210
+00:13:06,610 --> 00:13:13,030
+All we're going to need to do is call response dot render response dot render passing in the name of
+
+211
+00:13:13,030 --> 00:13:13,560
+the file.
+
+212
+00:13:13,560 --> 00:13:15,430
+We want to render in this case it's maintenance.
+
+213
+00:13:15,460 --> 00:13:16,290
+HB Yes.
+
+214
+00:13:18,880 --> 00:13:19,870
+Then there we go.
+
+215
+00:13:19,870 --> 00:13:23,010
+That is all you needed to do to set up our maintenance middleware.
+
+216
+00:13:23,110 --> 00:13:26,540
+This middleware is going to stop everything after it from executing.
+
+217
+00:13:26,650 --> 00:13:27,550
+We don't call next.
+
+218
+00:13:27,550 --> 00:13:31,470
+So the actual handlers right here they are never going to get executed.
+
+219
+00:13:31,480 --> 00:13:34,000
+We can prove this over inside of the browser.
+
+220
+00:13:34,090 --> 00:13:36,100
+I'm going to go ahead and refresh the page.
+
+221
+00:13:36,250 --> 00:13:37,130
+And what do I get.
+
+222
+00:13:37,180 --> 00:13:38,710
+I get the maintenance page.
+
+223
+00:13:38,740 --> 00:13:42,600
+I can go to the home page and I get the exact same thing.
+
+224
+00:13:42,770 --> 00:13:46,190
+If you see this then you completed the challenge successfully.
+
+225
+00:13:46,190 --> 00:13:50,660
+Now there's one more really really important piece to middleware I haven't yet talked about and you
+
+226
+00:13:50,660 --> 00:13:53,790
+might have seen it if you tested out your maintenance middleware.
+
+227
+00:13:53,810 --> 00:13:57,230
+Remember inside of that public folder right there we have a help.
+
+228
+00:13:57,260 --> 00:13:58,640
+H TNL file.
+
+229
+00:13:58,640 --> 00:14:05,750
+If I visit that in the browser by going to forward slash help h DML I'm going to still get that help
+
+230
+00:14:05,750 --> 00:14:08,030
+page I'm not getting the maintenance page.
+
+231
+00:14:08,090 --> 00:14:13,820
+That is because middleware is executed in the order you call app use which means the first thing we
+
+232
+00:14:13,820 --> 00:14:18,680
+do is we set up our express static directory then we set up our logger.
+
+233
+00:14:18,680 --> 00:14:22,570
+And finally we set up our maintenance B-S logger.
+
+234
+00:14:22,580 --> 00:14:24,080
+This is a pretty big problem.
+
+235
+00:14:24,230 --> 00:14:28,910
+If we also want to make the public directory files like help that shemale private We're going to have
+
+236
+00:14:28,910 --> 00:14:35,000
+to reorder our calls to app use because currently the Express server is responding inside of the Express
+
+237
+00:14:35,030 --> 00:14:36,140
+static middleware.
+
+238
+00:14:36,170 --> 00:14:39,470
+So our maintenance middleware doesn't get a chance to execute.
+
+239
+00:14:39,590 --> 00:14:45,830
+I'm going to take the app use Express static call remove it from the file and add it down below after
+
+240
+00:14:45,860 --> 00:14:48,190
+we render the maintenance file to the screen.
+
+241
+00:14:48,380 --> 00:14:53,730
+Now everything is going to work as expected no matter what we're going to log the request which is great.
+
+242
+00:14:53,780 --> 00:14:58,250
+Then we'll check if we're in maintenance mode if this thing is here if it is will render the maintenance
+
+243
+00:14:58,250 --> 00:15:02,200
+file if it's not we'll ignore it because it will be commented out or something like that.
+
+244
+00:15:02,360 --> 00:15:07,370
+And finally we'll be using Express static that this is going to fix all those problems.
+
+245
+00:15:07,430 --> 00:15:11,090
+If I rerun the app now I get the maintenance page on help.
+
+246
+00:15:11,190 --> 00:15:16,510
+And now if I go back to the root of the web site I still get the maintenance page which is great.
+
+247
+00:15:16,580 --> 00:15:20,720
+Now once I'm done with my maintenance middleware I can always go ahead and comment it out.
+
+248
+00:15:20,720 --> 00:15:25,140
+This is going to remove it from being executed and the Web site will work as expected.
+
+249
+00:15:25,190 --> 00:15:30,440
+We'll log some stuff will render our static files and we'll also be rendering our other routes down
+
+250
+00:15:30,440 --> 00:15:32,170
+below with it commented out.
+
+251
+00:15:32,180 --> 00:15:36,130
+I can now refresh and get my home page back which is awesome.
+
+252
+00:15:36,140 --> 00:15:39,020
+This has been a quick dive into Express and middleware.
+
+253
+00:15:39,020 --> 00:15:43,010
+We're going to be using it a lot more throughout the course where we're using middleware to check if
+
+254
+00:15:43,010 --> 00:15:48,560
+our API requests are actually authenticated inside of them middleware we'll be making a database request
+
+255
+00:15:48,590 --> 00:15:51,900
+checking if the user is indeed who they say they are.
+
+256
+00:15:51,920 --> 00:15:56,330
+That's coming up later though for now in the rest of this section we're going to worry about adding
+
+257
+00:15:56,330 --> 00:16:01,520
+version control and deploying our applications because when it comes to creating real world node apps
+
+258
+00:16:01,520 --> 00:16:05,390
+deploying your app to the web is obviously a pretty big part of that.
+
+259
+00:16:05,420 --> 00:16:07,560
+It's all coming up next starting with get.
+
+260
+00:16:07,580 --> 00:16:08,620
+So stay tuned.
+
+261
+00:16:08,630 --> 00:16:10,420
+I will see you then.
+

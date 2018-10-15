@@ -1,0 +1,780 @@
+﻿1
+00:00:00,390 --> 00:00:05,720
+In this video you're going to learn how to set up and use get which is a version control system get
+
+2
+00:00:05,940 --> 00:00:09,740
+it going to let you keep track of the changes to your project over time.
+
+3
+00:00:09,750 --> 00:00:14,220
+This is really useful when something goes wrong and you need to revert to a previous state in the project
+
+4
+00:00:14,220 --> 00:00:15,320
+where things were working.
+
+5
+00:00:15,420 --> 00:00:18,630
+It's also super useful for backing up your work.
+
+6
+00:00:18,630 --> 00:00:24,300
+Now in the real world every single company uses some form of version control is essential to the software
+
+7
+00:00:24,300 --> 00:00:30,090
+development process and most of them are using GET GET has become really popular dominating the market
+
+8
+00:00:30,090 --> 00:00:33,920
+share for version control yet is also free and open source.
+
+9
+00:00:34,080 --> 00:00:36,840
+And there is a ton of great educational material.
+
+10
+00:00:36,840 --> 00:00:42,840
+They have a book on how to learn get it's free and Stack Overflow is filled with get specific questions
+
+11
+00:00:42,840 --> 00:00:44,560
+and answers in this course.
+
+12
+00:00:44,580 --> 00:00:46,840
+We're going to be using get to save our project.
+
+13
+00:00:46,950 --> 00:00:50,900
+We're also going to be using it to back up our work to a service called Get hub.
+
+14
+00:00:51,000 --> 00:00:55,320
+And finally we'll be using get to deploy our project live to the Web.
+
+15
+00:00:55,380 --> 00:00:58,800
+So we'll be able to take our web server and deploy it for anybody to visit.
+
+16
+00:00:58,800 --> 00:01:03,540
+It won't just be available on local host to get started you are going to need to install get on your
+
+17
+00:01:03,540 --> 00:01:07,700
+computer but luckily for you it is a really simple installation process.
+
+18
+00:01:07,730 --> 00:01:09,430
+There is nothing crazy you need to do.
+
+19
+00:01:09,450 --> 00:01:12,560
+It's one of those installers where you just click next through a few steps.
+
+20
+00:01:12,570 --> 00:01:13,910
+Let's go ahead and do that.
+
+21
+00:01:14,710 --> 00:01:21,640
+We can grab the installer by heading over to the browser and going to get hyphen SOCOM dot com here
+
+22
+00:01:21,640 --> 00:01:26,310
+we can find a lot of resources about how to use it as well as download the installer.
+
+23
+00:01:26,410 --> 00:01:31,060
+Before we go ahead and install it I want to show you this link down here to the book called Pro get
+
+24
+00:01:31,270 --> 00:01:33,810
+it as a free book and you can read it online.
+
+25
+00:01:33,850 --> 00:01:36,450
+It covers everything that it has to offer.
+
+26
+00:01:36,460 --> 00:01:40,810
+We'll be looking at some of the more basic features in this course but I could easily create an entire
+
+27
+00:01:40,810 --> 00:01:45,360
+course on get there actually is you to me courses just on get and get hub.
+
+28
+00:01:45,370 --> 00:01:49,840
+So if you want to learn more than what we cover here I'd recommend reading this book or checking out
+
+29
+00:01:49,840 --> 00:01:55,690
+a course whatever your preferred learning method is on the right hand side of the home page you're going
+
+30
+00:01:55,690 --> 00:02:00,040
+to have a little computer screen that should have a download button for your operating system whether
+
+31
+00:02:00,040 --> 00:02:02,300
+it's Windows Linux or Mac.
+
+32
+00:02:02,380 --> 00:02:05,920
+You can go ahead and click that which should take you to the installer page.
+
+33
+00:02:06,130 --> 00:02:10,450
+Now lately there's been a problem with sourceforge where you have to actually click here to download
+
+34
+00:02:10,450 --> 00:02:12,900
+manually in order to start the download.
+
+35
+00:02:12,910 --> 00:02:14,410
+So I'm going to go ahead and do that.
+
+36
+00:02:14,470 --> 00:02:18,410
+And after five seconds we should be able to get the installer downloading.
+
+37
+00:02:18,430 --> 00:02:21,220
+Once it's done we can simply run it.
+
+38
+00:02:21,250 --> 00:02:21,840
+Here we go.
+
+39
+00:02:21,850 --> 00:02:26,860
+The installer is downloading I'm going to go back to get and get off of Source Forge since it's got
+
+40
+00:02:26,860 --> 00:02:31,260
+a ton of ads super annoying down below we have the installer.
+
+41
+00:02:31,270 --> 00:02:32,580
+I'm going to go ahead and click it.
+
+42
+00:02:32,590 --> 00:02:38,730
+You should be seeing a screen similar to mine whether you're on Linux OS X or Windows.
+
+43
+00:02:38,770 --> 00:02:44,050
+Now the installer might start for you if you're on OS X you're going to need to launch the package installer
+
+44
+00:02:44,540 --> 00:02:48,070
+and you might get this message saying that it's from an unidentified developer.
+
+45
+00:02:48,160 --> 00:02:53,060
+This is because it is distributed via a third party as opposed to being in the OS X app store.
+
+46
+00:02:53,080 --> 00:02:58,680
+We can go ahead and right click click open and confirm that we do indeed want to open it.
+
+47
+00:02:58,810 --> 00:03:03,520
+Once you're out the installer the process is going to be pretty simple you can essentially Click Continue
+
+48
+00:03:03,520 --> 00:03:09,310
+and next throughout every step if you're on Windows though there is an important distinction inside
+
+49
+00:03:09,310 --> 00:03:12,200
+of the installer you're going to see a screen just like this.
+
+50
+00:03:12,220 --> 00:03:17,680
+It is really important that you also install get a bash as shown here you get.
+
+51
+00:03:17,680 --> 00:03:23,410
+BASH is a program that simulates a Linux type terminal and it's going to be really essential when we
+
+52
+00:03:23,410 --> 00:03:29,050
+create our S-sh keys and the next video to uniquely identify our machine.
+
+53
+00:03:29,050 --> 00:03:32,260
+For now though we can go ahead and move through the installer if you're on Windows.
+
+54
+00:03:32,260 --> 00:03:35,400
+Make sure you install and get back as well.
+
+55
+00:03:35,590 --> 00:03:37,740
+Continue install.
+
+56
+00:03:37,780 --> 00:03:43,750
+I'm going to confirm by typing my password then the installer should get moving.
+
+57
+00:03:43,800 --> 00:03:48,230
+Once it's done we can go ahead and actually test that thing's installed successfully.
+
+58
+00:03:48,240 --> 00:03:49,230
+I'm going to close it down.
+
+59
+00:03:49,230 --> 00:03:54,860
+I'm also going to close down the directory and move in to the terminal from the terminal.
+
+60
+00:03:54,900 --> 00:04:01,400
+We can go ahead and run it get hyphen hyphen version this is going to print the version of Get you have
+
+61
+00:04:01,410 --> 00:04:06,830
+installed and right here you can see I have get version 2 point nine point two.
+
+62
+00:04:06,980 --> 00:04:12,350
+Now if you have your terminal still open and you're getting an error like get command not found I'd
+
+63
+00:04:12,350 --> 00:04:14,180
+recommend trying to restart your terminal.
+
+64
+00:04:14,180 --> 00:04:19,490
+Sometimes that is required when you're installing new commands like the get command which we just installed
+
+65
+00:04:19,790 --> 00:04:27,620
+from here though we are ready to turn our node web server directory into a get repository in order to
+
+66
+00:04:27,620 --> 00:04:28,230
+do this.
+
+67
+00:04:28,280 --> 00:04:33,890
+We're going to run a command called Get in it and get in it needs to get executed from the root of your
+
+68
+00:04:33,890 --> 00:04:34,730
+project.
+
+69
+00:04:34,730 --> 00:04:38,090
+The folder that has everything that you want to keep track of.
+
+70
+00:04:38,240 --> 00:04:44,810
+In our case the node web server is that folder it has our server japes file are packaged up Jason File
+
+71
+00:04:44,810 --> 00:04:48,280
+and all of our directories right here from the server folder.
+
+72
+00:04:48,290 --> 00:04:55,280
+I'm going to run get in it and all this does is it creates a dot get directory inside of that folder
+
+73
+00:04:55,580 --> 00:04:57,040
+and I can prove that by running.
+
+74
+00:04:57,080 --> 00:04:59,910
+LS hyphen a.
+
+75
+00:05:00,110 --> 00:05:01,730
+Go ahead and run these commands.
+
+76
+00:05:01,730 --> 00:05:03,000
+From a get bash.
+
+77
+00:05:03,020 --> 00:05:08,990
+If you're on Windows right here I get all of the directories including the hidden ones and right here
+
+78
+00:05:08,990 --> 00:05:11,850
+I do indeed have dot get.
+
+79
+00:05:11,870 --> 00:05:15,130
+Now this directory is not something you should be manually updating.
+
+80
+00:05:15,140 --> 00:05:19,740
+We're going to be using commands from the terminal in order to make changes to the get folder.
+
+81
+00:05:19,820 --> 00:05:23,570
+You don't want to be going in there manually messing around with things because there's a pretty good
+
+82
+00:05:23,570 --> 00:05:29,420
+chance you're going to corrupt the repository and all of your hard work is going to become useless.
+
+83
+00:05:29,420 --> 00:05:31,480
+Now obviously if it's backed up it's not a big deal.
+
+84
+00:05:31,490 --> 00:05:35,430
+But there really is no reason to go into that get folder.
+
+85
+00:05:35,540 --> 00:05:38,230
+I'm going to use clear to clear the terminal output.
+
+86
+00:05:38,230 --> 00:05:41,620
+And now we can start looking at exactly how it works.
+
+87
+00:05:41,630 --> 00:05:46,970
+As I mentioned how good is responsible for keeping track of the changes to your project but by default
+
+88
+00:05:47,000 --> 00:05:49,570
+it doesn't actually track any of your files.
+
+89
+00:05:49,580 --> 00:05:53,050
+We have to tell get exactly which files we want it to keep track of.
+
+90
+00:05:53,120 --> 00:05:54,540
+And there's a good reason for this.
+
+91
+00:05:54,560 --> 00:05:59,240
+There are files in every project that you're most likely not going to want to add to your get repo and
+
+92
+00:05:59,240 --> 00:06:01,820
+we'll talk about which ones and why in just a second.
+
+93
+00:06:01,850 --> 00:06:03,790
+For now let's go ahead and run a command.
+
+94
+00:06:03,950 --> 00:06:06,350
+Get status.
+
+95
+00:06:06,350 --> 00:06:10,340
+Now all these commands and need to get executed from inside of the root of the project.
+
+96
+00:06:10,340 --> 00:06:15,290
+If you try to run this outside of a repository you're going to get an error like get repository not
+
+97
+00:06:15,290 --> 00:06:16,000
+found.
+
+98
+00:06:16,100 --> 00:06:22,220
+What that means is that it cannot find that data get directory in order to actually get the status of
+
+99
+00:06:22,230 --> 00:06:23,570
+your repository.
+
+100
+00:06:23,570 --> 00:06:26,830
+When we run this command we're going to get some output that looks like this.
+
+101
+00:06:26,840 --> 00:06:32,450
+And the important piece is for now is the untracked files hatter and all of the files underneath it.
+
+102
+00:06:32,510 --> 00:06:35,320
+These are all of the files and folders that get seized.
+
+103
+00:06:35,330 --> 00:06:40,610
+But it is currently not tracking get doesn't know if you want to keep track of the changes to these
+
+104
+00:06:40,610 --> 00:06:44,050
+files or if you want to ignore them from your repository.
+
+105
+00:06:44,300 --> 00:06:48,500
+Now the views fall there for example this is something we definitely want to keep track of.
+
+106
+00:06:48,590 --> 00:06:52,610
+This is going to be essential to the project and we want to make sure that when ever someone downloads
+
+107
+00:06:52,640 --> 00:06:57,830
+the repository they get the views folder the logfile on the other hand it doesn't really need to be
+
+108
+00:06:57,830 --> 00:06:59,210
+included in get.
+
+109
+00:06:59,330 --> 00:07:04,100
+In general our log files are not going to be committed since they usually contain information specific
+
+110
+00:07:04,100 --> 00:07:07,030
+to a point in time when the server was running.
+
+111
+00:07:07,130 --> 00:07:08,250
+Right here we have server.
+
+112
+00:07:08,280 --> 00:07:10,330
+Yes our public folder and package.
+
+113
+00:07:10,370 --> 00:07:10,980
+Jason.
+
+114
+00:07:11,090 --> 00:07:14,480
+These are all essential to the process of executing the app.
+
+115
+00:07:14,480 --> 00:07:17,750
+These are definitely going to be added to our Get repository and up above.
+
+116
+00:07:17,750 --> 00:07:23,750
+We have the node modules folder the node modules folder is what's called the generated folder generated
+
+117
+00:07:23,750 --> 00:07:26,500
+folders are easily generated by running a command.
+
+118
+00:07:26,510 --> 00:07:31,030
+In our case we can regenerate this entire directory using NPM install.
+
+119
+00:07:31,040 --> 00:07:36,710
+We're not going to want to add node modules to our Get repository because its contents differ depending
+
+120
+00:07:36,710 --> 00:07:42,230
+on the version of NPM you have installed and depending on the operating system you're using it's best
+
+121
+00:07:42,230 --> 00:07:48,440
+to leave off node modules and let every person who uses your repository manually install the modules
+
+122
+00:07:48,470 --> 00:07:51,100
+on the machine when they're actually going to be running the app.
+
+123
+00:07:51,230 --> 00:07:54,530
+Now we have these six folders and files listed right here.
+
+124
+00:07:54,540 --> 00:07:57,910
+So let's go ahead and add the four we want to keep to get started.
+
+125
+00:07:57,920 --> 00:08:03,920
+We're going to use it to get ad command and get ad lets you tell Get you want to keep track of a certain
+
+126
+00:08:03,920 --> 00:08:04,650
+file.
+
+127
+00:08:04,670 --> 00:08:13,370
+I'm going to type and get ad space package dot Jason after I do this I can run it get status again and
+
+128
+00:08:13,370 --> 00:08:15,850
+this time we get something very different.
+
+129
+00:08:15,860 --> 00:08:22,130
+Now we have an initial commit Hatter this is new and we have our old untracked files Hatter notice under
+
+130
+00:08:22,130 --> 00:08:22,900
+ontrack files.
+
+131
+00:08:22,900 --> 00:08:28,070
+We don't have package dot Jason anymore that has moved up to the initial commit hetter.
+
+132
+00:08:28,070 --> 00:08:30,420
+These are all of the files that are going to be saved.
+
+133
+00:08:30,470 --> 00:08:35,060
+Also known as committed when we make our first commit which we'll do in just a little bit.
+
+134
+00:08:35,240 --> 00:08:40,370
+Now we can move on adding the three others I'm going to use to get add again to tell get we want to
+
+135
+00:08:40,370 --> 00:08:42,560
+track that public directory.
+
+136
+00:08:42,560 --> 00:08:45,680
+I can run get status to confirm it was added as expected.
+
+137
+00:08:45,710 --> 00:08:50,000
+Right here you can see the public help file is now going to be committed to get.
+
+138
+00:08:50,030 --> 00:08:51,980
+Once we run a commit.
+
+139
+00:08:52,100 --> 00:08:59,990
+Next up we can add server dot J S with a get AD server dot J.S. and we can add the used directory using
+
+140
+00:08:59,990 --> 00:09:04,370
+a get add views just like this.
+
+141
+00:09:04,370 --> 00:09:06,040
+I'm going to run and get status to confirm.
+
+142
+00:09:06,050 --> 00:09:09,150
+Everything looks good and it does indeed look good.
+
+143
+00:09:09,440 --> 00:09:13,470
+Now these ontrack files they're going to sit around here until we do one of two things.
+
+144
+00:09:13,610 --> 00:09:19,310
+We either add them to the get repository or we ignore them using a custom file that we're going to create
+
+145
+00:09:19,310 --> 00:09:22,090
+over inside an atom inside of atom.
+
+146
+00:09:22,100 --> 00:09:28,150
+Well I'd like to do in the route of your project is make a new file called Dot get.
+
+147
+00:09:28,490 --> 00:09:34,730
+Ignore the good ignore file is going to be part of our Get repository and that tells which folders and
+
+148
+00:09:34,730 --> 00:09:36,350
+files you want to ignore.
+
+149
+00:09:36,410 --> 00:09:42,630
+In this case we can go ahead and ignore Noad underscore modules just like this.
+
+150
+00:09:42,860 --> 00:09:48,230
+When we save the get ignore file and rerun get status from the terminal we're now going to get a really
+
+151
+00:09:48,230 --> 00:09:49,980
+different result down below.
+
+152
+00:09:50,090 --> 00:09:55,490
+You can see we have a new on Tracht file get ignore but the node modules directory is nowhere in sight
+
+153
+00:09:55,520 --> 00:09:58,610
+and that's exactly what we want we want to remove this completely.
+
+154
+00:09:58,640 --> 00:10:02,380
+Making sure that it never ever ever gets added to the get Ribault.
+
+155
+00:10:02,420 --> 00:10:08,490
+Next up we can go ahead and ignore that server data logfile by typing its name server log.
+
+156
+00:10:08,600 --> 00:10:11,850
+Right here I'm going to go ahead and save ignore.
+
+157
+00:10:12,050 --> 00:10:14,000
+Run and get status from the terminal.
+
+158
+00:10:14,000 --> 00:10:17,430
+One more time and make sure everything looks great right here.
+
+159
+00:10:17,450 --> 00:10:17,890
+We have.
+
+160
+00:10:17,900 --> 00:10:23,810
+Get ignore as our only untracked file it is server logfile and node modules are nowhere in sight.
+
+161
+00:10:23,870 --> 00:10:31,470
+Now that we have get ignore we are going to be adding it to get using get ad datt get ignore.
+
+162
+00:10:31,670 --> 00:10:32,520
+Excellent.
+
+163
+00:10:32,600 --> 00:10:37,580
+Now when I run get status we should be able to see that all of the files that show up are under the
+
+164
+00:10:37,580 --> 00:10:38,530
+initial commit.
+
+165
+00:10:38,540 --> 00:10:42,970
+So now it's time to make a commit no commit really only requires two things.
+
+166
+00:10:42,980 --> 00:10:45,590
+It requires some change in the repository.
+
+167
+00:10:45,590 --> 00:10:50,600
+In this case we're teaching get how to track a ton of new files so we are indeed changing something
+
+168
+00:10:50,780 --> 00:10:52,780
+and it requires a message.
+
+169
+00:10:52,880 --> 00:10:56,570
+Now we've already handled the file part of things we've told get what we want to save.
+
+170
+00:10:56,570 --> 00:10:58,690
+We just haven't actually saved it yet.
+
+171
+00:10:58,880 --> 00:11:03,920
+In order to make our first commit and save our first thing into the get repository we're going to run
+
+172
+00:11:03,980 --> 00:11:08,010
+get commit and we are going to be providing one flag.
+
+173
+00:11:08,060 --> 00:11:14,270
+The flag which is short for message after their inside of quotes we can go ahead and specify the message
+
+174
+00:11:14,270 --> 00:11:16,630
+that we want to use for this commit.
+
+175
+00:11:16,640 --> 00:11:21,710
+It's really important to use these messages so when someone is digging through the commit history the
+
+176
+00:11:21,710 --> 00:11:25,520
+list of all the changes to the project are actually useful.
+
+177
+00:11:25,520 --> 00:11:31,010
+In this case initial commit is always a good message for your first commit.
+
+178
+00:11:31,010 --> 00:11:33,090
+I'm going to go ahead and hit enter and write here.
+
+179
+00:11:33,140 --> 00:11:38,450
+You see all of the changes that happened to the repo we have created a bunch of new files inside of
+
+180
+00:11:38,450 --> 00:11:39,380
+the repository.
+
+181
+00:11:39,380 --> 00:11:44,400
+These are all of the files that we told get we want to keep track of and this is fantastic.
+
+182
+00:11:44,420 --> 00:11:49,910
+We now have our very first commit which essentially means that we've saved the project at its current
+
+183
+00:11:49,910 --> 00:11:50,610
+state.
+
+184
+00:11:50,660 --> 00:11:55,550
+If we make a big change to server dot G-S messing stuff up and we can't figure out how to get it back
+
+185
+00:11:55,550 --> 00:12:01,850
+to the way it was we can always get it back because we made a get commit now we're going to explore
+
+186
+00:12:01,850 --> 00:12:04,260
+some more fancy get things in the future.
+
+187
+00:12:04,340 --> 00:12:09,170
+We'll be talking about how to do most of the things you want to do with get including deploying to Heroku
+
+188
+00:12:09,200 --> 00:12:10,440
+and pushing to get hub.
+
+189
+00:12:10,490 --> 00:12:16,990
+But for now that is it we're just looking at how to add files to get and how to make that first commit.
+
+190
+00:12:17,000 --> 00:12:19,070
+We'll talk more about get soon in the next video.
+
+191
+00:12:19,070 --> 00:12:23,750
+We're going to be setting up both get help and Heroku then we'll worry about how to push our code and
+
+192
+00:12:23,750 --> 00:12:24,410
+deploy it.
+
+193
+00:12:24,530 --> 00:12:26,330
+I am super excited to get to it.
+
+194
+00:12:26,360 --> 00:12:27,570
+So stay tuned.
+
+195
+00:12:27,570 --> 00:12:29,300
+I will see you soon.
+

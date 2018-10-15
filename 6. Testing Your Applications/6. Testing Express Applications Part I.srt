@@ -1,0 +1,204 @@
+﻿1
+00:00:00,860 --> 00:00:03,330
+In this video you're going to be setting up an express app.
+
+2
+00:00:03,340 --> 00:00:07,690
+And in the next one we're going to look at how we can test it to verify that the data that comes back
+
+3
+00:00:07,690 --> 00:00:10,730
+from our routes is what the user should be getting.
+
+4
+00:00:10,750 --> 00:00:14,860
+Now before we do any of that we are going to need to create an express server and that's the goal of
+
+5
+00:00:14,860 --> 00:00:15,430
+this video.
+
+6
+00:00:15,430 --> 00:00:17,370
+Nothing new we've done it before.
+
+7
+00:00:17,410 --> 00:00:20,400
+I'm going to move through this pretty quickly since it's not new.
+
+8
+00:00:20,440 --> 00:00:24,490
+We're going to use NPM eye which is short for install to install Express.
+
+9
+00:00:24,490 --> 00:00:27,480
+Remember you could always replace install with AI.
+
+10
+00:00:27,640 --> 00:00:34,090
+And we're going to grab the most recent version at four point fourteen point zero and this time around
+
+11
+00:00:34,360 --> 00:00:39,010
+I'm going to be using the Save the flag as opposed to the save death flag that we've used for everything
+
+12
+00:00:39,010 --> 00:00:40,010
+in this section.
+
+13
+00:00:40,030 --> 00:00:45,940
+This is going to install express as a regular dependency which is exactly what we want we need express
+
+14
+00:00:45,950 --> 00:00:51,170
+when we deploy to production whether it's Heroku or some other service back inside of the app.
+
+15
+00:00:51,190 --> 00:00:52,310
+If I open up package.
+
+16
+00:00:52,360 --> 00:00:58,900
+Jason we now have dependencies which we've seen before and Deb dependencies which is new to this section.
+
+17
+00:00:58,900 --> 00:01:04,990
+This is how we can break up which dependency is which from here we're going to go ahead and make a server
+
+18
+00:01:05,140 --> 00:01:10,510
+folder inside of the root of the project where we can store the server example as well as the test file.
+
+19
+00:01:11,660 --> 00:01:16,880
+I'm going to make a directory called Server and then inside of here I'll make a file called you guessed
+
+20
+00:01:16,880 --> 00:01:23,690
+it Server dot Jay as the server digests file is going to contain the actual code that starts up our
+
+21
+00:01:23,690 --> 00:01:24,080
+server.
+
+22
+00:01:24,080 --> 00:01:25,360
+We're going to define our routes.
+
+23
+00:01:25,400 --> 00:01:28,650
+We're going to listen to a port all of that stuff is going to happen in here.
+
+24
+00:01:28,810 --> 00:01:31,520
+This is what we had before for the previous server.
+
+25
+00:01:31,540 --> 00:01:38,570
+S. Konst Express is going to get equal to the require Express return result.
+
+26
+00:01:40,740 --> 00:01:46,170
+Next up we can go ahead and make our application by creating a variable called app and setting it equal
+
+27
+00:01:46,170 --> 00:01:49,540
+to a call to express just like this.
+
+28
+00:01:49,630 --> 00:01:51,780
+Then we can start configuring our routes.
+
+29
+00:01:51,840 --> 00:01:54,950
+I'm going to go ahead and set up just one for this video app.
+
+30
+00:01:54,950 --> 00:01:58,990
+ADOT get this is going to set up an HTP get handler.
+
+31
+00:01:59,240 --> 00:02:04,710
+The u r l will be just forward slash the route of the website and when someone requests that for the
+
+32
+00:02:04,710 --> 00:02:09,550
+moment we're going to specify a really simple string as the return result.
+
+33
+00:02:09,570 --> 00:02:15,060
+We get the request and the response object like we do for all of our express routes and to respond.
+
+34
+00:02:15,060 --> 00:02:21,750
+We're going to call it response send sending back the string Hello world.
+
+35
+00:02:22,110 --> 00:02:22,960
+Excellent.
+
+36
+00:02:23,090 --> 00:02:29,320
+The last step in the process it's going to be to listen on a port using app ADOT listen I'm going to
+
+37
+00:02:29,320 --> 00:02:35,200
+bind to port three thousand by passing it and as the first and only argument with this in place we are
+
+38
+00:02:35,200 --> 00:02:35,830
+now done.
+
+39
+00:02:35,950 --> 00:02:41,040
+We have a basic express server before we move on to the next video and explore how to test these routes.
+
+40
+00:02:41,050 --> 00:02:42,650
+All I want to do is start it up.
+
+41
+00:02:42,820 --> 00:02:48,170
+I'm going to do that using node space server forward slash server.
+
+42
+00:02:48,360 --> 00:02:49,110
+Yes.
+
+43
+00:02:49,240 --> 00:02:54,190
+When I run this we don't get any logs because we haven't added a callback function for when the server
+
+44
+00:02:54,190 --> 00:02:56,710
+starts but it should indeed be up.
+
+45
+00:02:56,890 --> 00:03:01,620
+If I go over to Chrome and visit localhost three thousand.
+
+46
+00:03:01,760 --> 00:03:02,310
+Here we go.
+
+47
+00:03:02,350 --> 00:03:04,580
+We get hello world printing to the screen.
+
+48
+00:03:04,730 --> 00:03:06,480
+If you see this then you are done.
+
+49
+00:03:06,560 --> 00:03:12,170
+You are ready to move on to the next video where we are going to start testing our express application.
+
+50
+00:03:12,170 --> 00:03:12,730
+Stay tuned.
+
+51
+00:03:12,750 --> 00:03:14,020
+I will see you then
+

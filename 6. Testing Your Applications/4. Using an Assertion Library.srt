@@ -1,0 +1,1296 @@
+﻿1
+00:00:00,730 --> 00:00:06,930
+Two videos ago we made two test cases to verify that and Hotels.com at an and you tills square method
+
+2
+00:00:06,940 --> 00:00:08,110
+work as expected.
+
+3
+00:00:08,290 --> 00:00:13,270
+And we did that and using an if condition if the value was not 44 that means something went wrong and
+
+4
+00:00:13,270 --> 00:00:15,470
+we threw an error in this video.
+
+5
+00:00:15,520 --> 00:00:17,730
+We're going to learn how to use an assertion library.
+
+6
+00:00:17,830 --> 00:00:22,090
+We're just going to take care of all of this code for us because as you'll see when we add more and
+
+7
+00:00:22,090 --> 00:00:26,620
+more tests the code is going to end up looking pretty similar and there's no reason to keep rewriting
+
+8
+00:00:26,620 --> 00:00:27,230
+it.
+
+9
+00:00:27,250 --> 00:00:33,550
+Assertion libraries let us make assertions about values whether it's about their type the value itself
+
+10
+00:00:33,730 --> 00:00:37,260
+whether an array contains an element all sorts of things like that.
+
+11
+00:00:37,330 --> 00:00:39,000
+They really are fantastic.
+
+12
+00:00:39,010 --> 00:00:41,330
+The one we're going to be using is called expect.
+
+13
+00:00:41,410 --> 00:00:44,910
+You can find it by going to Google and Googling them.
+
+14
+00:00:44,950 --> 00:00:53,910
+Jackson expect and this is the result we're looking for it's m Jackson's repository expect it is a fantastic
+
+15
+00:00:53,940 --> 00:00:59,970
+and super popular assertion library and this library is going to let us pass in value and make some
+
+16
+00:00:59,970 --> 00:01:01,130
+assertions about it.
+
+17
+00:01:01,140 --> 00:01:05,800
+If you scroll down past the introduction and the installation We'll talk about those later.
+
+18
+00:01:05,880 --> 00:01:08,190
+We can get down to an example right here.
+
+19
+00:01:08,190 --> 00:01:12,330
+We have our sessions Haueter and we have our first assertion to exist.
+
+20
+00:01:12,390 --> 00:01:15,480
+And this is going to verify that a value exists.
+
+21
+00:01:15,480 --> 00:01:19,350
+Down below we have an example we pass in a string to expect.
+
+22
+00:01:19,350 --> 00:01:24,150
+This is the value we want to make some assertions about in the context of our application.
+
+23
+00:01:24,150 --> 00:01:26,890
+That would be the response variable right here.
+
+24
+00:01:26,910 --> 00:01:31,650
+We want to assert that it is equal to 44 after we call expect.
+
+25
+00:01:31,740 --> 00:01:34,440
+We can start chaining on some assertion calls right.
+
+26
+00:01:34,490 --> 00:01:36,340
+Here we check if it does exist.
+
+27
+00:01:36,360 --> 00:01:42,510
+This would not throw an error because a string is indeed truth inside of javascript if we passed in
+
+28
+00:01:42,510 --> 00:01:46,430
+something like undefined which is not truthy to exist would fail.
+
+29
+00:01:46,440 --> 00:01:50,370
+It would throw an error and the test case would not pass.
+
+30
+00:01:50,430 --> 00:01:55,530
+Using these assertions we can make it really really easy to check the values in our tests without having
+
+31
+00:01:55,530 --> 00:01:57,980
+to write all of that code ourselves.
+
+32
+00:01:57,990 --> 00:01:59,580
+Let's go ahead and start exploring it.
+
+33
+00:01:59,580 --> 00:02:06,780
+First up I am going to install it inside of the terminal by running NPM install and the module name
+
+34
+00:02:06,780 --> 00:02:08,350
+itself is called expect.
+
+35
+00:02:08,580 --> 00:02:10,540
+And we're going to grab the most recent version.
+
+36
+00:02:10,560 --> 00:02:18,050
+At one point twenty point to Andrew here from the future with a very important update.
+
+37
+00:02:18,080 --> 00:02:23,280
+We expect the library has been donated to a different organization and the latest version which is the
+
+38
+00:02:23,330 --> 00:02:30,740
+twenty one point 1.0 is not backwards compatible with the version used here 1.2 zero point two.
+
+39
+00:02:30,930 --> 00:02:32,810
+So here's how we're going to work around that.
+
+40
+00:02:32,910 --> 00:02:38,850
+What I'd like you to do is install the version in the video that is 1 point to zero point two.
+
+41
+00:02:38,970 --> 00:02:44,280
+That's going to make sure you can go through the next several videos and I promise a little bit later
+
+42
+00:02:44,280 --> 00:02:49,160
+in the course I will have an upgrade video which I'm going to be filming in just a few minutes.
+
+43
+00:02:49,170 --> 00:02:56,280
+This upgrade video is going to show you how you can upgrade from expect 1 point to zero point two to
+
+44
+00:02:56,280 --> 00:03:01,890
+the latest version which would be the twenty one it is going to be important though that you do stick
+
+45
+00:03:01,890 --> 00:03:05,850
+with this expect version for now 1.2 0.2.
+
+46
+00:03:05,850 --> 00:03:08,610
+If you don't you are going to run into issues.
+
+47
+00:03:08,610 --> 00:03:13,470
+Don't worry though I will get you upgraded to the latest a little bit later in the course.
+
+48
+00:03:13,470 --> 00:03:18,360
+So let's go ahead and jump back into the video and I'll see you in a few sections when we upgrade to
+
+49
+00:03:18,360 --> 00:03:21,060
+the latest version.
+
+50
+00:03:21,240 --> 00:03:26,790
+And once again we'll be using the save death flag like we did with Moka because we do indeed want to
+
+51
+00:03:26,790 --> 00:03:29,200
+save this dependency and package that Jason.
+
+52
+00:03:29,280 --> 00:03:34,860
+But it's a dev dependency it's not required for the application to run whether it's on Heroku or some
+
+53
+00:03:34,890 --> 00:03:36,250
+other service.
+
+54
+00:03:36,360 --> 00:03:42,490
+I'm going to go ahead and install this dependency and then we can move over to the application checkout
+
+55
+00:03:42,530 --> 00:03:43,730
+package Jason.
+
+56
+00:03:43,860 --> 00:03:44,710
+And it looks great.
+
+57
+00:03:44,730 --> 00:03:49,830
+We have expect and we have Moka now inside of our utility test file.
+
+58
+00:03:49,830 --> 00:03:55,650
+We can kick things off by loading in the library and making our first assertions using expect up at
+
+59
+00:03:55,650 --> 00:03:56,880
+the very top of the file.
+
+60
+00:03:56,910 --> 00:04:05,420
+I'm going to load in the library creating a constant call expect and requiring require expect just like
+
+61
+00:04:05,420 --> 00:04:06,470
+this.
+
+62
+00:04:06,530 --> 00:04:13,560
+Now down below we can get started by swapping out this code with a call to expect instead.
+
+63
+00:04:13,580 --> 00:04:19,960
+Now as you saw over in the example we're going to start all of our assertions by calling expect as a
+
+64
+00:04:19,960 --> 00:04:24,230
+function passing in the value we want to make assertions about.
+
+65
+00:04:24,320 --> 00:04:27,230
+In this case that is the result variable.
+
+66
+00:04:27,230 --> 00:04:29,430
+Now we can assert all sorts of things.
+
+67
+00:04:29,540 --> 00:04:34,440
+In this case we want to assert that the value is equal to 44.
+
+68
+00:04:34,490 --> 00:04:38,840
+I'm going to go over to the documentation just to get you comfortable looking around and this is one
+
+69
+00:04:38,840 --> 00:04:41,230
+of those pieces of documentation you're going to come back to.
+
+70
+00:04:41,240 --> 00:04:43,310
+More so than anything else.
+
+71
+00:04:43,310 --> 00:04:48,440
+Most apps I use the same methods that I have them memorized but with expect there so many assertions
+
+72
+00:04:48,440 --> 00:04:52,360
+and they're so useful I find myself with this tab open quite a bit.
+
+73
+00:04:52,640 --> 00:04:58,970
+But we're going to use to make our assertion is to be this asserts that a value equals another value
+
+74
+00:04:58,970 --> 00:05:00,540
+and that's exactly what we want.
+
+75
+00:05:00,770 --> 00:05:06,860
+We assert that our value passed into expect equal another value using to be passing that value in as
+
+76
+00:05:06,860 --> 00:05:09,730
+the first argument back inside of atom.
+
+77
+00:05:09,830 --> 00:05:13,690
+We can go ahead and use this assertion dot to be.
+
+78
+00:05:13,940 --> 00:05:19,310
+And we're expecting the result variable to be number 44 just like this.
+
+79
+00:05:19,460 --> 00:05:20,170
+Awesome.
+
+80
+00:05:20,180 --> 00:05:26,420
+Now we have our test case and it should work exactly as it did down below to prove it does work I'm
+
+81
+00:05:26,420 --> 00:05:30,740
+going to move into the terminal and use clear to clear the terminal output.
+
+82
+00:05:31,220 --> 00:05:32,510
+And now we can run that test.
+
+83
+00:05:32,510 --> 00:05:39,050
+Watch script using NPM run test hyphen watch just like this.
+
+84
+00:05:39,100 --> 00:05:44,440
+I'm going to kick it off and right here we get our two tests passing just like they did before.
+
+85
+00:05:44,440 --> 00:05:50,060
+Now if I were to change 44 to some other value that would throw an error like 40 and I save the file.
+
+86
+00:05:50,110 --> 00:05:55,330
+We are going to get an error and the expect library is going to generate useful error messages for us.
+
+87
+00:05:55,330 --> 00:05:58,270
+It's saying that we expected 44 to be 40.
+
+88
+00:05:58,270 --> 00:05:59,700
+Clearly that's not the case.
+
+89
+00:05:59,710 --> 00:06:01,810
+So an error gets thrown.
+
+90
+00:06:01,810 --> 00:06:03,560
+I'm going to change this back to 44.
+
+91
+00:06:03,580 --> 00:06:06,400
+Save the file and all of our tests will pass.
+
+92
+00:06:06,400 --> 00:06:07,230
+Excellent.
+
+93
+00:06:07,240 --> 00:06:10,270
+Now we can also chain together multiple assertions.
+
+94
+00:06:10,270 --> 00:06:15,970
+For example we could assert that the value that comes back from ADD is a number that this can be done
+
+95
+00:06:16,030 --> 00:06:17,460
+using another assertion.
+
+96
+00:06:17,470 --> 00:06:19,410
+So let's head into the docs and take a look.
+
+97
+00:06:20,390 --> 00:06:23,800
+Inside of Crome we're going to scroll down through the docs list.
+
+98
+00:06:23,840 --> 00:06:26,260
+There's a lot of methods we'll be exploring some of them.
+
+99
+00:06:26,390 --> 00:06:30,270
+We're looking for this one to be a method that takes a strain.
+
+100
+00:06:30,440 --> 00:06:36,560
+This takes the string type and it uses the type of operator to assert that the value is of a certain
+
+101
+00:06:36,560 --> 00:06:37,140
+type.
+
+102
+00:06:37,190 --> 00:06:43,160
+Here we're expecting to be a number we can do that exact same thing over and our code inside of Adam
+
+103
+00:06:43,430 --> 00:06:49,580
+right after to be can change on another call to be a followed by the type.
+
+104
+00:06:49,610 --> 00:06:51,330
+This could be something like string.
+
+105
+00:06:51,470 --> 00:06:57,520
+It could be something like object or in our case it could be number.
+
+106
+00:06:57,530 --> 00:06:58,890
+Just like this.
+
+107
+00:06:58,970 --> 00:07:01,130
+I'm going to open up the terminal so we can see the result.
+
+108
+00:07:01,160 --> 00:07:03,350
+It's currently hidden save the file.
+
+109
+00:07:03,350 --> 00:07:07,100
+Our tests are going to rerun and we can see they're both passing.
+
+110
+00:07:07,100 --> 00:07:11,660
+If I were to use a different type something that was going to cause the test to fail we would get an
+
+111
+00:07:11,660 --> 00:07:15,030
+error message like this expected 44 to be a string.
+
+112
+00:07:15,160 --> 00:07:19,310
+This is really useful it's going to help us clean up our errors really quickly.
+
+113
+00:07:19,310 --> 00:07:23,330
+I'm going to change this back to number and we are good to go.
+
+114
+00:07:23,330 --> 00:07:26,570
+Now I'd like you to do the same thing for our test down below.
+
+115
+00:07:26,660 --> 00:07:33,350
+I want you to use expect to assert that the response is indeed the number 9 and that the type is a number
+
+116
+00:07:33,650 --> 00:07:36,410
+you're going to use the same two assertions we do up above.
+
+117
+00:07:36,500 --> 00:07:40,550
+Go ahead and swap this code out for calls to expect make those assertions.
+
+118
+00:07:40,550 --> 00:07:44,650
+Save the file and make sure both tests are still passing.
+
+119
+00:07:44,680 --> 00:07:45,410
+Pause the video.
+
+120
+00:07:45,410 --> 00:07:50,820
+Knock that out and when you're done click play.
+
+121
+00:07:50,840 --> 00:07:51,540
+All right.
+
+122
+00:07:51,730 --> 00:07:55,270
+All you needed to do to get that done is first up delete the current code.
+
+123
+00:07:55,270 --> 00:07:59,320
+Since we're not going to be using that any more throughout the rest of the course we will never again
+
+124
+00:07:59,320 --> 00:08:02,450
+be throwing errors manually inside of our tests.
+
+125
+00:08:02,440 --> 00:08:06,140
+Instead we'll be using assertion libraries right here.
+
+126
+00:08:06,190 --> 00:08:09,700
+We're going to make some expectations about the result variable.
+
+127
+00:08:09,700 --> 00:08:14,910
+First up we're going to expect it to be the number 9 just like this.
+
+128
+00:08:15,100 --> 00:08:19,530
+I'm going to save the file and make sure the test passes and it does indeed pass.
+
+129
+00:08:19,540 --> 00:08:24,370
+Now we're also going to assert the type using to be a.
+
+130
+00:08:24,370 --> 00:08:32,060
+Here we're checking that the type of the return value from the square method is a number and when I
+
+131
+00:08:32,060 --> 00:08:36,170
+save the file we get both of our tests still passing which is fantastic.
+
+132
+00:08:36,170 --> 00:08:40,080
+Now this is just a small taste as to what I expect can do.
+
+133
+00:08:40,220 --> 00:08:45,100
+Let's go ahead and create a bogus test case that is going to explore a few more ways we can use expect.
+
+134
+00:08:45,140 --> 00:08:49,400
+We're not going to be testing an actual function we'll just play around with some assertions inside
+
+135
+00:08:49,430 --> 00:08:51,240
+of the callback.
+
+136
+00:08:51,560 --> 00:08:53,840
+I'm going to make a new test using it.
+
+137
+00:08:54,020 --> 00:08:58,010
+It should expect some values.
+
+138
+00:08:58,070 --> 00:09:02,630
+You can put whatever you want here it's not too important and we're going to pass in an arrow function
+
+139
+00:09:02,660 --> 00:09:04,390
+as our callback function.
+
+140
+00:09:04,640 --> 00:09:06,240
+Excellent.
+
+141
+00:09:06,400 --> 00:09:10,300
+Now as we've seen already one of the most fundamental assertions you're going to make is you're just
+
+142
+00:09:10,300 --> 00:09:11,760
+going to check for equality.
+
+143
+00:09:11,800 --> 00:09:17,590
+I want to check if something like the response variable equals something else like the number 44 inside
+
+144
+00:09:17,590 --> 00:09:19,820
+of expect we can also do the opposite.
+
+145
+00:09:19,840 --> 00:09:27,400
+We can expect that a value like 12 does not equal using two and not a B.
+
+146
+00:09:27,620 --> 00:09:30,970
+And then we can assert that a doesn't equal some other value like 11.
+
+147
+00:09:30,970 --> 00:09:32,180
+The two are equal.
+
+148
+00:09:32,200 --> 00:09:34,120
+So when I save the file over in the terminal.
+
+149
+00:09:34,120 --> 00:09:36,180
+All three tests should be passing.
+
+150
+00:09:36,220 --> 00:09:39,790
+If I set them equal to the same value it's not going to work as expected.
+
+151
+00:09:39,790 --> 00:09:43,920
+We're going to get an error expected 12 to not be 12.
+
+152
+00:09:43,990 --> 00:09:45,750
+Now to be and not to be.
+
+153
+00:09:45,760 --> 00:09:51,580
+Work great for numbers strings and booleans But if you're trying to compare arrays or objects they are
+
+154
+00:09:51,580 --> 00:09:54,360
+not going to work as expected and we can prove this.
+
+155
+00:09:54,370 --> 00:09:57,180
+I'm going to remove the current code by commenting it out.
+
+156
+00:09:57,190 --> 00:09:59,140
+I'll leave it around so we have it for later.
+
+157
+00:10:00,070 --> 00:10:11,780
+I'm going to expect an object with the name property set to Andrew with an uppercase a to b dot to be.
+
+158
+00:10:11,990 --> 00:10:18,140
+And I'm going to assert that it is another object where the name property is equal to Andrew.
+
+159
+00:10:18,150 --> 00:10:23,850
+Just like this to not be is going to work great for numbers strings and booleans but it's not going
+
+160
+00:10:23,850 --> 00:10:25,140
+to work for objects.
+
+161
+00:10:25,260 --> 00:10:26,500
+And we can prove this.
+
+162
+00:10:26,550 --> 00:10:32,370
+I'm going to comment out the current call and we're going to replace it with an expectation that an
+
+163
+00:10:32,430 --> 00:10:38,860
+object where the name property equals Andrew equals another object that looks exactly the same.
+
+164
+00:10:38,880 --> 00:10:41,640
+We're going to use to be just like we did up above.
+
+165
+00:10:42,870 --> 00:10:48,990
+Checking if it is the same as another object where name equals Andrew ASA.
+
+166
+00:10:49,080 --> 00:10:54,280
+Now when I go ahead and say this you might think the text is going to pass but it's not right here.
+
+167
+00:10:54,300 --> 00:11:00,060
+We see that we expected these two to be equal when objects are compared for equality using the triple
+
+168
+00:11:00,060 --> 00:11:01,860
+equals which is what to be uses.
+
+169
+00:11:01,860 --> 00:11:05,700
+They're not going to be the same because it's trying to see if they're the exact same object and they're
+
+170
+00:11:05,700 --> 00:11:06,190
+not.
+
+171
+00:11:06,360 --> 00:11:11,240
+We've created two separate objects with the same properties to check if these two are equal.
+
+172
+00:11:11,250 --> 00:11:13,020
+We're going to have to use something different.
+
+173
+00:11:13,080 --> 00:11:16,610
+It's called two equal if I say my file.
+
+174
+00:11:16,610 --> 00:11:17,980
+This is going to work.
+
+175
+00:11:18,060 --> 00:11:23,010
+It's going to rip into the object properties making sure they have the same ones the same thing goes
+
+176
+00:11:23,010 --> 00:11:24,920
+for two not equal.
+
+177
+00:11:24,940 --> 00:11:29,820
+This checks if two objects are not equal I'm going to go ahead and change the first object to have a
+
+178
+00:11:29,820 --> 00:11:31,650
+lower case A and Andrew.
+
+179
+00:11:31,740 --> 00:11:33,150
+And the test passes.
+
+180
+00:11:33,240 --> 00:11:34,940
+They are not equal.
+
+181
+00:11:34,950 --> 00:11:38,570
+This is how we do equality with our objects and arrays.
+
+182
+00:11:38,580 --> 00:11:45,030
+Now another really useful thing we have is to include this checks if an array or an object includes
+
+183
+00:11:45,060 --> 00:11:46,170
+some things.
+
+184
+00:11:46,170 --> 00:11:47,110
+Now it's an array.
+
+185
+00:11:47,190 --> 00:11:49,890
+We can check if it includes a certain item in the array.
+
+186
+00:11:49,920 --> 00:11:53,340
+If it's an object we can check if it includes certain properties.
+
+187
+00:11:53,340 --> 00:11:56,700
+Let's go ahead and run through an example of that right here.
+
+188
+00:11:56,740 --> 00:12:05,220
+We're going to expect that an array with the numbers 2 3 and 4 inside of it has inside of it the number
+
+189
+00:12:05,310 --> 00:12:10,950
+5 and we can do that using to include to include it takes the item.
+
+190
+00:12:10,950 --> 00:12:14,340
+In this case we're going to check if the array has 5 inside.
+
+191
+00:12:14,490 --> 00:12:15,570
+No clearly it doesn't.
+
+192
+00:12:15,570 --> 00:12:17,170
+So this test is going to fail.
+
+193
+00:12:17,220 --> 00:12:23,310
+We get the message we expected to 3:4 to include five that does not exist if we change this to a number
+
+194
+00:12:23,310 --> 00:12:25,050
+that does exist like two.
+
+195
+00:12:25,230 --> 00:12:28,790
+We're going to rerun the test suite and everything is going to work as expected.
+
+196
+00:12:28,830 --> 00:12:34,390
+Now along with to include we have to exclude like this.
+
+197
+00:12:34,540 --> 00:12:38,850
+This is going to check if something does not exist like the number one which is not in the array.
+
+198
+00:12:38,860 --> 00:12:45,490
+If I run this assertion the test passes the same two methods to include and to exclude work with objects
+
+199
+00:12:45,490 --> 00:12:46,260
+as well.
+
+200
+00:12:46,300 --> 00:12:48,910
+We can play with that right on the next line.
+
+201
+00:12:48,940 --> 00:12:53,370
+I'm going to expect that the falling object has something on it.
+
+202
+00:12:53,410 --> 00:12:56,370
+Let's go ahead and create an object that has a name property.
+
+203
+00:12:56,380 --> 00:12:58,700
+Go ahead and set it equal to your first name.
+
+204
+00:12:58,810 --> 00:13:00,790
+Well also make an age property.
+
+205
+00:13:00,790 --> 00:13:05,680
+I'm going to set that equal to my age and we'll set a location property I'm going to set that equal
+
+206
+00:13:05,680 --> 00:13:08,620
+to my location.
+
+207
+00:13:08,640 --> 00:13:13,260
+Now let's say we want to make some assertions about particular properties not necessarily the entire
+
+208
+00:13:13,260 --> 00:13:14,160
+object.
+
+209
+00:13:14,160 --> 00:13:20,940
+We can use to include to assert that the object has some properties and that those property values equals
+
+210
+00:13:21,000 --> 00:13:22,120
+the value we pass in.
+
+211
+00:13:22,230 --> 00:13:23,620
+For example the age.
+
+212
+00:13:23,640 --> 00:13:29,900
+Let's say we only care about the age we can assert that the object has an age property equal to 25.
+
+213
+00:13:29,910 --> 00:13:35,370
+By typing this code it doesn't matter that there is a name property the name property could be any value
+
+214
+00:13:35,370 --> 00:13:38,100
+that is relevant in this assertion.
+
+215
+00:13:38,100 --> 00:13:40,950
+Now if the value is not correct like it's 23.
+
+216
+00:13:41,040 --> 00:13:42,310
+This test is going to fail.
+
+217
+00:13:42,480 --> 00:13:46,660
+We expected the age property to be 23 but it was indeed 25.
+
+218
+00:13:46,680 --> 00:13:48,350
+So the test fails.
+
+219
+00:13:48,360 --> 00:13:53,570
+Same thing goes with to exclude to exclude.
+
+220
+00:13:53,730 --> 00:13:59,900
+Here we can save our test files this checks if the object does not have a property age equal to 23.
+
+221
+00:13:59,910 --> 00:14:01,620
+It does indeed not have that.
+
+222
+00:14:01,620 --> 00:14:03,400
+So the test passes.
+
+223
+00:14:03,450 --> 00:14:08,910
+This is just a quick taste as to what I expect can do for a full list of features I recommend diving
+
+224
+00:14:08,910 --> 00:14:10,220
+through the documentation.
+
+225
+00:14:10,230 --> 00:14:14,820
+There is a ton of other assertions you can use things like checking if a number is greater than another
+
+226
+00:14:14,820 --> 00:14:17,940
+number if a number is less than or equal to another number.
+
+227
+00:14:17,940 --> 00:14:21,700
+All sorts of math related operations are included as well.
+
+228
+00:14:21,730 --> 00:14:26,550
+Now let's go ahead and wrap things up with a challenge that requires you to use some of this knowledge
+
+229
+00:14:27,330 --> 00:14:28,560
+over in your tills.
+
+230
+00:14:28,750 --> 00:14:32,370
+Yes we can make a new function one that you'll be testing.
+
+231
+00:14:32,370 --> 00:14:35,560
+Module datt exports dot.
+
+232
+00:14:35,580 --> 00:14:37,310
+Set name.
+
+233
+00:14:37,350 --> 00:14:39,600
+Set name is going to take two arguments.
+
+234
+00:14:39,600 --> 00:14:44,940
+It's going to take a user object some fictitious user object with some generic properties and it's going
+
+235
+00:14:44,940 --> 00:14:47,490
+to take a full name as a string.
+
+236
+00:14:47,490 --> 00:14:51,440
+The job of set name is going to be to rip apart full name into two parts.
+
+237
+00:14:51,540 --> 00:14:56,100
+The first name and the last name by splitting it on the space we're going to go ahead and set the two
+
+238
+00:14:56,100 --> 00:15:01,680
+properties first name and last name and return the user object will fill out the function together.
+
+239
+00:15:01,770 --> 00:15:04,610
+You're going to be responsible for writing the test case.
+
+240
+00:15:04,890 --> 00:15:10,260
+The first thing we're going to do is split the name into a names array var names is going to be that
+
+241
+00:15:10,260 --> 00:15:10,930
+array.
+
+242
+00:15:11,000 --> 00:15:15,090
+It'll have two values assuming there's only one space inside of the name.
+
+243
+00:15:15,090 --> 00:15:20,640
+For now that's the assumption we're assuming someone types their first name space their last name.
+
+244
+00:15:20,640 --> 00:15:23,390
+I know that doesn't work with every single name but it'll get us a bye.
+
+245
+00:15:23,400 --> 00:15:33,090
+For now I'm going to go ahead and set this equal to full name dot split and we're going to split on
+
+246
+00:15:33,180 --> 00:15:39,660
+the space so I'm going to pass in an empty string with a space inside of it as the value to split.
+
+247
+00:15:39,660 --> 00:15:45,350
+Now we have a names array where the first item is the first name and the last item is the last name.
+
+248
+00:15:45,420 --> 00:15:51,990
+So we can start updating the user object user ADOT first name is going to equal the first item in the
+
+249
+00:15:51,990 --> 00:15:54,390
+names array names array.
+
+250
+00:15:54,390 --> 00:15:59,130
+And we're going to grab the index of the 0 which is the first item and we'll do something similar for
+
+251
+00:15:59,130 --> 00:16:05,900
+last name user and last name equals the second item from the names array.
+
+252
+00:16:05,910 --> 00:16:11,700
+Now we're all done we have the names set and we can go ahead and return the user object using return
+
+253
+00:16:11,940 --> 00:16:12,550
+user.
+
+254
+00:16:12,660 --> 00:16:16,650
+Just like this I forgot my equal sign.
+
+255
+00:16:16,660 --> 00:16:19,010
+I'm going to go ahead and add that right here.
+
+256
+00:16:19,330 --> 00:16:20,230
+Awesome.
+
+257
+00:16:20,230 --> 00:16:23,680
+Over inside of the tills test file we can now kick things off.
+
+258
+00:16:23,680 --> 00:16:26,250
+I'm going to leave a comment for what I'd like you to do.
+
+259
+00:16:26,260 --> 00:16:27,510
+I'm going to comment out.
+
+260
+00:16:27,610 --> 00:16:29,650
+It should expect some values.
+
+261
+00:16:29,690 --> 00:16:32,590
+Handler this is pretty great for documentation.
+
+262
+00:16:32,590 --> 00:16:35,170
+You can always explore it later if you forget how things work.
+
+263
+00:16:35,230 --> 00:16:36,910
+But for now it's not necessary.
+
+264
+00:16:37,060 --> 00:16:47,150
+We're going to create a new test that should verify first and last names are set.
+
+265
+00:16:47,160 --> 00:16:48,000
+Awesome.
+
+266
+00:16:48,060 --> 00:16:52,560
+You're going to be responsible for creating a user object on that user object.
+
+267
+00:16:52,560 --> 00:16:58,920
+I want you to set some properties like age and location then you're going to pass that variable user
+
+268
+00:16:59,160 --> 00:17:04,830
+into the set name method that's going to be the first argument defined right here.
+
+269
+00:17:04,830 --> 00:17:10,620
+You're also going to pass in a string the string with your first name followed by a space followed by
+
+270
+00:17:10,620 --> 00:17:16,650
+your last name then you're going to go ahead and get the result back and you're going to make some assertions
+
+271
+00:17:16,650 --> 00:17:17,350
+about it.
+
+272
+00:17:17,370 --> 00:17:24,390
+I want you to assert that the returning object includes using to include assert.
+
+273
+00:17:24,880 --> 00:17:33,160
+It includes first name and last name with proper values.
+
+274
+00:17:33,290 --> 00:17:38,690
+So if I pass in as my full name and you Space me and I would expect the first name to be Andrew and
+
+275
+00:17:38,690 --> 00:17:42,350
+the last name to be Mead So pause the video.
+
+276
+00:17:42,350 --> 00:17:43,540
+Play around with this one.
+
+277
+00:17:43,550 --> 00:17:44,570
+Make the test case.
+
+278
+00:17:44,600 --> 00:17:46,220
+Make the user object.
+
+279
+00:17:46,220 --> 00:17:50,180
+Call the function and make our assertion using to include.
+
+280
+00:17:50,180 --> 00:17:55,250
+I also want you to verify that the type is indeed an object using to be a
+
+281
+00:17:58,370 --> 00:17:59,310
+how do you do.
+
+282
+00:17:59,560 --> 00:18:04,840
+Hopefully you are able to get that done if you ran into any problems that is perfectly fine.
+
+283
+00:18:04,870 --> 00:18:06,070
+You're really new to testing.
+
+284
+00:18:06,070 --> 00:18:11,520
+We just made our third test so it's ok if things did not go as planned.
+
+285
+00:18:11,680 --> 00:18:15,680
+Right here I'm going to call it to make the new test case.
+
+286
+00:18:15,940 --> 00:18:26,050
+We're going to be testing it should set first name and last name inside of here we can now provide our
+
+287
+00:18:26,050 --> 00:18:28,740
+second argument which is going to be our callback function.
+
+288
+00:18:28,780 --> 00:18:30,790
+I'm going to set that to an arrow function.
+
+289
+00:18:30,880 --> 00:18:36,640
+And now we can make that user object I talked about the user object is going to have a few properties.
+
+290
+00:18:36,640 --> 00:18:44,290
+I'm going to add something like location setting that equal to Philadelphia and I'll set an age property
+
+291
+00:18:44,320 --> 00:18:46,470
+setting that equal to 25.
+
+292
+00:18:46,480 --> 00:18:50,180
+Now we can go ahead and call the method we defined over and Eutelsat.
+
+293
+00:18:50,250 --> 00:18:54,610
+J.S. set name I'm going to do that on the next line.
+
+294
+00:18:54,630 --> 00:19:03,540
+Creating a variable called response to store the response and then set that equal to you tildes dot
+
+295
+00:19:03,930 --> 00:19:10,380
+set name passing in the two arguments to the user object and the full name.
+
+296
+00:19:10,440 --> 00:19:13,930
+Right here I'll provide Andrew space meat.
+
+297
+00:19:14,160 --> 00:19:18,900
+Now at this point if the result should be what we expect we should have that first name and last name
+
+298
+00:19:18,900 --> 00:19:22,980
+property we should have the location property and we should have the age property.
+
+299
+00:19:23,100 --> 00:19:27,320
+Now if you know a lot about javascript you might know that objects are passed by reference.
+
+300
+00:19:27,390 --> 00:19:30,330
+So the user variable has actually been updated as well.
+
+301
+00:19:30,390 --> 00:19:35,160
+That is expected both the user and response are going to have the exact same value.
+
+302
+00:19:35,160 --> 00:19:41,780
+We can actually go ahead and prove that using an assertion we're going to expect that user equals using
+
+303
+00:19:41,840 --> 00:19:44,400
+to equal the response.
+
+304
+00:19:44,400 --> 00:19:46,590
+Now this was not necessary for the challenge.
+
+305
+00:19:46,650 --> 00:19:48,680
+I'm going to be deleting this line in just a moment.
+
+306
+00:19:48,690 --> 00:19:52,140
+But over here you can see the test does indeed pass.
+
+307
+00:19:52,290 --> 00:19:58,700
+What I wanted you to do is check that the user object or the response object includes certain properties.
+
+308
+00:19:58,740 --> 00:20:08,640
+I'm going to check using expect that the result variable has some properties using to include the properties
+
+309
+00:20:08,670 --> 00:20:13,450
+I'm looking for are a first name equal to what I would expect that to be.
+
+310
+00:20:13,680 --> 00:20:17,730
+Andrew and a last name equal to meet.
+
+311
+00:20:18,090 --> 00:20:18,940
+Excellent.
+
+312
+00:20:19,090 --> 00:20:24,100
+And these are the assertions that should be made in order to verify that set name is working as expected.
+
+313
+00:20:24,210 --> 00:20:30,720
+If I saved the file the test suite reruns and we do indeed get the passing tests we have three of them
+
+314
+00:20:30,870 --> 00:20:33,210
+and it took just 10 milliseconds to run.
+
+315
+00:20:33,300 --> 00:20:38,550
+And with this in place we now have an assertion library for our test suite and that's fantastic because
+
+316
+00:20:38,550 --> 00:20:43,770
+writing test cases just got way easier and the whole goal of this section is to make testing approachable
+
+317
+00:20:43,890 --> 00:20:47,140
+and easy if testing is hard and painful you're not going to do it.
+
+318
+00:20:47,190 --> 00:20:49,930
+And I wouldn't blame you I wouldn't be testing either.
+
+319
+00:20:50,040 --> 00:20:52,730
+Hopefully by now though you're seeing that it doesn't need to be difficult.
+
+320
+00:20:52,730 --> 00:20:58,440
+It can be pretty awesome in the next video we're going to start looking at how we can test more complex
+
+321
+00:20:58,650 --> 00:20:59,940
+asynchronous functions.
+
+322
+00:21:00,030 --> 00:21:00,920
+That's coming up next.
+
+323
+00:21:01,020 --> 00:21:01,860
+So stay tuned.
+
+324
+00:21:01,870 --> 00:21:03,100
+I will see you then.
+

@@ -1,0 +1,68 @@
+﻿1
+00:00:00,640 --> 00:00:06,970
+Hello and welcome to Section 5 web servers and application deployment we're covering a ton of exciting
+
+2
+00:00:06,970 --> 00:00:08,290
+stuff in this section.
+
+3
+00:00:08,290 --> 00:00:10,210
+You're going to learn how to make a web server.
+
+4
+00:00:10,210 --> 00:00:14,160
+You're going to learn how to integrate a version control into node applications.
+
+5
+00:00:14,170 --> 00:00:18,780
+And finally you're going to learn how to deploy your node apps which means that you have a you are Alan
+
+6
+00:00:18,790 --> 00:00:22,610
+anyone who visits that you r l can view your application.
+
+7
+00:00:22,780 --> 00:00:26,730
+Now do you get all that done we are going to be looking at a framework called Express.
+
+8
+00:00:26,740 --> 00:00:32,200
+It's one of the most popular NPM libraries and for good reason it makes it really easy to do stuff like
+
+9
+00:00:32,200 --> 00:00:35,590
+create a web server or an h t t p API.
+
+10
+00:00:35,710 --> 00:00:39,290
+Kind of like the dark sky API we used in the last section.
+
+11
+00:00:39,320 --> 00:00:41,030
+Now most courses start here.
+
+12
+00:00:41,110 --> 00:00:46,300
+They start with Express and I think that's confusing because it blurs the line between what is node
+
+13
+00:00:46,510 --> 00:00:50,230
+and what is Express which is why we've waited so long to talk about it.
+
+14
+00:00:50,230 --> 00:00:55,840
+Don't get me wrong it's a fantastic library but I wanted to wait a little bit to introduce it now that
+
+15
+00:00:55,870 --> 00:00:56,960
+I am introducing it.
+
+16
+00:00:56,970 --> 00:00:58,980
+So let's go ahead and kick things off.
+
+17
+00:00:59,050 --> 00:01:02,130
+Adding express to a brand new node app
+

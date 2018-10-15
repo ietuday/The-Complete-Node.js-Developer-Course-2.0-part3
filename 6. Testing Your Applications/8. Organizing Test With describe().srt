@@ -1,0 +1,416 @@
+﻿1
+00:00:00,530 --> 00:00:06,080
+In this video you are going to learn how to use describe described as a function injected into your
+
+2
+00:00:06,080 --> 00:00:08,500
+test files just like it is.
+
+3
+00:00:08,540 --> 00:00:11,420
+It comes from a moka and it's really fantastic.
+
+4
+00:00:11,420 --> 00:00:14,360
+Essentially it lets you group tasks together.
+
+5
+00:00:14,360 --> 00:00:16,930
+That makes it a lot easier to scan the test output.
+
+6
+00:00:17,150 --> 00:00:21,810
+If I run our NPM test command in the terminal I can show you what I'm talking about.
+
+7
+00:00:22,070 --> 00:00:23,300
+Right here we get our tests.
+
+8
+00:00:23,300 --> 00:00:26,600
+We have seven tests and currently they're all grouped together.
+
+9
+00:00:26,720 --> 00:00:31,370
+It's really hard to look for the tests in the Eutelsat file and it's impossible to find the tests for
+
+10
+00:00:31,400 --> 00:00:34,490
+async add without scanning all of the text.
+
+11
+00:00:34,610 --> 00:00:39,230
+But we're going to do is call describe this is going to let us make groups of tasks we can give that
+
+12
+00:00:39,230 --> 00:00:40,110
+group a name.
+
+13
+00:00:40,160 --> 00:00:43,090
+It's going to make our test output much much more readable.
+
+14
+00:00:43,250 --> 00:00:50,010
+Right here I'm going to go ahead and call describe describe that takes two arguments just like it.
+
+15
+00:00:50,020 --> 00:00:54,070
+The first one is the name I'm going to go ahead and use utilities.
+
+16
+00:00:54,100 --> 00:00:59,800
+This is going to be describe a block that contains all of the tasks in the utility test file.
+
+17
+00:00:59,800 --> 00:01:01,930
+Then I'm going to provide my function.
+
+18
+00:01:01,930 --> 00:01:05,900
+This is the callback function inside of this function.
+
+19
+00:01:05,920 --> 00:01:07,840
+We're going to be defining tests.
+
+20
+00:01:07,860 --> 00:01:11,700
+Any test defined in here is going to be part of the utils block.
+
+21
+00:01:11,740 --> 00:01:17,170
+That means we can take our existing tests cut them out of the file paste them in there and we'll have
+
+22
+00:01:17,170 --> 00:01:22,000
+a describe block called you tails with all of the tests for this file down below.
+
+23
+00:01:22,000 --> 00:01:23,220
+I'm going to do just that.
+
+24
+00:01:24,770 --> 00:01:29,660
+I'm going to grab all of the tests excluding the ones that are just playground tests where we'd play
+
+25
+00:01:29,660 --> 00:01:34,310
+around with various xpect functionality and I'm going to paste them right in here.
+
+26
+00:01:34,310 --> 00:01:39,110
+This is for one for ADD async add square and a sink Square.
+
+27
+00:01:39,110 --> 00:01:43,280
+Now I'm going to save the file and we can start up the test watch script from the terminal and we can
+
+28
+00:01:43,280 --> 00:01:49,870
+check out the output NPM run test hyphen watch.
+
+29
+00:01:50,090 --> 00:01:54,590
+The script starts it's going to run through our tests and right here we now have different output.
+
+30
+00:01:54,740 --> 00:01:58,820
+We have a utility section and under you tells indented two spaces.
+
+31
+00:01:58,910 --> 00:02:01,300
+We have all of the tasks in it that describe black.
+
+32
+00:02:01,370 --> 00:02:05,530
+This makes reading and scanning your tests much much easier.
+
+33
+00:02:05,540 --> 00:02:09,240
+We can go ahead and do the same thing for the individual methods.
+
+34
+00:02:09,410 --> 00:02:11,610
+Now in this case we have one test per method.
+
+35
+00:02:11,630 --> 00:02:17,630
+But if you have a lot of tests that are targeting a complex method it's best to wrap that in its own
+
+36
+00:02:17,630 --> 00:02:18,660
+described block.
+
+37
+00:02:18,710 --> 00:02:22,190
+We can just describe blocks and tests in any way we like.
+
+38
+00:02:22,190 --> 00:02:29,510
+For example right here inside of you taels I can call describe again we can pass a new description I'm
+
+39
+00:02:29,510 --> 00:02:33,300
+going to go ahead and use pound sign followed by ADD.
+
+40
+00:02:33,350 --> 00:02:39,260
+This is the common syntax for adding a describe block for a specific method pound sign followed by the
+
+41
+00:02:39,320 --> 00:02:40,720
+method name.
+
+42
+00:02:40,720 --> 00:02:43,780
+And then I can go ahead and provide that callback function.
+
+43
+00:02:44,120 --> 00:02:51,010
+And I can take any tests I want to add into that group cut them out and paste them in and then I can
+
+44
+00:02:51,010 --> 00:02:52,480
+go ahead and save the file.
+
+45
+00:02:52,480 --> 00:02:56,690
+This is going to rerun the test suite and now we have test output that's even more scannable.
+
+46
+00:02:56,800 --> 00:03:01,910
+It's super easy to find the tails add method tests because they're clearly labeled.
+
+47
+00:03:01,930 --> 00:03:05,350
+Now you could go as crazy or has an crazy with this as you want.
+
+48
+00:03:05,350 --> 00:03:09,990
+There really is no hard and fast rule for how often to use describe a your tests.
+
+49
+00:03:10,030 --> 00:03:15,280
+It's really up to you to figure out what makes sense given the amount of tests you have for a method
+
+50
+00:03:15,340 --> 00:03:16,450
+or a file.
+
+51
+00:03:16,480 --> 00:03:20,560
+In this case we have quite a few tests in the file so it definitely makes sense to add that you tell
+
+52
+00:03:20,560 --> 00:03:20,850
+us.
+
+53
+00:03:20,840 --> 00:03:25,250
+BLOCK And I just wanted to show you when you could nest them so I added it for ADD as well.
+
+54
+00:03:25,390 --> 00:03:30,730
+If I was writing this code I probably wouldn't add a second layer of tests but if I had more than one
+
+55
+00:03:30,730 --> 00:03:35,130
+test per method I definitely would add a second to describe block.
+
+56
+00:03:35,330 --> 00:03:39,190
+Now that we have this in place I want you to create some undescribed blocks of your own.
+
+57
+00:03:39,190 --> 00:03:44,340
+Over in the server test file right here I'll show you exactly what I want you to do.
+
+58
+00:03:44,350 --> 00:03:45,340
+We're going to create a route.
+
+59
+00:03:45,340 --> 00:03:48,290
+Describe block called server.
+
+60
+00:03:48,710 --> 00:03:55,340
+Then you're going to create describe blocks for both the route you are l and for forward slash users.
+
+61
+00:03:56,550 --> 00:03:59,020
+We'll have to get forward slash.
+
+62
+00:03:59,400 --> 00:04:06,930
+That's going to have the test case in there some test case then alongside of forward slash we're going
+
+63
+00:04:06,930 --> 00:04:15,400
+to have you get bored slash users and that's going to have its own test case some test case.
+
+64
+00:04:15,480 --> 00:04:18,820
+Now the test cases are obviously already defined below.
+
+65
+00:04:18,840 --> 00:04:25,290
+All you need to do is call describe three times to generate the structure put the text here in the string
+
+66
+00:04:25,290 --> 00:04:27,440
+for the description and then you'll be done.
+
+67
+00:04:27,570 --> 00:04:33,370
+So take a moment to knock that out call the scribe three times and each test into the appropriate describe
+
+68
+00:04:33,420 --> 00:04:34,410
+callback function.
+
+69
+00:04:34,410 --> 00:04:39,750
+When you're done go ahead and save the file to rerun it from the terminal and make sure everything shows
+
+70
+00:04:39,750 --> 00:04:41,130
+up as it should.
+
+71
+00:04:44,640 --> 00:04:45,160
+All right.
+
+72
+00:04:45,180 --> 00:04:50,000
+Hopefully you were able to call describe three times creating the structure we have here.
+
+73
+00:04:50,160 --> 00:04:56,900
+I'm going to call describe once right here and this description is going to be for the route.
+
+74
+00:04:56,900 --> 00:04:58,670
+So I'm going to call this one server.
+
+75
+00:04:58,850 --> 00:05:02,060
+This is going to contain all of the tasks in our server file.
+
+76
+00:05:02,150 --> 00:05:04,820
+I can add my callback and we can move on.
+
+77
+00:05:04,820 --> 00:05:07,030
+Next up I am going to call the scribe again.
+
+78
+00:05:08,780 --> 00:05:15,630
+This time we're creating a describe a block for tests that test the get forward slash route.
+
+79
+00:05:15,710 --> 00:05:20,540
+I'm going to add the callback function and now we can simply take our test and copy it inside.
+
+80
+00:05:20,720 --> 00:05:21,670
+I'm going to cut it out.
+
+81
+00:05:22,660 --> 00:05:28,990
+And paste it right inside of the describe callback add some semi-colons and we are on our way.
+
+82
+00:05:28,990 --> 00:05:32,950
+Next up we're going to go ahead and remove these comments since they're no longer needed and we can
+
+83
+00:05:32,950 --> 00:05:36,500
+call describe the third time right here.
+
+84
+00:05:36,490 --> 00:05:43,650
+We're going to be calling described passing in as the description we get forward slash users.
+
+85
+00:05:43,720 --> 00:05:46,040
+We're going to have our callback function as always.
+
+86
+00:05:46,150 --> 00:05:49,400
+And then we can copy and paste our test right inside.
+
+87
+00:05:49,530 --> 00:05:53,340
+I'm going to grab the final test cut it out and move it inside.
+
+88
+00:05:53,800 --> 00:05:54,570
+Awesome.
+
+89
+00:05:54,910 --> 00:05:57,160
+With this in place we are now done the challenge.
+
+90
+00:05:57,160 --> 00:05:59,310
+We have a much better structure for our tasks.
+
+91
+00:05:59,320 --> 00:06:04,990
+And when we rerun the test suite by saving the file we'll be able to see that over in the terminal right
+
+92
+00:06:04,990 --> 00:06:05,500
+here.
+
+93
+00:06:05,500 --> 00:06:08,020
+We have a much more scannable test suite.
+
+94
+00:06:08,020 --> 00:06:10,030
+We can see our server tests right away.
+
+95
+00:06:10,030 --> 00:06:14,620
+We can create groups of tests for each feature since we have static data.
+
+96
+00:06:14,620 --> 00:06:19,270
+Right now we really don't need more than one test per feature but down the line we will have multiple
+
+97
+00:06:19,270 --> 00:06:21,690
+tests for each of our HTP requests.
+
+98
+00:06:21,700 --> 00:06:27,250
+So it's a good idea to get into that habit of creating describe blocks early and that's it for this
+
+99
+00:06:27,250 --> 00:06:27,750
+one.
+
+100
+00:06:27,820 --> 00:06:30,920
+The next video is the last one for this section.
+
+101
+00:06:30,940 --> 00:06:33,950
+We'll explore one more way we can test our node applications.
+
+102
+00:06:34,030 --> 00:06:39,880
+Then we'll continue on creating real world projects and actually putting this testing in to practice.
+
+103
+00:06:39,880 --> 00:06:40,510
+Stay tuned.
+
+104
+00:06:40,560 --> 00:06:41,790
+I will see you then.
+

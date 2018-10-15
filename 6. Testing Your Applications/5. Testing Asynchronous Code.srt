@@ -1,0 +1,716 @@
+﻿1
+00:00:00,420 --> 00:00:03,880
+In this video you're going to learn how to test asynchronous functions.
+
+2
+00:00:03,990 --> 00:00:07,630
+Before we get into that I want to make a quick note about the change in audio.
+
+3
+00:00:07,740 --> 00:00:11,880
+Unfortunately the microphone I've been using so far throughout the course has broken.
+
+4
+00:00:11,970 --> 00:00:16,170
+I've replaced it with a better one which is hopefully a lot crisper and clearer though you might need
+
+5
+00:00:16,170 --> 00:00:20,970
+to adjust your audio levels either up or down for it to sound just right.
+
+6
+00:00:20,970 --> 00:00:24,810
+Now I usually try not to update my gear in the middle of a correspond.
+
+7
+00:00:24,810 --> 00:00:27,580
+Fortunately I had no choice in this instance.
+
+8
+00:00:27,580 --> 00:00:28,230
+All right.
+
+9
+00:00:28,260 --> 00:00:29,880
+Now let's get down to testing.
+
+10
+00:00:29,910 --> 00:00:31,310
+Asynchronous functions.
+
+11
+00:00:32,350 --> 00:00:37,450
+The process of testing asynchronous functions isn't that different from synchronous ones like what we've
+
+12
+00:00:37,450 --> 00:00:39,280
+done already but it is a little different.
+
+13
+00:00:39,280 --> 00:00:42,130
+So it justifies its own video to get things off.
+
+14
+00:00:42,130 --> 00:00:47,040
+We're going to make a fake one using set time out to simulate a delay over inside of you tills.
+
+15
+00:00:47,150 --> 00:00:50,340
+J.S. just below where we make our add function.
+
+16
+00:00:50,380 --> 00:00:54,460
+I'm going to make one called Eysenck and it's essentially going to have the same features but it's going
+
+17
+00:00:54,460 --> 00:00:58,450
+to use set time out and it's going to have a callback to simulate a delay.
+
+18
+00:00:58,510 --> 00:01:03,460
+Now in the real world this delay might be a database request or an HTP request will be dealing with
+
+19
+00:01:03,460 --> 00:01:05,640
+that in the following sections.
+
+20
+00:01:05,650 --> 00:01:06,270
+For now though.
+
+21
+00:01:06,370 --> 00:01:07,220
+Module.
+
+22
+00:01:07,300 --> 00:01:10,630
+Exports dot async add.
+
+23
+00:01:11,080 --> 00:01:17,980
+This is going to take three arguments as opposed to the two the add function took a b and a callback.
+
+24
+00:01:18,010 --> 00:01:20,590
+And this is what's going to make the function asynchronous.
+
+25
+00:01:20,590 --> 00:01:26,200
+Eventually once the set time out is up we're going to call the call back with some whether it's one
+
+26
+00:01:26,200 --> 00:01:30,450
+plus three being four or five plus nine being 14.
+
+27
+00:01:30,460 --> 00:01:36,350
+Next up we can put the arrow in Arrow function and open and close our curly braces inside of here.
+
+28
+00:01:36,370 --> 00:01:41,580
+As I mentioned we're going to be using set time out to create that delay nothing new so far.
+
+29
+00:01:41,800 --> 00:01:46,380
+We'll pass in a callback and we'll pass in our time out.
+
+30
+00:01:46,500 --> 00:01:47,970
+I'm going to go with one second.
+
+31
+00:01:48,000 --> 00:01:54,690
+In this case no by default if your tests take longer than two seconds Moka is going to assume that is
+
+32
+00:01:54,690 --> 00:01:56,590
+not what you wanted and it's going to fail.
+
+33
+00:01:56,610 --> 00:01:57,870
+That's why I'm using one second.
+
+34
+00:01:57,870 --> 00:02:06,990
+In this case inside of our callback we can call the actual callback argument with some a plus b just
+
+35
+00:02:06,990 --> 00:02:07,650
+like this.
+
+36
+00:02:07,680 --> 00:02:08,430
+And there we go.
+
+37
+00:02:08,520 --> 00:02:12,230
+We now have an async add function and we can start writing a test for it.
+
+38
+00:02:13,350 --> 00:02:18,310
+Over inside of the utils test file just under our previous test for utility.
+
+39
+00:02:18,330 --> 00:02:23,920
+And I'm going to add a new one for async add in the test setup is going to look really similar.
+
+40
+00:02:23,970 --> 00:02:29,070
+We will be calling it and we will be passing in a string as the first argument and a call back as the
+
+41
+00:02:29,070 --> 00:02:35,210
+second it should a sync add two numbers.
+
+42
+00:02:35,220 --> 00:02:37,570
+Then we're going to add our call back just like this.
+
+43
+00:02:37,590 --> 00:02:43,310
+And inside of here we can get started calling you tills dot async ad I'm going to call it using you
+
+44
+00:02:43,320 --> 00:02:51,810
+tills async add and we're going to go ahead and pass in those three arguments I'll use four and three
+
+45
+00:02:51,900 --> 00:02:53,430
+which should result in seven.
+
+46
+00:02:53,610 --> 00:02:59,070
+And we'll provide the callback function which it should get called with that value the value being 7
+
+47
+00:02:59,760 --> 00:03:01,750
+right here inside of the callback arguments.
+
+48
+00:03:01,770 --> 00:03:05,010
+We would expect something like these some to come back.
+
+49
+00:03:05,040 --> 00:03:10,770
+Now we can start making some assertions about that some variable using expect we can pass it into expect
+
+50
+00:03:10,770 --> 00:03:14,190
+to make our assertions and these assertions aren't going to be new stuff.
+
+51
+00:03:14,190 --> 00:03:15,400
+We've already done.
+
+52
+00:03:15,480 --> 00:03:22,380
+I'm going to expect that these some equals using to be the number seven then I'm going to check that
+
+53
+00:03:22,410 --> 00:03:28,420
+it's a number using to be a inside of quotes number.
+
+54
+00:03:28,440 --> 00:03:33,720
+Now obviously if it is equal to 7 That means it is a number but I'm using both here just to simulate
+
+55
+00:03:33,780 --> 00:03:38,580
+exactly how chaining is going to work inside of your expect calls.
+
+56
+00:03:38,580 --> 00:03:43,530
+Now that we have our assertions in place let's go ahead and run our test and see what happens.
+
+57
+00:03:43,560 --> 00:03:51,720
+I'm going to run from the terminal NPM run test high and watch to start up our node man watching script
+
+58
+00:03:52,230 --> 00:03:53,520
+all of our tests run.
+
+59
+00:03:53,520 --> 00:03:55,610
+You can see right here we have three.
+
+60
+00:03:55,650 --> 00:03:57,510
+That's because I did not save the file yet.
+
+61
+00:03:57,720 --> 00:03:59,460
+I'm going to go ahead and save the file.
+
+62
+00:03:59,460 --> 00:04:02,970
+Now our tests are going to run and the test does indeed pass.
+
+63
+00:04:02,970 --> 00:04:05,670
+The only problem is that it's passing for the wrong reasons.
+
+64
+00:04:05,670 --> 00:04:11,240
+If I were to change seven to 10 and save the file the test is still going to pass.
+
+65
+00:04:11,280 --> 00:04:13,690
+Right here you see we have four Tests passing.
+
+66
+00:04:13,830 --> 00:04:19,830
+Now the reason this test is passing is not because the assertion right here is valid it's passing because
+
+67
+00:04:19,830 --> 00:04:25,710
+we have an asynchronous action that takes one second right here and this function is going to return
+
+68
+00:04:25,770 --> 00:04:28,380
+before the async callback gets fired.
+
+69
+00:04:28,620 --> 00:04:29,850
+But I say function returning.
+
+70
+00:04:29,850 --> 00:04:31,800
+I'm referring to this callback function.
+
+71
+00:04:31,800 --> 00:04:36,240
+The second argument to it and this is when Moka thinks your test is done.
+
+72
+00:04:36,270 --> 00:04:41,850
+This means that these assertions never run the Moka output has already set our test passes before this
+
+73
+00:04:41,850 --> 00:04:43,500
+callback ever gets fired.
+
+74
+00:04:43,510 --> 00:04:48,360
+What we need to do is tell Moka this is going to be an asynchronous test that's going to take time to
+
+75
+00:04:48,360 --> 00:04:49,000
+do this.
+
+76
+00:04:49,050 --> 00:04:54,450
+All we do is we provide an argument right here inside of the callback function we passed to it.
+
+77
+00:04:54,480 --> 00:04:58,740
+We're going to call this one done when you have the done argument specified.
+
+78
+00:04:58,730 --> 00:05:04,260
+Moka knows that means you have an asynchronous task and it's not going to finish processing this task
+
+79
+00:05:04,350 --> 00:05:06,120
+until done and gets called.
+
+80
+00:05:06,120 --> 00:05:10,800
+This means we can call done after our assertions with this in place.
+
+81
+00:05:10,800 --> 00:05:17,100
+Our test is now going to run the function will return right after it calls async add but that's OK because
+
+82
+00:05:17,100 --> 00:05:22,880
+we have done specified about a second later our callback function is going to fire inside of here we're
+
+83
+00:05:22,880 --> 00:05:27,810
+gonna make our assertions and this time the assertions will matter because we have done and we haven't
+
+84
+00:05:27,810 --> 00:05:28,630
+called it yet.
+
+85
+00:05:28,860 --> 00:05:32,760
+After the assertions we called done this tells Moka that we're all done with the test.
+
+86
+00:05:32,760 --> 00:05:36,690
+It can go ahead and process the result letting us know whether it passed or failed.
+
+87
+00:05:36,690 --> 00:05:38,820
+This is going to fix that error.
+
+88
+00:05:39,210 --> 00:05:44,160
+If I save the file in this state it's going to rerun the tests and we're going to see that our test
+
+89
+00:05:44,460 --> 00:05:49,410
+should async add two numbers is indeed going to fail over inside of the terminal.
+
+90
+00:05:49,410 --> 00:05:55,740
+I'm going to go ahead and open up the error message we have expected 7 to be 10 and this is exactly
+
+91
+00:05:55,740 --> 00:05:58,580
+what we thought would happen the first time around when we didn't use done.
+
+92
+00:05:58,740 --> 00:06:04,980
+But as we can see we do need to use done when we're doing something synchronous inside of our tests.
+
+93
+00:06:04,980 --> 00:06:08,360
+Now I can go ahead and change this expectation back to seven.
+
+94
+00:06:08,760 --> 00:06:10,440
+Save the file this time around.
+
+95
+00:06:10,440 --> 00:06:12,200
+Things should work as expected.
+
+96
+00:06:12,200 --> 00:06:17,970
+Notice that one second delay as it runs this test it can't report right away because it has to wait
+
+97
+00:06:17,970 --> 00:06:20,060
+for Don to get called down below.
+
+98
+00:06:20,130 --> 00:06:22,520
+Our total test time is now about a second.
+
+99
+00:06:22,530 --> 00:06:28,140
+You can see that right here we have four test passing Moka also warns you when a test takes a long time
+
+100
+00:06:28,350 --> 00:06:30,430
+because it assumes that's not expected.
+
+101
+00:06:30,510 --> 00:06:36,090
+Nothing inside of node even a database or HTP request should take even close to a second.
+
+102
+00:06:36,270 --> 00:06:40,430
+So it's essentially letting you know that there's probably an error somewhere inside of your function
+
+103
+00:06:40,440 --> 00:06:43,680
+it's taking a really really long time to process.
+
+104
+00:06:43,680 --> 00:06:49,290
+In our case though the one second delay was clearly set up inside of you tells So there's no need to
+
+105
+00:06:49,290 --> 00:06:50,970
+worry about that warning.
+
+106
+00:06:51,090 --> 00:06:55,440
+With this in place we now have a test for our very first asynchronous method.
+
+107
+00:06:55,440 --> 00:07:00,690
+All we had to do is add a done as an argument and call it once we were done making our assertions.
+
+108
+00:07:00,690 --> 00:07:02,450
+Now it's time for a challenge.
+
+109
+00:07:02,610 --> 00:07:07,470
+I want you to create an asynchronous version of the square method down below.
+
+110
+00:07:07,470 --> 00:07:14,190
+Go ahead and have it wait a second before calling the call back with de-value X times X then over inside
+
+111
+00:07:14,190 --> 00:07:15,690
+of the utility test file.
+
+112
+00:07:15,690 --> 00:07:21,470
+I want you to create a test that verifies the number that comes back is indeed the square in this case
+
+113
+00:07:21,480 --> 00:07:23,240
+you could pass in three and get nine back.
+
+114
+00:07:23,370 --> 00:07:28,380
+And I want to verify it's a number you're going to need to use done to get this done because it's going
+
+115
+00:07:28,380 --> 00:07:30,760
+to be an asynchronous function.
+
+116
+00:07:30,810 --> 00:07:34,940
+Go ahead and do the same thing for square that we just did for ADD.
+
+117
+00:07:35,010 --> 00:07:40,220
+When you're done you can go ahead and click play to go.
+
+118
+00:07:40,450 --> 00:07:45,940
+I hope you were able to create that sync function and write a test that verifies it works as expected
+
+119
+00:07:46,510 --> 00:07:47,470
+in order to get started.
+
+120
+00:07:47,470 --> 00:07:52,090
+I am going to define the function first and then we'll worry about writing that test over inside of
+
+121
+00:07:52,090 --> 00:07:52,990
+the file.
+
+122
+00:07:53,020 --> 00:07:58,760
+I can get started down below the square method of creating a new one called async square module.
+
+123
+00:07:58,840 --> 00:08:02,280
+Exports dot a sink Square.
+
+124
+00:08:02,380 --> 00:08:03,690
+It's going to take two arguments.
+
+125
+00:08:03,700 --> 00:08:08,770
+The original argument which we call it X and the callback function that's going to get called after
+
+126
+00:08:08,770 --> 00:08:10,320
+our one second delay.
+
+127
+00:08:10,570 --> 00:08:15,510
+And then I can finish up the arrow function and we can start working on the body of a sync Square.
+
+128
+00:08:15,550 --> 00:08:20,370
+It's going to look pretty similar to the async add one we'll call set time out passing in a callback
+
+129
+00:08:21,190 --> 00:08:24,020
+and a delay in this case the delay is going to be the same.
+
+130
+00:08:24,040 --> 00:08:26,380
+We'll go with one second.
+
+131
+00:08:26,440 --> 00:08:31,960
+Now we can go ahead and actually call the callback and this is going to trigger the callback function
+
+132
+00:08:31,960 --> 00:08:38,380
+that got passed in and we're going to pass in the value x times X which will properly square the number
+
+133
+00:08:38,380 --> 00:08:43,540
+passed in right here now over inside of the test file things are indeed passing.
+
+134
+00:08:43,540 --> 00:08:48,470
+But we haven't added a test for this function so let's go ahead and do that right now inside of you
+
+135
+00:08:48,460 --> 00:08:52,960
+tells test file the next thing you needed to do was call it down here.
+
+136
+00:08:52,960 --> 00:08:56,800
+I'm going to call it to make a new test for this async square function.
+
+137
+00:08:56,800 --> 00:09:01,460
+It should a sink square a number.
+
+138
+00:09:01,600 --> 00:09:02,740
+Perfect.
+
+139
+00:09:02,740 --> 00:09:07,180
+Next up we're going to provide the callback function that's going to get called when the test actually
+
+140
+00:09:07,180 --> 00:09:08,110
+executes.
+
+141
+00:09:08,140 --> 00:09:12,110
+And since we are testing in a sync function I'm going to put done right here.
+
+142
+00:09:12,190 --> 00:09:18,460
+This is going to tell Moka to wait until done is called to decide whether or not the test passed down
+
+143
+00:09:18,460 --> 00:09:18,940
+below.
+
+144
+00:09:19,000 --> 00:09:25,580
+We can now call you tills and Dot a sync square passing in a number of our choice.
+
+145
+00:09:25,760 --> 00:09:27,910
+I'm going to go ahead and use five.
+
+146
+00:09:27,910 --> 00:09:31,220
+Next up we can pass in a callback.
+
+147
+00:09:31,260 --> 00:09:33,630
+This is going to get the final result right here.
+
+148
+00:09:33,810 --> 00:09:37,020
+Well create a variable to store that result.
+
+149
+00:09:37,060 --> 00:09:41,160
+Now that we have this in place we can start making our assertions the assertions are going to be done
+
+150
+00:09:41,160 --> 00:09:45,920
+using the expect a library we're going to make some assertions about the response variable.
+
+151
+00:09:46,050 --> 00:09:51,350
+We're going to assert that it equals using to be the number 25 which is five times five.
+
+152
+00:09:51,360 --> 00:09:57,720
+And we'll also use to be a to assert something about the type of the value in this case we want to make
+
+153
+00:09:57,720 --> 00:10:02,500
+sure that the square is indeed a number as opposed to a boolean string or object.
+
+154
+00:10:02,700 --> 00:10:05,060
+With this in place I can now save the file.
+
+155
+00:10:05,100 --> 00:10:07,340
+But before I do I do need to call Don.
+
+156
+00:10:07,380 --> 00:10:11,030
+Remember if you don't call done your test is never going to finish.
+
+157
+00:10:11,040 --> 00:10:15,180
+You might find that every once in a while you're going to get an error like this over inside of the
+
+158
+00:10:15,180 --> 00:10:18,560
+terminal you're going to get an error.
+
+159
+00:10:18,560 --> 00:10:19,270
+Time out.
+
+160
+00:10:19,350 --> 00:10:21,760
+The two thousand milliseconds has exceeded.
+
+161
+00:10:21,820 --> 00:10:24,660
+And this is when Moka cuts off your test.
+
+162
+00:10:24,690 --> 00:10:25,560
+If you see this.
+
+163
+00:10:25,650 --> 00:10:27,100
+This usually means two things.
+
+164
+00:10:27,120 --> 00:10:31,310
+One you have an async function that never actually calls the callback.
+
+165
+00:10:31,350 --> 00:10:35,360
+So you call it a done it never gets fired or do you just never call it done.
+
+166
+00:10:35,490 --> 00:10:37,950
+In which case you can put done right here.
+
+167
+00:10:37,950 --> 00:10:43,020
+If you see this message it usually means there's a small typo somewhere in the async function.
+
+168
+00:10:43,020 --> 00:10:44,790
+Don't worry it's super easy to overcome.
+
+169
+00:10:44,900 --> 00:10:50,820
+Either fix things over in the method itself by making sure the callback is called or fix things over
+
+170
+00:10:50,820 --> 00:10:56,020
+in the test by calling Don and when you save the file you should not see all of your tests are passing.
+
+171
+00:10:56,130 --> 00:11:00,320
+Right here we have five tests passing and it took two seconds to do that.
+
+172
+00:11:00,330 --> 00:11:02,060
+This is fantastic.
+
+173
+00:11:02,100 --> 00:11:06,080
+We now have a way to test synchronous functions and asynchronous functions.
+
+174
+00:11:06,090 --> 00:11:08,260
+This is going to make testing a lot more flexible.
+
+175
+00:11:08,280 --> 00:11:12,060
+That's going to let us test essentially everything inside of our applications.
+
+176
+00:11:12,060 --> 00:11:13,080
+That is it for this one.
+
+177
+00:11:13,140 --> 00:11:14,180
+I will see you next time.
+
+178
+00:11:14,190 --> 00:11:18,420
+As we keep working through the different ways to test your node applications.
+
+179
+00:11:18,540 --> 00:11:22,330
+Up next we're going to look at how we can test our express apps
+

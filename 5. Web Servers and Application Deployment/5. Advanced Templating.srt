@@ -1,0 +1,852 @@
+﻿1
+00:00:00,450 --> 00:00:04,760
+In this video you're going to learn a few more advanced features that handlebars has to offer.
+
+2
+00:00:04,770 --> 00:00:09,630
+This is going to make it easier to render your markup especially markup that's used in multiple places
+
+3
+00:00:09,660 --> 00:00:16,020
+and it's going to make it easier to inject dynamic data into your web pages in order to illustrate the
+
+4
+00:00:16,020 --> 00:00:17,490
+first thing we're going to talk about.
+
+5
+00:00:17,490 --> 00:00:20,830
+I want to open up both about HECS and home.
+
+6
+00:00:20,850 --> 00:00:21,670
+HB Yes.
+
+7
+00:00:21,690 --> 00:00:25,570
+And you'll notice that down at the bottom they both have the exact same photo code.
+
+8
+00:00:25,590 --> 00:00:30,840
+We have a little copyright message for both and they both have the same header area which is the H-1
+
+9
+00:00:30,840 --> 00:00:32,280
+tag in the future.
+
+10
+00:00:32,370 --> 00:00:36,180
+They might have links that links to other pages a logo or anything like that.
+
+11
+00:00:36,180 --> 00:00:38,110
+But for now it's just in each one.
+
+12
+00:00:38,250 --> 00:00:42,990
+Now this really isn't a problem because we have two pages but as you add more and more pages it's going
+
+13
+00:00:42,990 --> 00:00:45,650
+to become a real pain to update your hatter and your footer.
+
+14
+00:00:45,680 --> 00:00:48,850
+You're gonna have to go into every file and manage the code there.
+
+15
+00:00:48,880 --> 00:00:51,720
+But we're going to talk about instead is something called a partial.
+
+16
+00:00:51,720 --> 00:00:55,150
+A partial is a partial piece of your web site.
+
+17
+00:00:55,170 --> 00:00:57,270
+It's something you can reuse throughout your templates.
+
+18
+00:00:57,270 --> 00:01:01,180
+For example we might have a foot or partial that renders the footer code.
+
+19
+00:01:01,380 --> 00:01:03,990
+You can include that partial on any page you need a footer.
+
+20
+00:01:04,080 --> 00:01:09,420
+You can do the same thing for Hetter in order to get started the first thing we need to do is set up
+
+21
+00:01:09,510 --> 00:01:10,160
+our server.
+
+22
+00:01:10,180 --> 00:01:15,720
+Jeff's file just a little bit to let handlebars know that we want to add support for partials in order
+
+23
+00:01:15,720 --> 00:01:16,430
+to do this.
+
+24
+00:01:16,440 --> 00:01:20,790
+We're going to add one line of code right here above where we declare our view engine and it's going
+
+25
+00:01:20,790 --> 00:01:22,450
+to look something like this.
+
+26
+00:01:22,520 --> 00:01:32,330
+HB Yes Dot register Parshall's no register Parshall's with a capital P in Parshall's that is going to
+
+27
+00:01:32,330 --> 00:01:38,090
+take the directory you want to use for all of your handlebar partial files and we're going to be specifying
+
+28
+00:01:38,090 --> 00:01:40,850
+that directory as the first and only argument.
+
+29
+00:01:40,850 --> 00:01:43,630
+Once again this does need to be the absolute directories.
+
+30
+00:01:43,640 --> 00:01:49,140
+I'm going to use the underscore underscore Durr name variable right here.
+
+31
+00:01:49,260 --> 00:01:53,460
+Then we can concatenate the rest of the path which is going to be a forward slash.
+
+32
+00:01:53,470 --> 00:01:54,340
+News.
+
+33
+00:01:54,570 --> 00:01:58,430
+And in this case I want you to use forward slash Parshall's.
+
+34
+00:01:58,500 --> 00:02:02,970
+We're going to store our partial files right inside of a directory in the views folder.
+
+35
+00:02:02,970 --> 00:02:10,210
+Now we can go ahead and create that folder right in views called Parshall's inside of here.
+
+36
+00:02:10,250 --> 00:02:14,210
+We can put any of the handlebars Parshall's we like to illustrate how they work.
+
+37
+00:02:14,210 --> 00:02:23,350
+We're going to go ahead and create one called footer dot h B-S FOTR dot B-S and inside of here we have
+
+38
+00:02:23,350 --> 00:02:27,180
+access to the same handlebars features which means we can write some markup.
+
+39
+00:02:27,190 --> 00:02:29,880
+We can inject variables we can do whatever we like.
+
+40
+00:02:29,980 --> 00:02:37,040
+For now we're going to do is copy the footer tag exactly pasting it inside a footer.
+
+41
+00:02:37,120 --> 00:02:37,680
+Yes.
+
+42
+00:02:37,720 --> 00:02:40,300
+Now we have our foot in on HB as file.
+
+43
+00:02:40,300 --> 00:02:44,280
+This is the partial and we can include in both about and home.
+
+44
+00:02:44,620 --> 00:02:49,030
+Let's go ahead and do that in order to do that we're going to delete the code that we already have in
+
+45
+00:02:49,030 --> 00:02:54,300
+the partial and we're going to replace it with opening and closing two curly braces.
+
+46
+00:02:54,460 --> 00:02:59,950
+Now instead of injecting data we want to inject a template and the syntax for that is to add a greater
+
+47
+00:02:59,950 --> 00:03:03,370
+than symbol with the space followed by the partial name.
+
+48
+00:03:03,400 --> 00:03:05,430
+In our case that partial is called the footer.
+
+49
+00:03:05,500 --> 00:03:10,390
+So we can add this right here and then I can go ahead and save about and do the same thing over and
+
+50
+00:03:10,390 --> 00:03:10,970
+home.
+
+51
+00:03:10,990 --> 00:03:12,070
+H Yes.
+
+52
+00:03:12,160 --> 00:03:12,880
+Over at home.
+
+53
+00:03:13,050 --> 00:03:14,760
+Abs.
+
+54
+00:03:15,010 --> 00:03:20,040
+I'm going to delete the footer and replace it with the syntax to inject the footer partial.
+
+55
+00:03:20,260 --> 00:03:21,040
+And there we go.
+
+56
+00:03:21,160 --> 00:03:24,970
+We now have a footer partial It's rendering on both pages.
+
+57
+00:03:25,210 --> 00:03:30,580
+To illustrate how this works I'm going to fire up my server and by default gnomon it's not going to
+
+58
+00:03:30,580 --> 00:03:32,180
+watch your handlebars files.
+
+59
+00:03:32,200 --> 00:03:36,340
+So if you make a change the Web site's not going to render as you might expect.
+
+60
+00:03:36,340 --> 00:03:43,440
+We can fix this by running gnomon passing in server dot J S and providing the e flag.
+
+61
+00:03:43,450 --> 00:03:46,690
+This lets us specify all of the extensions we want to watch.
+
+62
+00:03:46,690 --> 00:03:52,710
+In our case we're going to watch the s extension for the server file and after the comma the H B.
+
+63
+00:03:52,840 --> 00:03:53,800
+Extension.
+
+64
+00:03:53,860 --> 00:03:55,020
+Perfect.
+
+65
+00:03:55,030 --> 00:03:56,560
+Now our app is up and running.
+
+66
+00:03:56,560 --> 00:04:00,340
+We can go ahead and refresh things over in the browser and this should look the same.
+
+67
+00:04:00,340 --> 00:04:05,310
+We have our About page with our footer and we have our home page with the exact same footer.
+
+68
+00:04:05,320 --> 00:04:10,680
+The advantage now is if we want to change that footer we just do it in one place over and footer.
+
+69
+00:04:10,710 --> 00:04:14,490
+HB Yes I can add something to our footer paragraph tag.
+
+70
+00:04:14,830 --> 00:04:20,030
+I'm going to add a little message created by Andrew Mead with a hyphen.
+
+71
+00:04:20,170 --> 00:04:25,780
+Save the file and now when I refresh the browser right here we have a brand new footer.
+
+72
+00:04:25,780 --> 00:04:28,970
+It's going to show up for both the home page and the About page.
+
+73
+00:04:29,020 --> 00:04:32,040
+There's no need to do anything manual in either of these pages.
+
+74
+00:04:32,050 --> 00:04:34,160
+And this is the real power of Parshall's.
+
+75
+00:04:34,210 --> 00:04:37,290
+You have some code you want to reuse it inside of your web site.
+
+76
+00:04:37,360 --> 00:04:41,340
+So you simply create a partial and you inject it wherever you like.
+
+77
+00:04:41,410 --> 00:04:46,360
+And now that we have the footer partial in place it's going to be your challenge to create the header
+
+78
+00:04:46,420 --> 00:04:47,260
+partial.
+
+79
+00:04:47,260 --> 00:04:50,310
+That means you're going to need to create a brand new file header.
+
+80
+00:04:50,340 --> 00:04:56,080
+HB Yes you're going to want to add the each one tag inside of that file and then you're going to render
+
+81
+00:04:56,080 --> 00:04:59,130
+the partial in bult about abs and home.
+
+82
+00:04:59,240 --> 00:05:03,120
+HB Yes both pages should still look the same.
+
+83
+00:05:03,130 --> 00:05:05,170
+Now in order to test that it actually worked.
+
+84
+00:05:05,170 --> 00:05:10,780
+Go ahead and add a special character right after the H-1 like Jay or one to three just to make sure
+
+85
+00:05:10,780 --> 00:05:15,300
+that what you typed in the partial is actually what's rendering and it's not left over from the pages
+
+86
+00:05:15,310 --> 00:05:16,130
+we have here.
+
+87
+00:05:16,210 --> 00:05:18,610
+We'll go ahead and clean that up after the challenge.
+
+88
+00:05:18,610 --> 00:05:24,100
+So take a moment create that brand new header file add it inside of both about and home test it.
+
+89
+00:05:24,100 --> 00:05:26,260
+And when you're done go ahead and click play
+
+90
+00:05:30,420 --> 00:05:31,090
+How'd you do.
+
+91
+00:05:31,230 --> 00:05:37,030
+Hopefully you were able to create that and you were able to render it inside of our website pages.
+
+92
+00:05:37,080 --> 00:05:45,410
+I'm going to get started by creating a new file in the Parshall's folder called hetter dot H.B. s inside
+
+93
+00:05:45,410 --> 00:05:46,690
+of Hedegaard abs.
+
+94
+00:05:46,730 --> 00:05:53,700
+We're going to take the H one tag from our website paste it right inside and save it.
+
+95
+00:05:53,940 --> 00:05:59,700
+Now we can go ahead and use this hetter partial in both files inside of about you needed to do this
+
+96
+00:05:59,880 --> 00:06:01,340
+using the syntax.
+
+97
+00:06:01,440 --> 00:06:07,080
+The double curly braces with the greater than sign followed by the partial name header and we're going
+
+98
+00:06:07,080 --> 00:06:11,020
+to do the exact same thing for the home page in the home page.
+
+99
+00:06:11,070 --> 00:06:16,970
+I'll delete our H-1 tag inject the header and save the file.
+
+100
+00:06:16,970 --> 00:06:21,230
+Now I do want to create something slightly different just so I can test that it actually is using the
+
+101
+00:06:21,230 --> 00:06:25,650
+partial I'm going to type 1 2 3 right after the H-1 tag.
+
+102
+00:06:25,970 --> 00:06:32,000
+Now that all my files are saved I should be able to refresh the browser and right here I see about Page
+
+103
+00:06:32,160 --> 00:06:34,540
+1 2 3 printing which is fantastic.
+
+104
+00:06:34,540 --> 00:06:37,230
+This means the header partial is indeed working.
+
+105
+00:06:37,300 --> 00:06:41,300
+And if I go back to the home page everything still looks great.
+
+106
+00:06:41,590 --> 00:06:45,690
+Now that we have the header broken out into its own file we can do all sorts of things.
+
+107
+00:06:45,820 --> 00:06:50,980
+We can take our H-1 tag and put it inside of a header tag which is the appropriate way to declare your
+
+108
+00:06:50,980 --> 00:06:52,810
+header inside of HVM out.
+
+109
+00:06:53,110 --> 00:06:55,980
+Right here we add an opening and closing header tag.
+
+110
+00:06:56,140 --> 00:06:59,430
+We can take the H-1 and we can move it right inside.
+
+111
+00:06:59,470 --> 00:07:03,250
+We can also go ahead and add some links to the other pages on our website.
+
+112
+00:07:03,250 --> 00:07:07,360
+Now this isn't going to look nice because I'm not going to go into any styling at the moment but we
+
+113
+00:07:07,360 --> 00:07:12,130
+could add an anchor tag right here for the home page by adding a tag
+
+114
+00:07:14,850 --> 00:07:17,370
+inside of the a tag will specify the link text.
+
+115
+00:07:17,390 --> 00:07:18,550
+We'd like to show up.
+
+116
+00:07:18,660 --> 00:07:19,860
+I'm going to go with home.
+
+117
+00:07:20,010 --> 00:07:25,460
+Then inside of the H ref attribute we can specify the path the link should take you to.
+
+118
+00:07:25,620 --> 00:07:27,800
+Which would just be forward slash.
+
+119
+00:07:27,870 --> 00:07:33,360
+Then we can take the same paragraph tag copy it and paste it down below and make a link for the about
+
+120
+00:07:33,360 --> 00:07:34,060
+page.
+
+121
+00:07:34,260 --> 00:07:39,630
+I'll change the page text to about excuse me the link text and then you are out instead of going to
+
+122
+00:07:39,630 --> 00:07:41,910
+forward slash is going to go to forward slash.
+
+123
+00:07:41,910 --> 00:07:46,740
+About now we've made a change to our header file and it's going to be available on all of the pages
+
+124
+00:07:46,740 --> 00:07:47,790
+of our Web site.
+
+125
+00:07:47,820 --> 00:07:52,530
+I'm on the home page if I refresh when I get home and about I can click about to go to the About page
+
+126
+00:07:52,560 --> 00:07:55,020
+and then I can click home to come right back.
+
+127
+00:07:55,020 --> 00:08:00,360
+All of this is much easier to manage now that we have Parshall's inside of our Web site.
+
+128
+00:08:00,450 --> 00:08:03,230
+Now before we go there is one more thing I want to talk about.
+
+129
+00:08:03,270 --> 00:08:06,410
+This is a handlebars helper handlebars.
+
+130
+00:08:06,450 --> 00:08:12,540
+Helpers are going to be ways for you to register functions to run to dynamically create some output.
+
+131
+00:08:12,750 --> 00:08:14,490
+For example inside of a server.
+
+132
+00:08:14,540 --> 00:08:20,490
+Yes we currently inject the current year inside of both of our templates and that's not really necessary.
+
+133
+00:08:20,490 --> 00:08:25,710
+There is a better way to pass this data in this data shouldn't need to be provided because we're always
+
+134
+00:08:25,710 --> 00:08:27,640
+going to be using the exact same function.
+
+135
+00:08:27,660 --> 00:08:32,450
+We're always going to take the new date get full year return value passing it in.
+
+136
+00:08:32,580 --> 00:08:36,330
+Instead we're going to use a partial and all set up right now.
+
+137
+00:08:36,330 --> 00:08:41,170
+Now a partial is nothing more than a function you can run from inside of your handlebars templates.
+
+138
+00:08:41,160 --> 00:08:45,780
+Oh we need to do is register it and I'm going to do that up above right below where we set up our express
+
+139
+00:08:45,840 --> 00:08:47,380
+middleware right here.
+
+140
+00:08:47,490 --> 00:08:53,760
+We're going to call each B-S dot register and we're going to be registering a helper.
+
+141
+00:08:53,810 --> 00:08:59,300
+So we're going to call register helper now register helper takes two arguments it takes the name of
+
+142
+00:08:59,300 --> 00:09:04,760
+the helper as the first argument and the function to run as the second the first argument right here
+
+143
+00:09:04,910 --> 00:09:12,220
+is going to be get current year in our case we're going to create a helper that returns that current
+
+144
+00:09:12,280 --> 00:09:13,290
+year.
+
+145
+00:09:13,300 --> 00:09:15,130
+The second argument is going to be our function.
+
+146
+00:09:15,220 --> 00:09:20,850
+I'm going to use an arrow function and anything we return from this function is going to get rendered
+
+147
+00:09:20,850 --> 00:09:23,630
+in place of the get current year call.
+
+148
+00:09:23,640 --> 00:09:28,740
+That means if I call get current year inside of the footer it's going to return the year from the function
+
+149
+00:09:28,770 --> 00:09:32,210
+and that data is what's going to get rendered over in server dot J.
+
+150
+00:09:32,210 --> 00:09:38,050
+Yes we can return the year by using a return and having the exact same code we have down below.
+
+151
+00:09:38,250 --> 00:09:44,430
+We'll make a new date and we're going to call it get full year method.
+
+152
+00:09:44,700 --> 00:09:49,410
+Now that we have a helper we can remove this data from every single one of our run during calls which
+
+153
+00:09:49,410 --> 00:09:54,030
+is going to be really fantastic because there really is no need to compute it for every page since it's
+
+154
+00:09:54,030 --> 00:09:55,290
+always the same.
+
+155
+00:09:55,560 --> 00:10:00,330
+Now that we've removed that data from the individual calls to render we are going to have to use get
+
+156
+00:10:00,330 --> 00:10:06,030
+current year inside of the footer instead of referencing current and year we are going to use the helper
+
+157
+00:10:06,180 --> 00:10:11,330
+get current year and there's no need for any special syntax.
+
+158
+00:10:11,400 --> 00:10:16,140
+When you use something inside of curly braces that clearly isn't a partial handlebars is first going
+
+159
+00:10:16,140 --> 00:10:18,770
+to look for a helper with that name.
+
+160
+00:10:18,870 --> 00:10:23,430
+If there is no helper it will look for a piece of data with that get current year name.
+
+161
+00:10:23,460 --> 00:10:25,250
+In this case it is going to find the helper.
+
+162
+00:10:25,320 --> 00:10:27,320
+So everything is going to work as expected.
+
+163
+00:10:27,330 --> 00:10:33,920
+We can now go ahead and save FOTR dot abs move into the browser and give things or refresh.
+
+164
+00:10:34,140 --> 00:10:37,860
+When I refresh the page we still get copyright 20:16 right here.
+
+165
+00:10:37,860 --> 00:10:43,800
+And if I go to the About page everything looks great and we can prove that that data is coming back
+
+166
+00:10:44,010 --> 00:10:47,370
+from our helper by simply returning something else.
+
+167
+00:10:47,430 --> 00:10:49,540
+I'm going to go ahead and comment on that code.
+
+168
+00:10:49,680 --> 00:10:53,850
+And before the comment I'm going to return test just like this.
+
+169
+00:10:53,910 --> 00:10:58,870
+I can now save server us refresh the browser and we get task showing up right here.
+
+170
+00:10:59,010 --> 00:11:04,100
+So the data that renders right after the copyright word is indeed coming from that helper.
+
+171
+00:11:04,200 --> 00:11:08,720
+Now I'm going to go ahead and remove the code so we return the proper year.
+
+172
+00:11:08,950 --> 00:11:09,550
+Now our helpers.
+
+173
+00:11:09,570 --> 00:11:11,040
+They could also take arguments.
+
+174
+00:11:11,040 --> 00:11:12,940
+And this is really useful stuff.
+
+175
+00:11:12,940 --> 00:11:17,710
+Let's go ahead and create a second helper that's going to be a capitalization helper we'll call the
+
+176
+00:11:17,710 --> 00:11:22,900
+helper's screen it and its job is going to be to take some text and it's going to return that text in
+
+177
+00:11:22,930 --> 00:11:25,320
+upper case in order to do this.
+
+178
+00:11:25,420 --> 00:11:34,830
+We will be calling h B-S dot register helper again this helper as I mentioned will be called screen
+
+179
+00:11:34,840 --> 00:11:37,450
+at.
+
+180
+00:11:37,680 --> 00:11:43,000
+And it is going to take a function because we do need to run some code in order to do anything useful.
+
+181
+00:11:43,020 --> 00:11:49,220
+Now scream it is going to take the text to scream and oh it's going to do is call on that string the
+
+182
+00:11:49,260 --> 00:11:59,580
+two upper case method I'm going to return text dot to upper case just like this.
+
+183
+00:11:59,580 --> 00:12:03,110
+Now we can actually go ahead and use scream in one of our files.
+
+184
+00:12:03,210 --> 00:12:04,750
+I'm going to move into home.
+
+185
+00:12:04,790 --> 00:12:08,280
+H B-S right here we have our welcome message.
+
+186
+00:12:08,280 --> 00:12:13,050
+I'm going to remove it and we're going to scream the welcome message in order to pass that data into
+
+187
+00:12:13,050 --> 00:12:13,770
+one of our helpers.
+
+188
+00:12:13,770 --> 00:12:16,260
+We first have to reference the helper by name.
+
+189
+00:12:16,290 --> 00:12:17,180
+Scream it.
+
+190
+00:12:17,210 --> 00:12:21,200
+And then after a space we can specify whatever data we want to pass in as arguments.
+
+191
+00:12:21,210 --> 00:12:26,070
+In this case we're going to pass in the welcome message but we could also pass into arguments by typing
+
+192
+00:12:26,070 --> 00:12:29,620
+a space and passing in some other variable which we don't have access to.
+
+193
+00:12:29,640 --> 00:12:34,250
+For now we're going to go ahead and use it like this which means we're calling these scream at Halpert
+
+194
+00:12:34,260 --> 00:12:35,880
+passing in one argument.
+
+195
+00:12:35,910 --> 00:12:37,480
+Welcome message.
+
+196
+00:12:37,500 --> 00:12:39,150
+Now I can go ahead and save home.
+
+197
+00:12:39,180 --> 00:12:40,030
+HB.
+
+198
+00:12:40,230 --> 00:12:43,860
+Moved back into the browser go to the home page and right here.
+
+199
+00:12:43,920 --> 00:12:45,340
+Welcome to my Web site.
+
+200
+00:12:45,360 --> 00:12:48,660
+In all upper case and this is fantastic.
+
+201
+00:12:48,810 --> 00:12:54,690
+Using handlebars helpers we can create both functions that don't take arguments and functions that do
+
+202
+00:12:54,690 --> 00:12:58,700
+take arguments so you need to do something to the data inside of your web page.
+
+203
+00:12:58,710 --> 00:13:00,900
+You can do that with javascript.
+
+204
+00:13:00,900 --> 00:13:02,960
+Now that we have this in place we are done.
+
+205
+00:13:02,970 --> 00:13:08,100
+We've learned a little bit about handlebars Parshall's which let us create reusable chunks of code like
+
+206
+00:13:08,100 --> 00:13:14,070
+headers and footers and we also learn about handle bars helpers which is a way to run some javascript
+
+207
+00:13:14,100 --> 00:13:16,320
+code from inside of your handle bars.
+
+208
+00:13:16,320 --> 00:13:18,780
+Templates both are really useful.
+
+209
+00:13:18,780 --> 00:13:21,390
+Super great features when you're using handlebars.
+
+210
+00:13:21,510 --> 00:13:26,520
+That is it for our little two part series on handlebars in the next video we're going to move back to
+
+211
+00:13:26,520 --> 00:13:32,100
+talking about Express and how it can customize our requests our responses and our server.
+
+212
+00:13:32,100 --> 00:13:32,790
+Stay tuned.
+
+213
+00:13:32,820 --> 00:13:34,350
+I will see you then.
+

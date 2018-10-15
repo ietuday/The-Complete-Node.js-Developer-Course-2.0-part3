@@ -1,0 +1,1028 @@
+﻿1
+00:00:01,320 --> 00:00:06,330
+In this video you're going to make your very first note J.S. web server which means you have a whole
+
+2
+00:00:06,330 --> 00:00:12,450
+new way for users to access your app instead of having them run it from the terminal passing in arguments
+
+3
+00:00:12,690 --> 00:00:17,340
+you're going to be able to give them a u r l they can visit to view your web app or you are l they can
+
+4
+00:00:17,340 --> 00:00:20,910
+make an age TTP request to to fetch some data.
+
+5
+00:00:20,940 --> 00:00:26,390
+This is going to be similar to what we did when we used the G.O. code API instead of using an API though
+
+6
+00:00:26,390 --> 00:00:28,000
+will be able to create our own.
+
+7
+00:00:28,020 --> 00:00:32,010
+We'll also be able to set up a static web site for something like a portfolio site.
+
+8
+00:00:32,040 --> 00:00:34,740
+Both really valid use cases.
+
+9
+00:00:34,740 --> 00:00:39,900
+Now all of this is going to get done that using a library called Express which is the most popular NPM
+
+10
+00:00:39,900 --> 00:00:40,830
+library.
+
+11
+00:00:40,830 --> 00:00:46,830
+It's actually one of the reasons that Noad got so popular because it was so easy to make rest API and
+
+12
+00:00:46,830 --> 00:00:48,480
+static web servers.
+
+13
+00:00:48,480 --> 00:00:51,230
+Express is a no nonsense library.
+
+14
+00:00:51,240 --> 00:00:55,040
+Now there are a lot of different ways to configure it so it can get pretty complex.
+
+15
+00:00:55,050 --> 00:00:59,140
+That's why we're going to be using it throughout the next couple sections to get started.
+
+16
+00:00:59,140 --> 00:01:02,620
+Let's make a directory where we can store all of the code for this app.
+
+17
+00:01:02,640 --> 00:01:05,810
+This app is going to be our web server on the desktop.
+
+18
+00:01:05,820 --> 00:01:14,030
+I'm going to make a directory called node web server by running M-K Diyar node hyphen web hyphen server.
+
+19
+00:01:14,400 --> 00:01:20,130
+Once this directory is created I can navigate into it using CD and I can also open it up over inside
+
+20
+00:01:20,130 --> 00:01:26,120
+of Adam and Adam I'm going to open it up right on the desktop.
+
+21
+00:01:26,180 --> 00:01:30,500
+Now before we do anything else I want to run NPM in it so we can generate that package.
+
+22
+00:01:30,530 --> 00:01:32,420
+Jason File right here.
+
+23
+00:01:32,510 --> 00:01:34,250
+I'm going to run NPM in it.
+
+24
+00:01:35,270 --> 00:01:39,260
+And I am going to use the default value just by pressing enter through all of the options.
+
+25
+00:01:39,270 --> 00:01:42,170
+There's no need to customize any of these for the moment.
+
+26
+00:01:42,330 --> 00:01:43,190
+Then I can type yes.
+
+27
+00:01:43,200 --> 00:01:44,010
+And there we go.
+
+28
+00:01:44,010 --> 00:01:50,010
+The package that Jason File is now in place as I mentioned Express is a really big library and they
+
+29
+00:01:50,010 --> 00:01:55,980
+actually have an entire Web site dedicated to their docs instead of a simple read me empty file.
+
+30
+00:01:55,990 --> 00:02:00,560
+You can go to express J s dot com to view everything they have to offer.
+
+31
+00:02:00,630 --> 00:02:05,370
+They are getting started help articles they have guides on how to do things like routing debugging and
+
+32
+00:02:05,370 --> 00:02:11,070
+error handling and they have an API reference so you can look into exactly what methods you have access
+
+33
+00:02:11,070 --> 00:02:12,600
+to and what they do.
+
+34
+00:02:12,600 --> 00:02:13,990
+It's a really handy Web site.
+
+35
+00:02:14,070 --> 00:02:15,480
+It's important you know it's here.
+
+36
+00:02:15,570 --> 00:02:21,380
+So down the line you can always refer to it to explore things that we won't get to in this course.
+
+37
+00:02:21,390 --> 00:02:26,520
+Next up we're going to go ahead and install Express's so we can get started making our web server over
+
+38
+00:02:26,520 --> 00:02:27,450
+in the terminal.
+
+39
+00:02:27,480 --> 00:02:36,190
+I'm going to run clear first to clear the output then all run NPM install the module name is express
+
+40
+00:02:36,430 --> 00:02:44,620
+and we're going to be using the latest version version at four point one four point zero.
+
+41
+00:02:44,620 --> 00:02:49,850
+I'm also going to provide that a flag to update the dependencies inside of our package.
+
+42
+00:02:49,870 --> 00:02:55,070
+Jason File once again I'm going to use clear to clear the terminal output.
+
+43
+00:02:55,140 --> 00:03:00,570
+Now that we have the Express installed we can actually create our web server over inside of Adam in
+
+44
+00:03:00,570 --> 00:03:03,140
+order to run the server we are going to need a file.
+
+45
+00:03:03,180 --> 00:03:05,230
+I'm going to call this file server.
+
+46
+00:03:05,370 --> 00:03:08,550
+Yes it's going to sit right in the root of our application.
+
+47
+00:03:08,550 --> 00:03:13,980
+This is where we'll configure the various routes things like the route of the Web site pages light forward
+
+48
+00:03:13,980 --> 00:03:15,510
+slash about and so on.
+
+49
+00:03:15,510 --> 00:03:20,360
+It's also where we'll start the server binding it to a port on our machine.
+
+50
+00:03:20,400 --> 00:03:22,150
+Now we'll be deploying to a real server later.
+
+51
+00:03:22,170 --> 00:03:26,880
+We'll talk about how that works for now most of our server examples are going to happen on our local
+
+52
+00:03:26,910 --> 00:03:28,880
+host inside of a server.
+
+53
+00:03:28,950 --> 00:03:34,700
+Asked the first thing I want to do is load in express by making a constant call Express and setting
+
+54
+00:03:34,750 --> 00:03:36,570
+equal to require Express
+
+55
+00:03:39,870 --> 00:03:46,080
+next up what we're going to do is making new Express app to do this we'll make a variable called app
+
+56
+00:03:46,320 --> 00:03:51,950
+and we'll set it equal to the return result from calling express as a function.
+
+57
+00:03:51,960 --> 00:03:53,100
+Now there is no arguments.
+
+58
+00:03:53,100 --> 00:03:54,520
+We need to pass into Express.
+
+59
+00:03:54,540 --> 00:03:58,350
+We will be doing a ton of configuration but that's going to happen in a different way.
+
+60
+00:03:58,350 --> 00:04:00,900
+We'll explore that down below in order to create an app.
+
+61
+00:04:00,910 --> 00:04:04,100
+All we have to do is call the method down below.
+
+62
+00:04:04,170 --> 00:04:07,890
+We can start setting up all of our HTP route handlers.
+
+63
+00:04:07,890 --> 00:04:12,210
+For example if someone visits the root of the Web site we're going to want to send something back maybe
+
+64
+00:04:12,210 --> 00:04:13,280
+at some Jason data.
+
+65
+00:04:13,290 --> 00:04:15,220
+Maybe it's an h t m l page.
+
+66
+00:04:15,360 --> 00:04:19,690
+We can register a handler using app dot get.
+
+67
+00:04:19,800 --> 00:04:24,950
+This is going to let us set up a handler for an h t t p get request.
+
+68
+00:04:25,040 --> 00:04:29,280
+There's two arguments we have to pass in to get the first one is going to be the u r l.
+
+69
+00:04:29,340 --> 00:04:32,990
+In our case we're looking for the root of the app so we can just use forward slash.
+
+70
+00:04:33,090 --> 00:04:38,010
+And the second argument and this is going to be the function to run the function that tells express
+
+71
+00:04:38,010 --> 00:04:41,200
+what to send back to the person who made the request.
+
+72
+00:04:42,050 --> 00:04:45,280
+I'm going to use a simple arrow function.
+
+73
+00:04:45,310 --> 00:04:46,300
+Excellent.
+
+74
+00:04:46,300 --> 00:04:49,070
+Now this function is going to get called with two arguments.
+
+75
+00:04:49,090 --> 00:04:51,930
+These are really important to how Express works.
+
+76
+00:04:51,940 --> 00:04:57,610
+The first one is request and the second one is response for Questa stores a ton of information about
+
+77
+00:04:57,610 --> 00:05:00,880
+the request coming in things like the headers that were used.
+
+78
+00:05:00,880 --> 00:05:05,710
+Any body information the method that was made with the request to the path all of that is stored in
+
+79
+00:05:05,710 --> 00:05:06,740
+here.
+
+80
+00:05:06,760 --> 00:05:10,370
+The second argument response has a bunch of methods available to you.
+
+81
+00:05:10,510 --> 00:05:13,890
+So you can respond to the HTP request in whatever way you like.
+
+82
+00:05:13,930 --> 00:05:15,960
+You can customize what data you send back.
+
+83
+00:05:16,000 --> 00:05:18,340
+You could set your age to status codes.
+
+84
+00:05:18,340 --> 00:05:19,810
+You can do all sorts of things.
+
+85
+00:05:19,870 --> 00:05:23,200
+I promise we'll be exploring both of these in detail.
+
+86
+00:05:23,500 --> 00:05:28,010
+For now though what we're going to do is use one method response dot send.
+
+87
+00:05:28,060 --> 00:05:32,820
+This is going to let us respond to the request sending some data back right in here.
+
+88
+00:05:32,950 --> 00:05:34,830
+Let's go ahead and call it response.
+
+89
+00:05:34,910 --> 00:05:37,840
+Send passing in a string in here.
+
+90
+00:05:37,900 --> 00:05:45,210
+I'm going to type hello express it this is the response for the GTP request.
+
+91
+00:05:45,310 --> 00:05:50,380
+So when someone views the Web site they're going to see this string if they make a request from an application
+
+92
+00:05:50,560 --> 00:05:53,660
+they're going to get this back as the body data.
+
+93
+00:05:53,680 --> 00:05:55,650
+Now at this point we're not quite done.
+
+94
+00:05:55,660 --> 00:05:59,970
+We have one of our routes set up but the app is never going to actually start listening.
+
+95
+00:05:59,980 --> 00:06:06,520
+What we need to do is call app dot listen app listen is going to bind the application to a port on our
+
+96
+00:06:06,520 --> 00:06:07,320
+machine.
+
+97
+00:06:07,630 --> 00:06:11,030
+In this case for our local host app I'm going to use port three thousand.
+
+98
+00:06:11,040 --> 00:06:14,120
+A really common port for developing locally.
+
+99
+00:06:14,140 --> 00:06:18,820
+Later on we'll talk about how to customize this depending on whatever server you use to deploy your
+
+100
+00:06:18,820 --> 00:06:20,050
+app to production.
+
+101
+00:06:20,050 --> 00:06:23,140
+For now though a number like three thousand works.
+
+102
+00:06:23,140 --> 00:06:24,850
+With this in place we are now done.
+
+103
+00:06:24,910 --> 00:06:29,230
+We have our very first express server and we can actually run things from the terminal and view it in
+
+104
+00:06:29,230 --> 00:06:31,510
+the browser inside of the terminal.
+
+105
+00:06:31,510 --> 00:06:37,840
+I'm going to use no demand to start up our app gnomon server.
+
+106
+00:06:37,990 --> 00:06:43,480
+J.S. and this is going to start up the app and as you're going to see the app never really finishes.
+
+107
+00:06:43,480 --> 00:06:47,720
+Right now it's hanging it's waiting for requests to start coming in.
+
+108
+00:06:47,920 --> 00:06:50,680
+The apps that use apt lesson they're never going to stop.
+
+109
+00:06:50,680 --> 00:06:55,600
+You're going to have to shut them down manually with control C like we've done before.
+
+110
+00:06:55,600 --> 00:06:58,860
+It might crash if you have an error in your code but it'll never stop.
+
+111
+00:06:58,870 --> 00:07:04,270
+Normally since we have that binding set up here it's going to listen to requests until you tell it to
+
+112
+00:07:04,270 --> 00:07:05,230
+stop.
+
+113
+00:07:05,230 --> 00:07:09,570
+Now that the server is up we can go ahead and move into the browser and open up a new tab.
+
+114
+00:07:09,580 --> 00:07:15,250
+Visiting the Web site local host colon followed by the port 3000.
+
+115
+00:07:15,250 --> 00:07:21,210
+This is going to load up the route of the Web site and we specify the handler for that route right here.
+
+116
+00:07:21,310 --> 00:07:22,090
+Hello Express.
+
+117
+00:07:22,090 --> 00:07:24,970
+Shows up which is exactly what we expected.
+
+118
+00:07:24,970 --> 00:07:26,860
+Now there's no thrills there's no formatting.
+
+119
+00:07:26,860 --> 00:07:28,230
+Nothing too fancy.
+
+120
+00:07:28,270 --> 00:07:33,040
+We're just sending a string from the server back to the client that made the request.
+
+121
+00:07:33,070 --> 00:07:37,600
+What I'd like to do from here is open up the developer tools so we can explore exactly what happened
+
+122
+00:07:37,600 --> 00:07:40,430
+when that request was made inside of chrome.
+
+123
+00:07:40,480 --> 00:07:46,300
+You can get to the developer tools using settings more tools a developer tools or you can use the keyboard
+
+124
+00:07:46,300 --> 00:07:49,280
+shortcut shown here for your operating system.
+
+125
+00:07:49,300 --> 00:07:54,070
+I would highly recommend memorizing that keyboard shortcut because you'll be using the developer tools
+
+126
+00:07:54,100 --> 00:07:56,690
+a ton in your career with note.
+
+127
+00:07:57,130 --> 00:08:02,410
+I'm going to open up the developer tools which should look similar to the ones we used when we ran the
+
+128
+00:08:02,590 --> 00:08:04,100
+note inspector debugger.
+
+129
+00:08:04,130 --> 00:08:06,360
+They're a little different but the idea is the same.
+
+130
+00:08:06,400 --> 00:08:11,230
+We have a bunch of tabs up top and then we have our tabs specific information down below.
+
+131
+00:08:11,320 --> 00:08:15,350
+In our case I want to go to the network tab and currently we have nothing.
+
+132
+00:08:15,370 --> 00:08:20,920
+So I'm going to go ahead and refresh the page with the tab open and what we see right here is our local
+
+133
+00:08:20,920 --> 00:08:22,000
+hosts request.
+
+134
+00:08:22,000 --> 00:08:26,650
+This is the request that's responsible for showing how low express to the screen we can actually go
+
+135
+00:08:26,650 --> 00:08:29,200
+ahead and click the request to view its details.
+
+136
+00:08:29,200 --> 00:08:32,270
+This is something we'll be doing extensively throughout the course.
+
+137
+00:08:32,290 --> 00:08:34,840
+I know this page can be a little overwhelming at first.
+
+138
+00:08:34,840 --> 00:08:37,450
+There is a heck of a lot of information up top.
+
+139
+00:08:37,450 --> 00:08:40,800
+We have some general info like the you R-AL that was requested.
+
+140
+00:08:40,870 --> 00:08:46,750
+The method that the client wanted in this case we made a request and the status code that came back
+
+141
+00:08:46,990 --> 00:08:48,960
+the default status code being 200.
+
+142
+00:08:48,970 --> 00:08:51,400
+Meaning that everything went great.
+
+143
+00:08:51,430 --> 00:08:56,270
+What I'd like to point your attention to is one response header right here under response headers.
+
+144
+00:08:56,290 --> 00:09:02,250
+We have a header called content type and this header tells the client what type of data came back.
+
+145
+00:09:02,280 --> 00:09:07,840
+Now this could be something like an H Web site it could be some text it could be send Jason data and
+
+146
+00:09:07,840 --> 00:09:13,480
+the client could be a web browser or an iPhone or an Android device or any other computer with a network
+
+147
+00:09:13,510 --> 00:09:14,620
+capabilities.
+
+148
+00:09:14,650 --> 00:09:18,580
+In our case we're telling the browser that what came back it's some HDMI out.
+
+149
+00:09:18,640 --> 00:09:20,860
+So why don't you go ahead and render it as such.
+
+150
+00:09:20,950 --> 00:09:24,550
+We used the text of forward slash HVM l content type.
+
+151
+00:09:24,820 --> 00:09:29,440
+And this automatically got set by express which is one of the reasons it's so popular it handles a lot
+
+152
+00:09:29,440 --> 00:09:31,990
+of that mundane stuff for you.
+
+153
+00:09:32,320 --> 00:09:37,570
+Now that we have a very basic example I want to go ahead and step things up a notch inside of atom we
+
+154
+00:09:37,570 --> 00:09:44,630
+can actually provide some HVM right inside of send by wrapping our helo express message in an H1 tag.
+
+155
+00:09:44,650 --> 00:09:49,870
+Now later in this section we're going to be setting up a static web site that has HTL files that get
+
+156
+00:09:49,870 --> 00:09:53,680
+served up and will also look at templating to create dynamic web pages.
+
+157
+00:09:53,710 --> 00:09:59,060
+But for now we can actually just pass in some age Yamal to response send.
+
+158
+00:09:59,110 --> 00:10:03,040
+I'm going to save the server file which should restart things over in the browser.
+
+159
+00:10:03,040 --> 00:10:06,790
+And when I give it a refresh we get hello expressed printing to the screen.
+
+160
+00:10:06,850 --> 00:10:12,550
+This time though we have it in an H1 tag which means it's formatted by the default browser styles and
+
+161
+00:10:12,550 --> 00:10:14,680
+in this case it looks nice and big.
+
+162
+00:10:14,920 --> 00:10:20,350
+With this in place we can now open up the request inside of the Network tab and what we get is the exact
+
+163
+00:10:20,350 --> 00:10:21,810
+same thing we had before.
+
+164
+00:10:21,820 --> 00:10:24,290
+We're still telling the browser that it's HVM now.
+
+165
+00:10:24,310 --> 00:10:31,620
+Only this time we actually have an H Tamil tag so it gets rendered using the browser's default styles.
+
+166
+00:10:31,790 --> 00:10:36,290
+The last thing I want to look at before I give you a challenge is how we can send some Jason and data
+
+167
+00:10:36,380 --> 00:10:41,650
+back sending Jason is really easy with Express to illustrate how he can do it.
+
+168
+00:10:41,660 --> 00:10:46,150
+I'm going to comment out our current call to response does send an ad a new one.
+
+169
+00:10:46,460 --> 00:10:51,800
+I'm going to call respond Scott send passing in an object on this object we can provide whatever we
+
+170
+00:10:51,800 --> 00:10:52,430
+like.
+
+171
+00:10:52,430 --> 00:10:58,090
+I can go ahead and create a name property setting it equal to the string version of my first name.
+
+172
+00:10:58,130 --> 00:11:02,120
+I can make a property called likes sending it equal to an array.
+
+173
+00:11:02,210 --> 00:11:05,030
+And on here I can specify some things I like.
+
+174
+00:11:05,030 --> 00:11:07,220
+Go ahead and out a few things that you like.
+
+175
+00:11:07,220 --> 00:11:15,200
+I'm going to add biking as one of them and I'll add cities as another one we call response but send
+
+176
+00:11:15,200 --> 00:11:21,350
+passing an object express notices that it takes it it converts it into Jason and it sends it back to
+
+177
+00:11:21,350 --> 00:11:22,280
+the browser.
+
+178
+00:11:22,340 --> 00:11:26,750
+When I save server dot J ass and gnomon refreshes I can refresh the browser.
+
+179
+00:11:26,750 --> 00:11:32,960
+And what I get is my data formatted using Jason view which means I can collapse my properties and quickly
+
+180
+00:11:32,990 --> 00:11:35,020
+navigate that Jasen data.
+
+181
+00:11:35,030 --> 00:11:40,010
+Now the only reason Jason Vue picked up on this is because that content type header that we explored
+
+182
+00:11:40,190 --> 00:11:42,710
+in our last request it actually changed.
+
+183
+00:11:42,710 --> 00:11:48,740
+If I open up localhost a lot of things look the same but now content type has an application forward
+
+184
+00:11:48,780 --> 00:11:56,190
+SLAs Jason content type this content type tells the requester whether it's an Android phone an I O S
+
+185
+00:11:56,210 --> 00:12:00,970
+device or the browser that Jason data is coming back and it should parse it as such.
+
+186
+00:12:00,980 --> 00:12:03,830
+That's exactly what the browser does here.
+
+187
+00:12:03,830 --> 00:12:09,740
+Express also makes it really easy to set up other routes aside from the route route we can explore that
+
+188
+00:12:09,740 --> 00:12:14,180
+over inside of atom by calling app get a second time right here.
+
+189
+00:12:14,270 --> 00:12:18,880
+I'm going to call app dot get I'm going to create a second route.
+
+190
+00:12:19,110 --> 00:12:23,120
+We'll call this one about then I'm going to provide the handler.
+
+191
+00:12:23,250 --> 00:12:26,100
+Notice here I just used forward slash about as to route.
+
+192
+00:12:26,100 --> 00:12:28,740
+It's important to keep that forward slash in place.
+
+193
+00:12:28,740 --> 00:12:32,610
+But after that you can type whatever you like in this case we're going to have a forward slash about
+
+194
+00:12:32,610 --> 00:12:34,710
+page that someone can visit.
+
+195
+00:12:34,740 --> 00:12:38,280
+The handler is going to take the request and the response object.
+
+196
+00:12:38,370 --> 00:12:42,810
+This is going to let us figure out what kind of request came in and it's going to let us respond to
+
+197
+00:12:42,810 --> 00:12:44,550
+that request for now.
+
+198
+00:12:44,550 --> 00:12:52,540
+Just to illustrate we can create more pages will keep the response simple response send inside of the
+
+199
+00:12:52,540 --> 00:12:56,890
+string I'm going to go ahead and print about page.
+
+200
+00:12:57,090 --> 00:13:02,100
+Now when I save the server just file the server is going to restart and over in the browser we can visit
+
+201
+00:13:02,100 --> 00:13:05,370
+forward slash about at forward slash about.
+
+202
+00:13:05,430 --> 00:13:12,000
+We should now see our new data and that's exactly what we get back about page shows up using apt get
+
+203
+00:13:12,000 --> 00:13:14,750
+we're able to specify as many routes as we like.
+
+204
+00:13:14,760 --> 00:13:20,460
+For now we just have an About route and a forward slash route which is referred to as the route route
+
+205
+00:13:20,820 --> 00:13:22,350
+the right route return some data.
+
+206
+00:13:22,410 --> 00:13:27,710
+This data happens to be Jason and the about route for turns a little bit of HVM out.
+
+207
+00:13:27,720 --> 00:13:32,250
+Now that we have this in place and we have a very basic understanding about how we can set up routes
+
+208
+00:13:32,280 --> 00:13:37,890
+and express I'd like you to go ahead and create a new route as the challenge I'm going to leave a few
+
+209
+00:13:37,890 --> 00:13:40,920
+comments down below to guide you along the way.
+
+210
+00:13:40,920 --> 00:13:44,900
+What I'd like you to do is create a route forward slash.
+
+211
+00:13:44,940 --> 00:13:45,750
+Bad.
+
+212
+00:13:45,750 --> 00:13:48,920
+This is going to simulate what happens when a request fails.
+
+213
+00:13:48,990 --> 00:13:50,820
+It's not going to do anything crazy for the moment.
+
+214
+00:13:50,820 --> 00:13:54,870
+All you're going to do is respond using response don't send.
+
+215
+00:13:54,870 --> 00:14:01,670
+You're going to send back some Jason data send back Jason with an error message.
+
+216
+00:14:01,670 --> 00:14:05,570
+Property the error message property can get set to whatever you like.
+
+217
+00:14:05,570 --> 00:14:11,400
+You can go ahead and use something like unable to fulfill this request or error handling request.
+
+218
+00:14:11,430 --> 00:14:16,580
+Then I'd like you to go into the browser navigate to forward slash bat and make sure that Jason data
+
+219
+00:14:16,580 --> 00:14:17,530
+shows up.
+
+220
+00:14:17,540 --> 00:14:19,110
+Take a moment to pause the video.
+
+221
+00:14:19,110 --> 00:14:21,650
+Knock that out and when you're done click play.
+
+222
+00:14:24,520 --> 00:14:25,390
+How'd you do.
+
+223
+00:14:25,390 --> 00:14:28,750
+Hopefully you are able to make that new route and visit it in the browser.
+
+224
+00:14:28,750 --> 00:14:31,910
+Seeing the Jason data you sent back right here.
+
+225
+00:14:32,020 --> 00:14:38,840
+I'm going to call and get this is going to let us register a nother handler for a get HTP request.
+
+226
+00:14:38,920 --> 00:14:44,230
+In our case the route we're looking for inside of quotes is going to be forward slash bad.
+
+227
+00:14:44,320 --> 00:14:47,390
+When someone makes a request for this page what we want to do.
+
+228
+00:14:47,440 --> 00:14:52,630
+It's going to be specified in the callback the callback is going to take our two arguments request and
+
+229
+00:14:52,630 --> 00:14:58,050
+response I'm going to use an arrow function which I've used for all of the handlers so far inside of
+
+230
+00:14:58,060 --> 00:15:00,540
+here the challenge was to send back some Jason.
+
+231
+00:15:00,820 --> 00:15:03,350
+We're going to do that by calling response Yat-Sen.
+
+232
+00:15:03,460 --> 00:15:09,640
+But instead of passing in a string or some string HGL we're going to pass in an object now that we have
+
+233
+00:15:09,640 --> 00:15:13,380
+our object in place we can specify the properties we want to send back.
+
+234
+00:15:13,420 --> 00:15:20,190
+In this case I told you just to set one error message and to set an error message to whatever you like.
+
+235
+00:15:20,380 --> 00:15:27,890
+I'm going to go ahead and set my error message property equal to a string unable to handle requests.
+
+236
+00:15:28,000 --> 00:15:29,080
+Perfect.
+
+237
+00:15:29,080 --> 00:15:34,270
+Next up I wanted you to save the file restarting it and gnomon and visit it in the browser making sure
+
+238
+00:15:34,270 --> 00:15:37,290
+your error message showed up correctly in the browser.
+
+239
+00:15:37,420 --> 00:15:37,990
+I'm going to visit.
+
+240
+00:15:37,990 --> 00:15:40,530
+Forward slash bad hit enter.
+
+241
+00:15:40,570 --> 00:15:41,320
+And what do we get.
+
+242
+00:15:41,320 --> 00:15:45,370
+We get our Jason showing up using Jason view right here.
+
+243
+00:15:45,370 --> 00:15:50,040
+We have our error message and we have the message showing up on able to handle requests.
+
+244
+00:15:50,050 --> 00:15:55,480
+Now if you are using Jason view and you want to view the raw Jason data you can actually click view
+
+245
+00:15:55,480 --> 00:16:00,940
+source and it's going to show you right here in a new tab here we're looking at Dheeraj Jason data where
+
+246
+00:16:00,940 --> 00:16:03,400
+everything is wrapped in those double quotes.
+
+247
+00:16:03,430 --> 00:16:07,420
+I'm going to go ahead and stick to the Jason viewed data though because it's a lot easier to navigate
+
+248
+00:16:07,450 --> 00:16:13,420
+and view you with this in place we are now done the challenge and we're also done the video we now have
+
+249
+00:16:13,420 --> 00:16:19,030
+a very basic express application up and running it listens on port three thousand and it currently has
+
+250
+00:16:19,030 --> 00:16:21,450
+handlers for three hours.
+
+251
+00:16:21,580 --> 00:16:27,290
+When we get the root of the page when we get forward slash about and when we make a get request for
+
+252
+00:16:27,290 --> 00:16:33,580
+a forward slash bad in the next video we're going to look at how we can set up a static web server.
+
+253
+00:16:33,580 --> 00:16:40,060
+So when you have an entire directory of javascript images CSSA and HGL you can serve that up easily
+
+254
+00:16:40,210 --> 00:16:42,790
+without needing to provide routes for everything.
+
+255
+00:16:42,790 --> 00:16:43,510
+So stay tuned.
+
+256
+00:16:43,510 --> 00:16:44,650
+I will see you next time.
+
+257
+00:16:44,650 --> 00:16:46,770
+I am super excited to keep moving on.
+

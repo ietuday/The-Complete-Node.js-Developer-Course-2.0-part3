@@ -1,0 +1,908 @@
+﻿1
+00:00:00,270 --> 00:00:05,100
+In this video which is the final video for the testing section you're going to learn some pretty advanced
+
+2
+00:00:05,100 --> 00:00:09,780
+testing techniques we'll be using this throughout the rest of these sections as we build real world
+
+3
+00:00:09,780 --> 00:00:10,240
+apps.
+
+4
+00:00:10,260 --> 00:00:13,020
+But for now I want to start off with an example.
+
+5
+00:00:13,080 --> 00:00:16,830
+We'll worry about the vocabulary for what I'm about to do in just a second.
+
+6
+00:00:16,890 --> 00:00:22,110
+For the moment all I want you to do is close all your files and create a new directory in the root of
+
+7
+00:00:22,110 --> 00:00:24,390
+the project right here.
+
+8
+00:00:24,390 --> 00:00:26,850
+I'm going to make a new folder called spies.
+
+9
+00:00:26,880 --> 00:00:31,590
+We'll talk about what exactly spies are and how they relate to testing in just a moment.
+
+10
+00:00:32,450 --> 00:00:36,510
+Inside of spies we're going to make two files after us.
+
+11
+00:00:36,560 --> 00:00:46,270
+This is the file that will be testing and a second one called D-B Scott J.S. in our example we can just
+
+12
+00:00:46,270 --> 00:00:51,640
+assume that this is a file that has all sorts of methods for saving and reading data from the database
+
+13
+00:00:52,210 --> 00:00:53,240
+inside of DVDs.
+
+14
+00:00:53,270 --> 00:00:53,760
+Yes.
+
+15
+00:00:53,860 --> 00:00:59,300
+We're going to create one function using module dot exports.
+
+16
+00:00:59,400 --> 00:01:05,370
+I'm going to create a function called Save user save user is going to be a really simple function.
+
+17
+00:01:05,380 --> 00:01:10,690
+It's going to take a user object and we're just going to go ahead and print it to the screen using console
+
+18
+00:01:10,860 --> 00:01:11,810
+lock.
+
+19
+00:01:11,890 --> 00:01:15,430
+I'm going to print a little message saving the user.
+
+20
+00:01:15,430 --> 00:01:18,790
+And I'll also print out the object right here.
+
+21
+00:01:18,790 --> 00:01:22,120
+Now obviously this is not a real save user function.
+
+22
+00:01:22,120 --> 00:01:27,010
+We do not interact with any sort of database but it is going to illustrate exactly how we're going to
+
+23
+00:01:27,010 --> 00:01:29,650
+be using spies to test our code.
+
+24
+00:01:29,650 --> 00:01:31,520
+Next up we're going to fill out apps.
+
+25
+00:01:31,600 --> 00:01:31,890
+Yes.
+
+26
+00:01:31,900 --> 00:01:35,730
+And this is the file We're actually going to be testing inside of Apple.
+
+27
+00:01:35,800 --> 00:01:36,240
+Yes.
+
+28
+00:01:36,370 --> 00:01:39,620
+We're going to create a new function module.
+
+29
+00:01:39,750 --> 00:01:46,990
+Exports a dock handle Sign-Up in the context of an application with authentication handle sign up might
+
+30
+00:01:46,990 --> 00:01:51,640
+take an e-mail and a password maybe it goes ahead and checks if the e-mail already exists.
+
+31
+00:01:51,640 --> 00:01:52,510
+If it doesn't great.
+
+32
+00:01:52,510 --> 00:01:55,270
+It saves the user and then it sends some sort of welcome.
+
+33
+00:01:55,270 --> 00:02:01,430
+Now we can go ahead and simulate that by creating an aero function that takes an e-mail and a password
+
+34
+00:02:04,180 --> 00:02:07,410
+inside of here we're going to leave three comments.
+
+35
+00:02:07,480 --> 00:02:14,820
+These will be things that the function is supposed to do is going to check if the email already exists.
+
+36
+00:02:14,930 --> 00:02:18,490
+It's going to save the user to the database.
+
+37
+00:02:19,300 --> 00:02:22,390
+And finally we're going to send that welcome email
+
+38
+00:02:25,100 --> 00:02:26,040
+perfect.
+
+39
+00:02:26,060 --> 00:02:31,090
+Now these three things are just an example of what a handle sign up method might actually do.
+
+40
+00:02:31,220 --> 00:02:34,220
+Let me go through the real process you'll see how it pans out.
+
+41
+00:02:34,220 --> 00:02:37,240
+Now we already have one of these in place we just created save user.
+
+42
+00:02:37,340 --> 00:02:42,590
+So what I'm going to do is go ahead and call save user instead of having the second comment right here.
+
+43
+00:02:42,590 --> 00:02:45,380
+I'm going to call it D-B dot save user.
+
+44
+00:02:45,380 --> 00:02:46,670
+It's not imported just yet.
+
+45
+00:02:46,670 --> 00:02:50,750
+But that's not going to stop us from calling it will add the import in just a second and I'm going to
+
+46
+00:02:50,750 --> 00:02:53,540
+pass in what it expects the user object.
+
+47
+00:02:53,540 --> 00:02:54,730
+Now I don't have a user object.
+
+48
+00:02:54,740 --> 00:02:56,300
+I have an e-mail and a password.
+
+49
+00:02:56,390 --> 00:03:03,470
+I can create a user object by sending email equal to the e-mail argument and setting password equal
+
+50
+00:03:03,470 --> 00:03:06,710
+to the password argument just like this.
+
+51
+00:03:06,710 --> 00:03:07,820
+Excellent.
+
+52
+00:03:07,820 --> 00:03:13,280
+Now one important thing to note inside of 6 if the property name on an object you're setting is the
+
+53
+00:03:13,280 --> 00:03:16,970
+same as a variable name you can actually define it like this.
+
+54
+00:03:17,090 --> 00:03:21,830
+In this example since I'm sending it password property and I'm setting it equal to whatever's on the
+
+55
+00:03:21,830 --> 00:03:24,820
+password variable there's no need to have both.
+
+56
+00:03:25,210 --> 00:03:30,180
+This ios six syntax also allows us to create a much simpler looking call.
+
+57
+00:03:30,200 --> 00:03:34,510
+There's no need to have it on multiple lines since it's pretty reasonable in length.
+
+58
+00:03:34,680 --> 00:03:35,210
+Awesome.
+
+59
+00:03:35,390 --> 00:03:45,980
+Now we can load NDB by creating a variable calling it DBI and setting it equal to require DBI dot Jap's.
+
+60
+00:03:46,120 --> 00:03:51,070
+That is a local file so we're going to start it with a dot forwards slash to grab it from the current
+
+61
+00:03:51,220 --> 00:03:52,270
+directory.
+
+62
+00:03:52,270 --> 00:03:55,820
+Now this is an example of something that we're going to want to test inside of our code.
+
+63
+00:03:55,870 --> 00:04:00,630
+We have a handle Sign-Up method it takes an e-mail and a password and we need to make sure that DBT
+
+64
+00:04:00,630 --> 00:04:02,400
+save user works as well.
+
+65
+00:04:02,440 --> 00:04:03,710
+That is a big problem.
+
+66
+00:04:03,760 --> 00:04:08,590
+And this means that we're not just testing handle sign up we're testing handle sign up we're testing
+
+67
+00:04:08,590 --> 00:04:10,670
+our code that checks if an email exists.
+
+68
+00:04:10,720 --> 00:04:15,170
+Maybe that is another function or checking if the safe user function works as expected.
+
+69
+00:04:15,280 --> 00:04:20,800
+We're checking if the welcome email sends that is a real pain but we're going to do instead is fake
+
+70
+00:04:20,980 --> 00:04:22,150
+this function.
+
+71
+00:04:22,150 --> 00:04:27,640
+It's never actually going to execute the code inside of here but it is going to let us verify that when
+
+72
+00:04:27,640 --> 00:04:33,500
+we run handle Sign-Up save user gets called we're going to do this with something called spies.
+
+73
+00:04:33,640 --> 00:04:39,250
+Spies let you swap out a real function like save user for a testing utility.
+
+74
+00:04:39,250 --> 00:04:44,680
+When that test function gets called you can create various assertions about it making sure it was called
+
+75
+00:04:44,710 --> 00:04:46,000
+with certain arguments.
+
+76
+00:04:46,000 --> 00:04:49,150
+Let's go ahead and start exploring that right here.
+
+77
+00:04:49,150 --> 00:04:56,110
+I'm going to make a new file called app dot test dot J.S. and we can start playing around with spies
+
+78
+00:04:56,380 --> 00:04:58,620
+now spies do come built in with expect.
+
+79
+00:04:58,630 --> 00:05:07,110
+So all we have to do is loaded in Konst expect equals require expect and from here we can create our
+
+80
+00:05:07,110 --> 00:05:08,590
+very first test.
+
+81
+00:05:08,670 --> 00:05:13,980
+I'm going to go ahead and put this in a describe block so it's easier to find over in our test output.
+
+82
+00:05:13,980 --> 00:05:17,960
+I'll call this describe a block app and I'll add my callback function.
+
+83
+00:05:18,090 --> 00:05:21,010
+And now I can add my individual test cases.
+
+84
+00:05:21,270 --> 00:05:25,680
+First up we're going to call it and we're going to make a new test where we can just play around with
+
+85
+00:05:25,680 --> 00:05:26,330
+spies.
+
+86
+00:05:26,400 --> 00:05:28,630
+We won't be calling the function in our apt.
+
+87
+00:05:28,650 --> 00:05:30,660
+Jazz file just yet.
+
+88
+00:05:30,660 --> 00:05:38,970
+It should call this spy correctly in order to visualize how spies work.
+
+89
+00:05:38,970 --> 00:05:41,670
+We're going to go through the most basic example we can.
+
+90
+00:05:41,760 --> 00:05:44,820
+First up creating a spy to create a spy.
+
+91
+00:05:44,910 --> 00:05:53,850
+You're going to call a function expect dot create spy create spy is going to return a function and that
+
+92
+00:05:53,850 --> 00:05:57,600
+is the function that you're going to swap out for the real one which means we do want to store that
+
+93
+00:05:57,600 --> 00:05:58,720
+in a variable.
+
+94
+00:05:58,730 --> 00:06:03,010
+I'm going to create a variable called Spy setting equal to the return result.
+
+95
+00:06:03,010 --> 00:06:08,250
+And now we would inject spy into our code whether it's app dot J.S. or some other function and we would
+
+96
+00:06:08,250 --> 00:06:12,240
+wait for it to get called We Can Go ahead and call it directly right here.
+
+97
+00:06:12,420 --> 00:06:15,080
+I'm going to call spy just like this.
+
+98
+00:06:15,090 --> 00:06:20,740
+Next up we can set up a series of assertions using expects spies assertions.
+
+99
+00:06:20,970 --> 00:06:27,450
+If you head over to your browser and go to the expect documentation and Jackson expect I have it right
+
+100
+00:06:27,450 --> 00:06:28,680
+here.
+
+101
+00:06:28,680 --> 00:06:33,600
+We can scroll down to the spies section where they talk about all of the assertion you have access to.
+
+102
+00:06:33,630 --> 00:06:35,250
+It's pretty far down on the page.
+
+103
+00:06:35,340 --> 00:06:40,410
+You should start seeing spies in the method names and that's when you know you've gotten there right
+
+104
+00:06:40,410 --> 00:06:43,310
+below to include and to exclude keys.
+
+105
+00:06:43,320 --> 00:06:48,250
+I have to have been called this is our first assertion with spies.
+
+106
+00:06:48,300 --> 00:06:53,300
+We can assert that our spy was indeed called over inside an atom.
+
+107
+00:06:53,310 --> 00:06:58,700
+We're going to go ahead and do that by calling expect and passing in the spy just like this.
+
+108
+00:06:58,830 --> 00:07:06,950
+Then I'm going to add the assertion to have been called and this is going to cause the test to pass.
+
+109
+00:07:06,960 --> 00:07:10,710
+If SPY was called What It Was and it'll cause the test to fail.
+
+110
+00:07:10,770 --> 00:07:18,540
+If the spy was never called I can run to the test suite inside of the terminal using NPM run test hyphen
+
+111
+00:07:18,690 --> 00:07:19,390
+watch.
+
+112
+00:07:19,500 --> 00:07:22,590
+And this is going to kick off the tests using node Mon.
+
+113
+00:07:22,710 --> 00:07:24,720
+Right here we have all of our test cases.
+
+114
+00:07:24,870 --> 00:07:31,290
+And under the app one we have should call the spy correctly it did indeed pass which is fantastic.
+
+115
+00:07:31,290 --> 00:07:36,720
+Now let's go ahead and comment out the line where I call spy and this time around the test should fail
+
+116
+00:07:36,840 --> 00:07:42,310
+because the spy was never actually called and right here we see spy was not called.
+
+117
+00:07:42,600 --> 00:07:48,030
+No checking if a spy was called or not called is great but we can get even more detail out of our assertions
+
+118
+00:07:48,120 --> 00:07:55,380
+for example what if I call the spy with the name Andrew and the age 25 and I want to verify that the
+
+119
+00:07:55,380 --> 00:07:58,860
+spy was not just called but was called with these arguments.
+
+120
+00:07:58,980 --> 00:08:04,770
+Well luckily we have an assertion for that to instead have to have been called we can call it to have
+
+121
+00:08:04,770 --> 00:08:11,480
+been called with this lets us pass in some arguments and verify the spy was indeed called with those
+
+122
+00:08:11,480 --> 00:08:13,010
+arguments right here.
+
+123
+00:08:13,100 --> 00:08:18,890
+I'm going to assert that my spy was called with Andrew and the number 25 when I saved the file in the
+
+124
+00:08:18,890 --> 00:08:20,310
+test cases restart.
+
+125
+00:08:20,390 --> 00:08:24,490
+I should see all my tests passing and that's exactly what I get.
+
+126
+00:08:24,530 --> 00:08:29,630
+Now if the spy was not called with this data I'm going to go ahead and remove 25 and we rerun the test
+
+127
+00:08:29,630 --> 00:08:30,130
+suite.
+
+128
+00:08:30,140 --> 00:08:31,350
+The test is going to fail.
+
+129
+00:08:31,370 --> 00:08:35,630
+It's going to give you an error message letting you know that the spy was never called with Andrew and
+
+130
+00:08:35,660 --> 00:08:40,100
+25 this is causing the test to fail which is fantastic.
+
+131
+00:08:40,100 --> 00:08:44,900
+Now there are plenty of other assertions we can use with our spies you can find them over in the expect
+
+132
+00:08:44,900 --> 00:08:45,460
+docs.
+
+133
+00:08:45,480 --> 00:08:51,110
+We have to have been called which we used to not have been called verifying that a spy was not called
+
+134
+00:08:51,440 --> 00:08:55,850
+then we have to have been called with which we also used Double-O.
+
+135
+00:08:55,850 --> 00:08:58,370
+You can see there's a lot more to spies as well.
+
+136
+00:08:58,460 --> 00:09:02,540
+How to create spies which we've already done and a few other methods which are not going to explore
+
+137
+00:09:02,540 --> 00:09:06,020
+now although they could be useful in the future for our purposes.
+
+138
+00:09:06,020 --> 00:09:10,310
+We need a spy so we can simulate that function inside of apts.
+
+139
+00:09:10,420 --> 00:09:15,140
+J.S. save user We need a way to replace this function with a spy.
+
+140
+00:09:15,140 --> 00:09:18,480
+Then we can verify that and handle sign up gets called.
+
+141
+00:09:18,530 --> 00:09:20,660
+It does indeed call save user.
+
+142
+00:09:20,660 --> 00:09:24,490
+It doesn't need to actually go through the process over NDB dot jazz.
+
+143
+00:09:24,530 --> 00:09:26,680
+This is not important to our tests.
+
+144
+00:09:26,690 --> 00:09:32,940
+The only thing that is important is that the function was called with the correct arguments to do that.
+
+145
+00:09:32,990 --> 00:09:39,150
+We're going to look at an NPM module called rewire which lets us swap out variables for our tests.
+
+146
+00:09:39,230 --> 00:09:45,560
+In our case in our test file we'll be able to replace the DBI object with something else completely.
+
+147
+00:09:45,560 --> 00:09:51,530
+Then when the code runs instead of calling DB save user as defined over here it's going to be calling
+
+148
+00:09:51,580 --> 00:09:55,850
+D-B dot save user which will be a spy to get started.
+
+149
+00:09:55,850 --> 00:09:58,870
+We do need to install rewire over in the terminal.
+
+150
+00:09:58,880 --> 00:10:01,140
+It's a fantastic test utility.
+
+151
+00:10:01,240 --> 00:10:06,200
+It's pretty essential for testing functions with side effects like the one we have here.
+
+152
+00:10:06,530 --> 00:10:13,810
+I'm going to run NPM install the module name itself is called rewire and we're going to be grabbing
+
+153
+00:10:13,810 --> 00:10:19,180
+the most recent version as of this filming version two point five point two.
+
+154
+00:10:19,280 --> 00:10:21,120
+This is a test specific module.
+
+155
+00:10:21,130 --> 00:10:23,750
+We're not going to need it for our application to run regularly.
+
+156
+00:10:23,800 --> 00:10:27,770
+So we will be using the saved flag to add it to our package.
+
+157
+00:10:27,820 --> 00:10:34,120
+Jason dependencies list once the module is installed we can get started using it and it's pretty simple
+
+158
+00:10:34,120 --> 00:10:37,270
+to set up over inside of app test.
+
+159
+00:10:37,330 --> 00:10:41,170
+Scott J.S. we can start by loading it in up at the very top.
+
+160
+00:10:41,200 --> 00:10:42,760
+I'm going to create a new constant.
+
+161
+00:10:42,760 --> 00:10:45,790
+This one will be called a rewire.
+
+162
+00:10:45,980 --> 00:10:51,870
+And we're going to set it equal to the return result from requiring re wire.
+
+163
+00:10:51,890 --> 00:10:58,430
+Now the way that rewire works is it requires you to use rewire instead of require when you're loading
+
+164
+00:10:58,430 --> 00:11:00,420
+in the file that you want to mark out.
+
+165
+00:11:00,620 --> 00:11:03,460
+For this example we want to replace it with something else.
+
+166
+00:11:03,500 --> 00:11:06,930
+So when we load an app we have to load it in a special way.
+
+167
+00:11:07,250 --> 00:11:15,570
+I'm going to make a variable called app and we're going to set it equal to rewire followed by what we
+
+168
+00:11:15,570 --> 00:11:21,570
+would usually put inside of a choir in this case it's a relative file a file that we created daat forward
+
+169
+00:11:21,570 --> 00:11:24,590
+slash app is going to get the job done.
+
+170
+00:11:24,720 --> 00:11:30,720
+Now rewire load your file through require but it also adds to methods on to app.
+
+171
+00:11:30,750 --> 00:11:39,690
+These methods are app dot underscore underscore set underscore underscore and app dot underscore underscore
+
+172
+00:11:39,830 --> 00:11:46,880
+get dot underscore underscore we can use these to mock out various data inside of app.
+
+173
+00:11:46,970 --> 00:11:52,960
+Yes that means we're going to make a simulation of the D-B object to the one that comes back from DBD.
+
+174
+00:11:53,040 --> 00:11:59,130
+Yes but we'll swap out the function with ASPI inside of our descry block we can kick things off by making
+
+175
+00:11:59,130 --> 00:12:06,150
+a variable this variable is going to be called D.B and we're going to set it equal to an object.
+
+176
+00:12:06,180 --> 00:12:11,210
+The only thing we need to mark out in our case is save user right here.
+
+177
+00:12:11,220 --> 00:12:17,730
+I'm going to define save user then I'm going to go ahead and said equal to a spy by creating one using
+
+178
+00:12:17,730 --> 00:12:23,110
+expect dot create spy just like we did down below.
+
+179
+00:12:23,360 --> 00:12:25,230
+And now we have this D-B variable.
+
+180
+00:12:25,230 --> 00:12:27,120
+And the only thing left to do is replace it.
+
+181
+00:12:27,180 --> 00:12:35,680
+And we do that using app dot underscore underscore set underscore underscore and this takes two arguments.
+
+182
+00:12:35,760 --> 00:12:40,590
+The first one is the thing you want to replace were trying to replace D-B and we're trying to replace
+
+183
+00:12:40,590 --> 00:12:47,040
+it with the D variable which is an object that has the same user function just like we have over here
+
+184
+00:12:47,850 --> 00:12:53,520
+without emplace we can now write a test that verifies that handle sign up does indeed call save user
+
+185
+00:12:54,110 --> 00:12:54,800
+Double-O.
+
+186
+00:12:54,960 --> 00:12:57,260
+I'm going to call it.
+
+187
+00:12:57,450 --> 00:13:04,470
+It should call save user with user object.
+
+188
+00:13:04,570 --> 00:13:09,720
+Then we can pass in our function and this is what's going to actually run when the test gets executed
+
+189
+00:13:10,020 --> 00:13:13,390
+and there's no need to use any asynchronous done arguments.
+
+190
+00:13:13,410 --> 00:13:15,010
+This is going to be a synchronous test.
+
+191
+00:13:15,030 --> 00:13:21,330
+For now inside of here we can come up with an e-mail and a password that will pass in to handle sign
+
+192
+00:13:21,330 --> 00:13:22,240
+up right here.
+
+193
+00:13:23,400 --> 00:13:29,240
+I'm going to make a variable called e-mail sending it equal to some e-mail Andrew at example dot com
+
+194
+00:13:29,520 --> 00:13:32,500
+and we can do the same thing with a password var password.
+
+195
+00:13:32,660 --> 00:13:36,720
+I'll set that equal to 1 to 3 a b c.
+
+196
+00:13:36,780 --> 00:13:41,110
+Next up we are going to call handle Sign-Up This is the function we want to test.
+
+197
+00:13:41,160 --> 00:13:50,790
+I'm going to call app dot handle Sign-Up passing in our two arguments email and password.
+
+198
+00:13:50,790 --> 00:13:54,000
+Now at this point handle sign up is going to get executed.
+
+199
+00:13:54,000 --> 00:13:58,860
+That means the code over here is going to run and it's going to fire D-B data save user but D-B don't
+
+200
+00:13:58,890 --> 00:14:01,660
+save user is not the method in NDB.
+
+201
+00:14:01,730 --> 00:14:05,670
+Yes it's a spy instead which means we can now use those assertions.
+
+202
+00:14:05,670 --> 00:14:09,150
+We just learned about right here inside of the test case.
+
+203
+00:14:09,150 --> 00:14:14,820
+I'm going to use expect to expect something about D-B the variable right here.
+
+204
+00:14:14,830 --> 00:14:19,170
+Dot save user which we set equal to a spy.
+
+205
+00:14:19,240 --> 00:14:28,180
+I'm going to call DOT to have been called with and I'm going to call this with an object because that
+
+206
+00:14:28,210 --> 00:14:30,670
+is what DVDA us should have been called with.
+
+207
+00:14:30,760 --> 00:14:36,430
+We'll use that same as 6 shortcut e-mail Khama password.
+
+208
+00:14:36,490 --> 00:14:42,070
+This creates an email attribute set to the e-mail variable and a password attribute set to the password
+
+209
+00:14:42,190 --> 00:14:43,120
+variable.
+
+210
+00:14:43,120 --> 00:14:48,720
+With this in place we can now save our test file and over in the terminal I can restart the task watch
+
+211
+00:14:48,730 --> 00:14:54,730
+script by using the up arrow key twice to rerun our NPM run test watch command.
+
+212
+00:14:54,750 --> 00:14:59,580
+This is going to kick off our test suite starting up all of our tests and right here we see should have
+
+213
+00:14:59,580 --> 00:15:01,500
+called the spy correctly fails.
+
+214
+00:15:01,740 --> 00:15:05,330
+That's because we had previously messed up the test case to make sure it failed.
+
+215
+00:15:05,400 --> 00:15:10,560
+I'm going to add that back but that's not important because the test case we did just create that did
+
+216
+00:15:10,560 --> 00:15:14,900
+indeed pass should call a save user with the user object.
+
+217
+00:15:14,910 --> 00:15:16,800
+And this is fantastic.
+
+218
+00:15:16,830 --> 00:15:20,240
+We don't have a way to test pretty much anything inside of Node.
+
+219
+00:15:20,340 --> 00:15:25,590
+We can even test functions that call other functions and verifying that the communication happens as
+
+220
+00:15:25,590 --> 00:15:26,300
+expected.
+
+221
+00:15:26,370 --> 00:15:29,860
+And all of this can be done using spies.
+
+222
+00:15:30,000 --> 00:15:35,520
+And now I understand that the concepts in this video in particular can be a little hard to grasp especially
+
+223
+00:15:35,520 --> 00:15:38,720
+when you're not using it in the context of a real application.
+
+224
+00:15:38,790 --> 00:15:44,010
+And that's why we are done with a testing section and we're going to move on creating real world apps.
+
+225
+00:15:44,010 --> 00:15:49,890
+Most notably we're going to create a to do rest API and we're going to make a real time application
+
+226
+00:15:49,920 --> 00:15:55,750
+with sockets that is all coming up next and we will be using testing throughout the rest of the course.
+
+227
+00:15:55,830 --> 00:16:01,200
+I am super excited to get to it so I will see you next time as we start building our rest API
+

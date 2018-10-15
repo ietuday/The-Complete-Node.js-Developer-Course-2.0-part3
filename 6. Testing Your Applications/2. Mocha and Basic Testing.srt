@@ -1,0 +1,968 @@
+﻿1
+00:00:00,600 --> 00:00:05,910
+In this video you're going to create your very first test cases so you can test that your code is working
+
+2
+00:00:06,030 --> 00:00:10,980
+as expected by adding automatic testing to our project will be able to verify that a function does what
+
+3
+00:00:10,980 --> 00:00:15,720
+it says it'll do if we make a function that's supposed to add two numbers together we can automatically
+
+4
+00:00:15,750 --> 00:00:17,090
+verify it's doing that.
+
+5
+00:00:17,160 --> 00:00:21,150
+And if we have a function that's supposed to fetch a user from the database we can make sure it's doing
+
+6
+00:00:21,150 --> 00:00:22,470
+that as well.
+
+7
+00:00:22,470 --> 00:00:27,210
+Now to get started in this video we're going to look at the very basics of setting up a testing suite
+
+8
+00:00:27,390 --> 00:00:29,850
+inside of a node J.S. project.
+
+9
+00:00:29,970 --> 00:00:35,250
+We'll be testing a real world function and will be a challenge for you to test something as well in
+
+10
+00:00:35,250 --> 00:00:36,220
+order to get started.
+
+11
+00:00:36,240 --> 00:00:39,750
+We are going to make a directory to store our code for this section.
+
+12
+00:00:39,750 --> 00:00:46,940
+I'm going to make one on the desktop using m k d i r and I'll call this directory node hyphen tests.
+
+13
+00:00:47,100 --> 00:00:53,330
+Then I'm going to see the inside of it node hyphen tests so I can go ahead and run and PM in it.
+
+14
+00:00:53,430 --> 00:00:58,470
+We are going to be installing modules and this is going to require a package does Jason File.
+
+15
+00:00:58,590 --> 00:01:04,020
+I'm going to run NPM in it using the default values for everything simply clicking enter throughout
+
+16
+00:01:04,050 --> 00:01:05,780
+every single step.
+
+17
+00:01:05,780 --> 00:01:10,360
+Now once that package that Jason file is generated we can go ahead and open up the directory inside.
+
+18
+00:01:10,370 --> 00:01:15,800
+Adam it's on the desktop and it's called node hyphen tests from here.
+
+19
+00:01:15,800 --> 00:01:18,650
+We're ready to actually define a function that we want to test.
+
+20
+00:01:18,740 --> 00:01:22,700
+The goal in this video is to learn how to set up testing for node project.
+
+21
+00:01:22,700 --> 00:01:27,110
+So the actual functions we'll be testing are going to be pretty trivial but it will help illustrate
+
+22
+00:01:27,320 --> 00:01:30,880
+exactly how to set up our tests to get started.
+
+23
+00:01:30,890 --> 00:01:36,020
+Let's go ahead and make a fake module that will have some functions and we'll test those functions in
+
+24
+00:01:36,020 --> 00:01:37,080
+the route of the project.
+
+25
+00:01:37,220 --> 00:01:41,630
+I'm going to make a brand new directory and I'm going to call this directory tildes.
+
+26
+00:01:41,870 --> 00:01:47,300
+We can assume this will store some utility functions like adding a number to another number or stripping
+
+27
+00:01:47,300 --> 00:01:51,060
+out white spaces from a string anything kind of hodgepodge.
+
+28
+00:01:51,060 --> 00:01:53,600
+That doesn't really belong in any specific location.
+
+29
+00:01:54,630 --> 00:02:00,630
+I'm going to make a new file in the utility folder called utility dot J.S. and this is a similar pattern
+
+30
+00:02:00,630 --> 00:02:04,890
+to what we did when we created the weather and location directory in our weather app.
+
+31
+00:02:04,920 --> 00:02:08,300
+You're probably wondering why we have a folder and a file with the same name.
+
+32
+00:02:08,340 --> 00:02:10,560
+I promise that will be clear in just a second.
+
+33
+00:02:10,650 --> 00:02:16,140
+When we start testing now before we can write our first test case to make sure something works we need
+
+34
+00:02:16,140 --> 00:02:16,980
+something to test.
+
+35
+00:02:17,100 --> 00:02:21,870
+And I'm going to make a very basic function that takes two numbers and adds them together will create
+
+36
+00:02:21,870 --> 00:02:24,830
+an outer function by setting module.
+
+37
+00:02:24,870 --> 00:02:28,640
+Exports don't add equal to an arrow function.
+
+38
+00:02:29,700 --> 00:02:35,880
+Now that arrow function is going to take two arguments a and b and inside of the function where it is
+
+39
+00:02:35,880 --> 00:02:38,820
+going to return the value a plus b.
+
+40
+00:02:38,970 --> 00:02:40,940
+Nothing too complex here.
+
+41
+00:02:41,250 --> 00:02:45,870
+In essence we just have one expression inside of our arrow function and we want to return it.
+
+42
+00:02:45,900 --> 00:02:51,270
+We can actually use the arrow function expression syntax which lets us at our expression right here
+
+43
+00:02:51,420 --> 00:02:54,770
+A plus B and it's going to be implicitly returned.
+
+44
+00:02:54,780 --> 00:02:59,580
+There's no need to explicitly add a return keyword on it to the function.
+
+45
+00:02:59,580 --> 00:03:04,800
+And now that we have you tells Yes ready to go let's explore testing.
+
+46
+00:03:04,950 --> 00:03:09,260
+We're going to be using a framework called Moka in order to set up our test suite.
+
+47
+00:03:09,290 --> 00:03:14,450
+And this is going to let us configure our individual test cases and also run all of our test files.
+
+48
+00:03:14,460 --> 00:03:18,030
+This is going to be really important for creating and running tests.
+
+49
+00:03:18,030 --> 00:03:19,730
+The goal here is to make testing simple.
+
+50
+00:03:19,800 --> 00:03:22,320
+And we're going to use Moka to do just that.
+
+51
+00:03:22,420 --> 00:03:25,490
+Now that we have a file and a function we actually want to test.
+
+52
+00:03:25,590 --> 00:03:29,030
+Let's go ahead and explore how to create and run a test suite.
+
+53
+00:03:29,310 --> 00:03:35,130
+We're going to be doing this using these super popular testing framework Moka Moka which you can find
+
+54
+00:03:35,130 --> 00:03:43,870
+in your browser at Moka J.S. dot org is a fantastic framework for creating and running test suites.
+
+55
+00:03:43,870 --> 00:03:49,090
+It's super popular and they're page right here has all the information you'd ever want to know about
+
+56
+00:03:49,090 --> 00:03:53,410
+setting it up configuring it and all the cool bells and whistles it has included.
+
+57
+00:03:53,650 --> 00:03:57,430
+If you scroll down just a little bit you'll be able to see a table of contents.
+
+58
+00:03:57,490 --> 00:03:58,950
+Here you can explore everything.
+
+59
+00:03:58,960 --> 00:04:04,510
+Moka has to offer will be covering most of it in this section but for anything we don't cover I do want
+
+60
+00:04:04,510 --> 00:04:05,350
+to make you aware.
+
+61
+00:04:05,380 --> 00:04:07,900
+You can always learn about it here.
+
+62
+00:04:08,110 --> 00:04:12,850
+Now that we've explored the Moka documentation page let's go ahead and install it and start using it
+
+63
+00:04:13,570 --> 00:04:14,680
+over in the terminal.
+
+64
+00:04:14,710 --> 00:04:19,900
+I'm going to install Moka First up I am going to clear the terminal output and then we can go ahead
+
+65
+00:04:19,990 --> 00:04:23,010
+and install it using NPM install.
+
+66
+00:04:23,500 --> 00:04:27,000
+When you use NPM install you can also use the shortcut NPM.
+
+67
+00:04:27,030 --> 00:04:29,660
+I this has the exact same effect.
+
+68
+00:04:29,770 --> 00:04:30,920
+I'm going to use NPM.
+
+69
+00:04:30,940 --> 00:04:36,990
+I with Moka specifying the version at three point zero point zero.
+
+70
+00:04:37,120 --> 00:04:41,020
+This is the most recent version of the library as of this filming.
+
+71
+00:04:41,020 --> 00:04:47,170
+Now we do want to save this into the package that Jason File previously we have used the same flag but
+
+72
+00:04:47,170 --> 00:04:52,180
+we're going to talk about a new flag right here called Save hyphen dev save.
+
+73
+00:04:52,190 --> 00:04:55,950
+Dev is going to save this package for development purposes only.
+
+74
+00:04:56,020 --> 00:04:58,010
+And that's exactly what Moka is going to be for.
+
+75
+00:04:58,180 --> 00:05:01,820
+We don't actually need Moka to run our app on a service like Heroku.
+
+76
+00:05:01,870 --> 00:05:05,610
+We just need Moka locally on our machine to test our code.
+
+77
+00:05:05,680 --> 00:05:09,860
+When you use the save death flag it installs the module much the same way.
+
+78
+00:05:10,030 --> 00:05:13,930
+But if you explore package drop Jason you'll see things are a little different.
+
+79
+00:05:14,620 --> 00:05:20,230
+Over inside of our package that Jason file instead of a dependencies attribute we have a dev dependencies
+
+80
+00:05:20,230 --> 00:05:26,140
+attribute in there we have Moka with the version number as the value dev dependencies are fantastic
+
+81
+00:05:26,170 --> 00:05:29,930
+because they're not going to be installed on Heroku but they will be installed locally.
+
+82
+00:05:30,070 --> 00:05:33,090
+This will keep the Heroku boot times really really quick.
+
+83
+00:05:33,100 --> 00:05:36,390
+It won't need to install modules that it's not going to actually need.
+
+84
+00:05:36,610 --> 00:05:42,480
+We'll be installing Boll's dev dependencies and dependencies in most of our projects from here on out.
+
+85
+00:05:42,490 --> 00:05:48,800
+Now that we have Moka installed we can go ahead and create a test file over in the utils folder.
+
+86
+00:05:48,800 --> 00:05:54,510
+We're going to make a new file this file is going to store our test cases.
+
+87
+00:05:54,510 --> 00:05:56,890
+We're not going to store test cases in utilities.
+
+88
+00:05:56,980 --> 00:05:59,310
+Yes this is going to be our application code.
+
+89
+00:05:59,310 --> 00:06:03,490
+Instead we're going to make a file called utils dot test.
+
+90
+00:06:03,650 --> 00:06:05,700
+Us when we use this test.
+
+91
+00:06:05,760 --> 00:06:10,560
+Jeff's extension we're basically telling our app that this is going to store our test cases and when
+
+92
+00:06:10,560 --> 00:06:16,470
+Moka goes through our app for tests to run it should run any file with this extension.
+
+93
+00:06:16,470 --> 00:06:17,850
+Now we have a test file.
+
+94
+00:06:17,850 --> 00:06:24,840
+The only thing left to do is create a test case a test case is a function that runs some code and if
+
+95
+00:06:24,840 --> 00:06:30,420
+things go well great the test is considered to have passed and if things do not go well the test is
+
+96
+00:06:30,420 --> 00:06:32,270
+considered to have failed.
+
+97
+00:06:32,400 --> 00:06:35,260
+We can create a new test case using it.
+
+98
+00:06:35,420 --> 00:06:38,060
+It is a function provided by moka.
+
+99
+00:06:38,190 --> 00:06:42,750
+We're going to be running our project to test files through Moka so there's no reason to import it or
+
+100
+00:06:42,750 --> 00:06:43,860
+do anything like that.
+
+101
+00:06:43,920 --> 00:06:47,350
+We simply call it just like this now.
+
+102
+00:06:47,370 --> 00:06:51,060
+It lets us to find a new test case and it takes two arguments.
+
+103
+00:06:51,060 --> 00:06:55,350
+First up we're going to have a string description of what exactly the test is doing.
+
+104
+00:06:55,410 --> 00:07:03,650
+If we're testing that the outer function works we might have something like it should add two numbers.
+
+105
+00:07:03,660 --> 00:07:06,170
+Notice here that it plays into the sentence.
+
+106
+00:07:06,180 --> 00:07:07,580
+It should read like this.
+
+107
+00:07:07,590 --> 00:07:12,090
+It should add two numbers describes exactly what the test is going to verify.
+
+108
+00:07:12,120 --> 00:07:18,870
+This is called behavior driven development or BDD and that's the principles that Moka was built on.
+
+109
+00:07:18,870 --> 00:07:20,900
+Now we've set up the test string.
+
+110
+00:07:20,940 --> 00:07:27,520
+The next thing to do is add a function of the second argument inside this function we're going to add
+
+111
+00:07:27,520 --> 00:07:31,000
+the code that tests that the add function works as expected.
+
+112
+00:07:31,000 --> 00:07:36,100
+This means that will probably call ad and check that the value that comes back is the appropriate value
+
+113
+00:07:36,130 --> 00:07:38,260
+given the two numbers passed in.
+
+114
+00:07:38,260 --> 00:07:42,010
+That means we do need to import the Eutelsat file up above.
+
+115
+00:07:42,130 --> 00:07:48,000
+I'm going to create a constant called you tills setting equal to the return result from requiring you
+
+116
+00:07:48,000 --> 00:07:49,540
+tills.
+
+117
+00:07:49,550 --> 00:07:50,800
+I'm using forward slash.
+
+118
+00:07:50,800 --> 00:07:56,680
+Since we are going to be requiring a local file it's in the same directory so I can simply type Patels
+
+119
+00:07:56,680 --> 00:07:59,270
+right here without the J.S. extension.
+
+120
+00:07:59,320 --> 00:08:04,720
+Now that we have the details a library loaded in inside of the callback we can call it let's make a
+
+121
+00:08:04,720 --> 00:08:06,890
+variable to store the return results.
+
+122
+00:08:06,910 --> 00:08:14,050
+I'm going to call this one results and we'll set it equal to you tills and don't add passing in two
+
+123
+00:08:14,050 --> 00:08:14,890
+numbers.
+
+124
+00:08:14,890 --> 00:08:18,220
+Let's go ahead and use something like 33 plus 11.
+
+125
+00:08:18,250 --> 00:08:21,020
+We would expect it to get 40 for back.
+
+126
+00:08:21,160 --> 00:08:26,950
+Now at this point we do have some code inside of our test suite so we can go ahead and run it and we're
+
+127
+00:08:26,950 --> 00:08:31,800
+going to do that by configuring that test script we looked at in the last section inside a package.
+
+128
+00:08:31,840 --> 00:08:38,480
+Jason currently the test script simply prints a message to the screen saying that no tests exist but
+
+129
+00:08:38,500 --> 00:08:42,370
+we're going to do instead is call Moka right here.
+
+130
+00:08:42,370 --> 00:08:48,400
+We're going to be calling Moka passing in as the one and only argument in the actual files we want to
+
+131
+00:08:48,400 --> 00:08:52,630
+test and we can use the globbing pattern to specify multiple files.
+
+132
+00:08:52,720 --> 00:08:59,350
+In this case we'll be using star star to look in every single directory and we're looking for a file
+
+133
+00:08:59,470 --> 00:09:02,610
+called utils dot test dot J.
+
+134
+00:09:02,620 --> 00:09:03,550
+Yes.
+
+135
+00:09:03,550 --> 00:09:07,310
+Now this is a very specific pattern it's not going to be particularly useful.
+
+136
+00:09:07,450 --> 00:09:11,290
+Instead we can swap out the file name with a star as well.
+
+137
+00:09:11,290 --> 00:09:18,160
+Now we're looking for any file in the project that has a file name ending in dot test dot Yes and this
+
+138
+00:09:18,160 --> 00:09:21,520
+is exactly what we want from here.
+
+139
+00:09:21,520 --> 00:09:26,500
+We can run our test suite by saving package adjacent and moving over to the terminal.
+
+140
+00:09:26,590 --> 00:09:32,920
+I'm going to use clear to clear the terminal output and then we can run our test script using NPM test
+
+141
+00:09:33,550 --> 00:09:34,520
+when we run this.
+
+142
+00:09:34,540 --> 00:09:37,260
+We're actually going to be executing that Moka command.
+
+143
+00:09:37,300 --> 00:09:38,020
+It's going to go off.
+
+144
+00:09:38,020 --> 00:09:40,030
+It's going to fetch all of our test files.
+
+145
+00:09:40,090 --> 00:09:42,930
+It's going to run all of them and print the results right here.
+
+146
+00:09:42,940 --> 00:09:45,910
+Here we can see we have a green checkmark next to our test.
+
+147
+00:09:45,940 --> 00:09:51,760
+Should add two numbers then down below we have a little summary one passing test and it happened in
+
+148
+00:09:51,840 --> 00:09:53,750
+eight milliseconds.
+
+149
+00:09:53,770 --> 00:09:58,090
+Now in our case we don't actually assert anything about the number that comes back.
+
+150
+00:09:58,180 --> 00:10:00,100
+It could be seven hundred and we wouldn't care.
+
+151
+00:10:00,100 --> 00:10:03,150
+The test is always going to pass to make a test fail.
+
+152
+00:10:03,160 --> 00:10:11,110
+What we have to do is throw an error that means right here we can throw a new error and we pass into
+
+153
+00:10:11,110 --> 00:10:14,830
+the constructor function whatever message we want to use as the error.
+
+154
+00:10:14,920 --> 00:10:20,620
+In this case I could say something like a value not correct.
+
+155
+00:10:21,510 --> 00:10:26,640
+Now with this in place I can save the test file and rerun things over from the terminal by rerunning
+
+156
+00:10:26,700 --> 00:10:27,740
+NPM test.
+
+157
+00:10:27,870 --> 00:10:33,930
+And when I do that now we have 0 tests passing and we have one test failing Double-O we can see the
+
+158
+00:10:33,930 --> 00:10:39,990
+one test is I should add two numbers and we get our error message value not correct when we throw a
+
+159
+00:10:39,990 --> 00:10:41,550
+new error the test fails.
+
+160
+00:10:41,610 --> 00:10:45,410
+And that's exactly what we want to do for ad right here.
+
+161
+00:10:45,510 --> 00:10:54,150
+I'm going to go ahead and create an if statement if the response value is not equal to 44.
+
+162
+00:10:54,150 --> 00:10:59,040
+That means we have a problem on our hands and we're going to throw an error inside of here.
+
+163
+00:10:59,130 --> 00:11:05,400
+I can throw a new air and I'm going to use a template string as our message string because I do want
+
+164
+00:11:05,400 --> 00:11:16,230
+to use the value that comes back in and the error message I'm going to say expected 44 comma but got.
+
+165
+00:11:16,540 --> 00:11:20,860
+Then I'll inject the actual value whatever happens to come back.
+
+166
+00:11:20,890 --> 00:11:26,340
+Now in our case everything is going to line up great but what if the add method wasn't working correctly.
+
+167
+00:11:26,470 --> 00:11:31,750
+Overing you tale's we can simulate this by simply tacking on another edition adding on something like
+
+168
+00:11:31,750 --> 00:11:32,950
+22.
+
+169
+00:11:33,010 --> 00:11:36,930
+I'm going to save the file or rerun the test suite.
+
+170
+00:11:37,070 --> 00:11:43,250
+And now we get an error message expected 44 but got 66 this error message is fantastic.
+
+171
+00:11:43,250 --> 00:11:47,360
+It lets us know that something is going wrong with the test and that even tells us exactly what we got
+
+172
+00:11:47,360 --> 00:11:49,270
+back and what we expected.
+
+173
+00:11:49,490 --> 00:11:54,390
+This is going to let us go into the add function look for errors and hopefully fix them.
+
+174
+00:11:54,470 --> 00:11:59,510
+Now if we were to rerun the test suite with the appropriate add function all of our tests should be
+
+175
+00:11:59,510 --> 00:12:06,080
+passing and right here we get just that creating test cases does it need to be something super complex.
+
+176
+00:12:06,170 --> 00:12:10,740
+Here you can see we have a simple test case that tests a simple function.
+
+177
+00:12:10,790 --> 00:12:14,600
+Now for a challenge we're going to create a new function and you're going to be responsible for adding
+
+178
+00:12:14,600 --> 00:12:17,930
+a test case that asserts it works as expected.
+
+179
+00:12:17,930 --> 00:12:22,020
+Let's go ahead and create a function that squares a number and returns the result.
+
+180
+00:12:22,160 --> 00:12:30,530
+We're going to define that over in you tildes module ADOT exports dot square we'll set that equal to
+
+181
+00:12:30,530 --> 00:12:39,290
+an arrow function that takes in one number X and we're going to return x times x x times X just like
+
+182
+00:12:39,320 --> 00:12:40,130
+this.
+
+183
+00:12:40,140 --> 00:12:45,710
+Now we have this brand new function Square and it's going to be your job to create a new test case that
+
+184
+00:12:45,710 --> 00:12:48,820
+makes sure square works as expected.
+
+185
+00:12:48,890 --> 00:12:50,630
+Overing you tills adcom test.
+
+186
+00:12:50,780 --> 00:12:57,410
+Yes down below you're going to call it again with something like it should square a number then you're
+
+187
+00:12:57,410 --> 00:13:02,390
+going to call the utility ADOT square method passing in a number of your choice and you're going to
+
+188
+00:13:02,390 --> 00:13:07,550
+store the result in a variable and then you'll use an IF statement to check if it's not what you expect
+
+189
+00:13:07,550 --> 00:13:08,190
+it to be.
+
+190
+00:13:08,210 --> 00:13:12,640
+If it's not you can throw a new error printing a little message like we do here.
+
+191
+00:13:12,950 --> 00:13:17,000
+Now when you create that task you should be able to run the test suite and you'll see that everything
+
+192
+00:13:17,000 --> 00:13:21,440
+works as expected because currently the utility function is defined correctly.
+
+193
+00:13:21,440 --> 00:13:23,100
+We just do X times x.
+
+194
+00:13:23,150 --> 00:13:29,180
+I want you to mess up square doing something like X times x plus one or any other computation that's
+
+195
+00:13:29,180 --> 00:13:31,640
+going to cause an incorrect result to be returned.
+
+196
+00:13:31,820 --> 00:13:37,610
+Then you can rerun your test suite and your new test should fail if it fails then you are done the challenge.
+
+197
+00:13:37,610 --> 00:13:43,680
+You can fix the square function make your test pass again and then you can go ahead and click play.
+
+198
+00:13:43,730 --> 00:13:49,460
+So take a moment create that new test case mess up the square function fix the square function make
+
+199
+00:13:49,460 --> 00:13:54,390
+sure everything works as expected and when you're done click play.
+
+200
+00:13:54,440 --> 00:13:55,370
+How'd you do.
+
+201
+00:13:55,370 --> 00:13:58,740
+I hope you were able to create that test case and see it pass.
+
+202
+00:13:58,750 --> 00:14:01,490
+Then you were able to mess things up watching it fail.
+
+203
+00:14:01,790 --> 00:14:08,870
+I'm going to get started in details test file by adding a new call to it to make the new test case inside
+
+204
+00:14:08,870 --> 00:14:09,430
+of here.
+
+205
+00:14:09,440 --> 00:14:13,970
+We're going to add our two arguments the string which will fill out in just a second and the callback
+
+206
+00:14:13,970 --> 00:14:17,530
+function inside the string.
+
+207
+00:14:17,620 --> 00:14:18,960
+I'm going to create our message.
+
+208
+00:14:19,000 --> 00:14:21,190
+It should square a number
+
+209
+00:14:24,980 --> 00:14:29,210
+and inside of the callback function we can actually go ahead and call Square.
+
+210
+00:14:29,210 --> 00:14:34,100
+Now I do want to create a variable to store the results so I can check that the result is what I expect
+
+211
+00:14:34,100 --> 00:14:35,030
+it to be.
+
+212
+00:14:35,150 --> 00:14:40,700
+Then I can call you tildes square passing in a number I'm going to go with three in this case which
+
+213
+00:14:40,700 --> 00:14:44,140
+means I should expect nine to come back down below.
+
+214
+00:14:44,210 --> 00:14:45,610
+I can have an if statement.
+
+215
+00:14:45,800 --> 00:14:53,870
+If the result does not equal nine then we're going to go ahead and throw a message because things went
+
+216
+00:14:53,870 --> 00:14:54,440
+wrong.
+
+217
+00:14:54,710 --> 00:15:01,580
+We can throw an error using throw new error passing in whatever message we like we can use a regular
+
+218
+00:15:01,580 --> 00:15:07,130
+string but I always prefer using a template string so we can inject values easily.
+
+219
+00:15:07,190 --> 00:15:14,760
+I'll say something like expected 9 comma but got followed by the value.
+
+220
+00:15:14,760 --> 00:15:18,870
+That's not correct in this case that's stored in the response variable.
+
+221
+00:15:18,870 --> 00:15:23,850
+Now I can go ahead and save this test case and run the test suite from the terminal using the up arrow
+
+222
+00:15:23,850 --> 00:15:24,810
+key and the Enter key.
+
+223
+00:15:24,810 --> 00:15:26,520
+I can rerun the last command.
+
+224
+00:15:26,580 --> 00:15:27,610
+And what do we get.
+
+225
+00:15:27,660 --> 00:15:33,330
+We get two tests passing should add two numbers and should square a number of both have check marks
+
+226
+00:15:33,360 --> 00:15:39,780
+next to them and we ran both tests in just 14 milliseconds which is fantastic.
+
+227
+00:15:39,780 --> 00:15:44,970
+Now the next thing I want you to do is mess up the square function to make sure your test fails when
+
+228
+00:15:44,970 --> 00:15:46,570
+the number is not correct.
+
+229
+00:15:46,620 --> 00:15:51,770
+I'm going to go ahead and add one on to the result which is going to cause the test to fail.
+
+230
+00:15:51,870 --> 00:15:56,220
+Then I can rerun things over from the terminal and we should see the error message and right here we
+
+231
+00:15:56,220 --> 00:15:58,980
+do expect a 9 but got 10.
+
+232
+00:15:58,980 --> 00:16:00,740
+This is fantastic.
+
+233
+00:16:00,780 --> 00:16:06,570
+We now have a test suite capable of testing both the add function and the square function.
+
+234
+00:16:06,570 --> 00:16:09,450
+I'm going to remove that plus one and we are done.
+
+235
+00:16:09,480 --> 00:16:14,130
+We now have a very very basic test suite that we could execute with moka.
+
+236
+00:16:14,280 --> 00:16:20,760
+Currently we have two tests and to create those tests we use the method provided by Moka in the next
+
+237
+00:16:20,760 --> 00:16:25,890
+several videos we'll be exploring more methods that Moka gives us and we'll also be looking at better
+
+238
+00:16:25,890 --> 00:16:29,870
+ways to do our assertions instead of manually creating them.
+
+239
+00:16:29,940 --> 00:16:33,520
+We'll be using an assertion library to help with the heavy lifting.
+
+240
+00:16:33,630 --> 00:16:35,060
+That is all coming up next.
+
+241
+00:16:35,160 --> 00:16:36,210
+So stay tuned.
+
+242
+00:16:36,220 --> 00:16:37,770
+I will see you soon.
+

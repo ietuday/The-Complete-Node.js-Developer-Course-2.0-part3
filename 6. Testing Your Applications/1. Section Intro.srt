@@ -1,0 +1,56 @@
+﻿1
+00:00:00,270 --> 00:00:06,840
+Hello and welcome to Section 7 testing your node applications and this section we're going to look at
+
+2
+00:00:06,840 --> 00:00:10,740
+how we can test our code to make sure it's working as expected.
+
+3
+00:00:10,740 --> 00:00:16,190
+Now if you set up test cases for other languages then you know how hard it can be to get started.
+
+4
+00:00:16,260 --> 00:00:21,260
+You have to set up the actual test infrastructure and then you have to write your individual test cases.
+
+5
+00:00:21,390 --> 00:00:26,370
+Every time I didn't test an application it was because the set up process and the tools available to
+
+6
+00:00:26,370 --> 00:00:27,710
+me were such a burden.
+
+7
+00:00:27,720 --> 00:00:32,460
+Then you dig around for information on line and you get really simple examples but not examples for
+
+8
+00:00:32,460 --> 00:00:37,220
+testing real world things like asynchronous code or express applications.
+
+9
+00:00:37,290 --> 00:00:39,480
+We're going to be doing all of that in this section.
+
+10
+00:00:39,480 --> 00:00:43,990
+I'm going to give you a very simple setup for testing and writing your test cases.
+
+11
+00:00:44,010 --> 00:00:46,000
+We're going to look at the best tools available.
+
+12
+00:00:46,080 --> 00:00:51,490
+So you'll actually be excited to write those test cases and see all of those green checkmarks.
+
+13
+00:00:51,630 --> 00:00:54,120
+We're going to be testing from here on out as well.
+
+14
+00:00:54,180 --> 00:00:58,140
+So let's go ahead and dive in looking at how we can test some code
+
